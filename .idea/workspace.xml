@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Tag Library Descriptor" />
+        <option value="Python Script" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2P8WL5mkwxVgNmKvy7VnaiecisX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/example-simple.gc" />
+    <property name="project.structure.last.edited" value="SDK" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\resources" />
+      <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\gcc\antlr\test" />
+      <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\test\antlr\gcc" />
+      <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\test\xmltojsoncompiler" />
+      <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\test\xmlcompiler" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\test\antlr\gcc" />
+      <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ljl.test.xmlcompiler" />
+    </key>
+  </component>
+  <component name="RunManager" selected="应用程序.GCCParser">
+    <configuration name="GCCDrawer" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.ljl.gcc.GCCDrawer" />
+      <module name="Graph-Config-Compiler" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GCCParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ljl.gcc.GCCParser" />
+      <module name="Graph-Config-Compiler" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ljl.gcc.antlr.Main" />
+      <module name="Graph-Config-Compiler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ljl.gcc.antlr.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="应用程序.GCCDrawer" />
+      <item itemvalue="应用程序.Main" />
+      <item itemvalue="应用程序.GCCParser" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="应用程序.GCCParser" />
+        <item itemvalue="应用程序.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="" />
+      <created>1682839133949</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682839133949</updated>
+      <workItem from="1682839135250" duration="99000" />
+      <workItem from="1682839328339" duration="40000" />
+      <workItem from="1682839409662" duration="5080000" />
+      <workItem from="1682933680182" duration="1220000" />
+      <workItem from="1682939309161" duration="11811000" />
+      <workItem from="1682997457624" duration="234000" />
+      <workItem from="1682998262800" duration="609000" />
+      <workItem from="1682998940711" duration="12251000" />
+      <workItem from="1683253193318" duration="2927000" />
+      <workItem from="1683257296572" duration="1977000" />
+      <workItem from="1683272610628" duration="32274000" />
+      <workItem from="1683537739224" duration="1409000" />
+      <workItem from="1683594408169" duration="17315000" />
+      <workItem from="1683618255225" duration="5939000" />
+      <workItem from="1683640501921" duration="651000" />
+      <workItem from="1683641491386" duration="575000" />
+      <workItem from="1683642918588" duration="1000" />
+      <workItem from="1683681056993" duration="22000" />
+      <workItem from="1683681121761" duration="166000" />
+      <workItem from="1683681353276" duration="135000" />
+      <workItem from="1683681696859" duration="212000" />
+      <workItem from="1683681938331" duration="21000" />
+      <workItem from="1683683780350" duration="44000" />
+      <workItem from="1683685640592" duration="1055000" />
+      <workItem from="1685101916695" duration="5000" />
+      <workItem from="1685105465132" duration="242000" />
+      <workItem from="1685710108288" duration="3000" />
+      <workItem from="1685754635377" duration="336000" />
+      <workItem from="1685757695839" duration="144000" />
+      <workItem from="1685758667688" duration="480000" />
+      <workItem from="1685759522837" duration="282000" />
+      <workItem from="1685762426360" duration="97000" />
+      <workItem from="1685763131712" duration="131000" />
+      <workItem from="1714978816740" duration="1274000" />
+      <workItem from="1714980248079" duration="1715000" />
+      <workItem from="1714991237686" duration="3343000" />
+      <workItem from="1714995361468" duration="5220000" />
+      <workItem from="1715000948449" duration="2493000" />
+      <workItem from="1715043169567" duration="11109000" />
+      <workItem from="1715063215165" duration="8930000" />
+      <workItem from="1715073246226" duration="6416000" />
+      <workItem from="1715085806064" duration="4065000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
