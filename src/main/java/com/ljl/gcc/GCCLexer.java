@@ -78,6 +78,10 @@ public class GCCLexer {
         this.tokenized_gc = new ArrayList<>();
     }
 
+    public TokenTable getTokenTable() {
+        return TOKEN_TABLE;
+    }
+
     public void filterWhitespace() {
         // 过滤空格、制表符、回车符、换行符
         this.raw_gc = this.raw_gc.replaceAll("[ \t\r\n]+", "");
