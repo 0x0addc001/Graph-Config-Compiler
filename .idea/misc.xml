@@ -43,6 +43,26 @@
           <option name="language" value="" />
           <option name="generateVisitor" value="true" />
         </PerGrammarGenerationSettings>
+        <PerGrammarGenerationSettings>
+          <option name="fileName" value="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCLexer.g4" />
+          <option name="autoGen" value="true" />
+          <option name="outputDir" value="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java" />
+          <option name="libDir" value="" />
+          <option name="encoding" value="" />
+          <option name="pkg" value="" />
+          <option name="language" value="" />
+          <option name="generateVisitor" value="true" />
+        </PerGrammarGenerationSettings>
+        <PerGrammarGenerationSettings>
+          <option name="fileName" value="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParser.g4" />
+          <option name="autoGen" value="true" />
+          <option name="outputDir" value="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java" />
+          <option name="libDir" value="" />
+          <option name="encoding" value="" />
+          <option name="pkg" value="" />
+          <option name="language" value="" />
+          <option name="generateVisitor" value="true" />
+        </PerGrammarGenerationSettings>
       </list>
     </option>
   </component>

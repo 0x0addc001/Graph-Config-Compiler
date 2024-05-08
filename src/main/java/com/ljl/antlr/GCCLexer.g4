@@ -5,6 +5,10 @@ lexer grammar GCCLexer;
 // Ignore whitespace
 WS: [ \t\r\n]+ -> skip;
 
+// Ignore comments
+fragment COMMENT_CONTENT: ((~'-') | ('-' ~'-') | ('-' '-' ~'>'))*;
+COMMENT: COMMENT_START COMMENT_CONTENT COMMENT_END -> skip;
+
 CONFIG_START: '<config>';
 CONFIG_END: '</config>';
 BG_START: '<bg>';
@@ -63,20 +67,14 @@ PRECISION_START: '<precision>';
 PRECISION_END: '</precision>';
 TYPE_START: '<type>';
 TYPE_END: '</type>';
-TRUE: 'true';
-FALSE: 'false';
+BOOLEAN: 'true' | 'false';
 INF: 'inf';
-DIRECTION: 'x' | 'y';
 COMMENT_START: '<!--';
 COMMENT_END: '-->';
-DOUBLE: ('-')? ('0' | [1-9] [0-9]*) ('.' [0-9]+)?;
+NUMBER: ('-')? ('0' | [1-9] [0-9]*) ('.' [0-9]+)?;
 COMMA: ',';
+SEMICOLON : ';';
+DIRECTION_TYPE: 'x' | 'y';
 COLOR_TYPE: 'red' | 'orange' | 'yellow' | 'green' | 'cyan' | 'blue' | 'indigo' | 'violet' | 'white' | 'gray' | 'black';
 SHAPE_TYPE: 'oval' | 'rect';
-
-fragment FUNCTION_CONTENT: (~[<])*;
-FUNCTION: FUNCTION_START FUNCTION_CONTENT FUNCTION_END;
-
-// Ignore comments
-fragment COMMENT_CONTENT: ((~'-') | ('-' ~'-') | ('-' '-' ~'>'))*;
-COMMENT: COMMENT_START COMMENT_CONTENT COMMENT_END -> skip;
+FUNCTION_EXPR: '{' ~('<' | '}')+ '}';

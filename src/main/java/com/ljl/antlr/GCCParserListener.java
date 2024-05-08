@@ -1,4 +1,4 @@
-// Generated from D:/CompilerPrincipleProjects/Graph-Config-Compiler-Project/Graph-Config-Compiler/src/main/java/com/ljl/gcc/antlr/GCCParser.g4 by ANTLR 4.13.1
+// Generated from D:/CompilerPrincipleProjects/Graph-Config-Compiler-Project/Graph-Config-Compiler/src/main/java/com/ljl/antlr/GCCParser.g4 by ANTLR 4.13.1
 package com.ljl.antlr;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -97,46 +97,6 @@ public interface GCCParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitScale(GCCParser.ScaleContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GCCParser#doublePair}.
-	 * @param ctx the parse tree
-	 */
-	void enterDoublePair(GCCParser.DoublePairContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GCCParser#doublePair}.
-	 * @param ctx the parse tree
-	 */
-	void exitDoublePair(GCCParser.DoublePairContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GCCParser#doublePairList}.
-	 * @param ctx the parse tree
-	 */
-	void enterDoublePairList(GCCParser.DoublePairListContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GCCParser#doublePairList}.
-	 * @param ctx the parse tree
-	 */
-	void exitDoublePairList(GCCParser.DoublePairListContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GCCParser#doubleTriplet}.
-	 * @param ctx the parse tree
-	 */
-	void enterDoubleTriplet(GCCParser.DoubleTripletContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GCCParser#doubleTriplet}.
-	 * @param ctx the parse tree
-	 */
-	void exitDoubleTriplet(GCCParser.DoubleTripletContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GCCParser#color_val}.
-	 * @param ctx the parse tree
-	 */
-	void enterColor_val(GCCParser.Color_valContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GCCParser#color_val}.
-	 * @param ctx the parse tree
-	 */
-	void exitColor_val(GCCParser.Color_valContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GCCParser#col}.
 	 * @param ctx the parse tree
@@ -337,4 +297,54 @@ public interface GCCParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCenter(GCCParser.CenterContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GCCParser#function}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction(GCCParser.FunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GCCParser#function}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction(GCCParser.FunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GCCParser#number_pair}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumber_pair(GCCParser.Number_pairContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GCCParser#number_pair}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumber_pair(GCCParser.Number_pairContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GCCParser#number_pair_list}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumber_pair_list(GCCParser.Number_pair_listContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GCCParser#number_pair_list}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumber_pair_list(GCCParser.Number_pair_listContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GCCParser#number_triplet}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumber_triplet(GCCParser.Number_tripletContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GCCParser#number_triplet}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumber_triplet(GCCParser.Number_tripletContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GCCParser#color_val}.
+	 * @param ctx the parse tree
+	 */
+	void enterColor_val(GCCParser.Color_valContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GCCParser#color_val}.
+	 * @param ctx the parse tree
+	 */
+	void exitColor_val(GCCParser.Color_valContext ctx);
 }

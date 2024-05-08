@@ -1,4 +1,4 @@
-// Generated from D:/CompilerPrincipleProjects/Graph-Config-Compiler-Project/Graph-Config-Compiler/src/main/java/com/ljl/gcc/antlr/GCCParser.g4 by ANTLR 4.13.1
+// Generated from D:/CompilerPrincipleProjects/Graph-Config-Compiler-Project/Graph-Config-Compiler/src/main/java/com/ljl/antlr/GCCParser.g4 by ANTLR 4.13.1
 package com.ljl.antlr;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -64,30 +64,6 @@ public interface GCCParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitScale(GCCParser.ScaleContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GCCParser#doublePair}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDoublePair(GCCParser.DoublePairContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GCCParser#doublePairList}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDoublePairList(GCCParser.DoublePairListContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GCCParser#doubleTriplet}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDoubleTriplet(GCCParser.DoubleTripletContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GCCParser#color_val}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitColor_val(GCCParser.Color_valContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GCCParser#col}.
 	 * @param ctx the parse tree
@@ -208,4 +184,34 @@ public interface GCCParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitCenter(GCCParser.CenterContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GCCParser#function}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction(GCCParser.FunctionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GCCParser#number_pair}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNumber_pair(GCCParser.Number_pairContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GCCParser#number_pair_list}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNumber_pair_list(GCCParser.Number_pair_listContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GCCParser#number_triplet}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNumber_triplet(GCCParser.Number_tripletContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GCCParser#color_val}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitColor_val(GCCParser.Color_valContext ctx);
 }
