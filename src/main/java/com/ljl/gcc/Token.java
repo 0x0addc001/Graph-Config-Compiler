@@ -1,9 +1,13 @@
 package com.ljl.gcc;
 
 public class Token {
-    protected int type;
-    protected String text;
-    protected int index = -1;
+
+    public static final int INVALID_TYPE = 0;
+    public static final int EOF = -1;
+
+    private int type;
+    private String text;
+    private int index = -1;
 
     public Token(int type) {
         this.type = type;

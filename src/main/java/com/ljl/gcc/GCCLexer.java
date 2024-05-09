@@ -10,7 +10,7 @@ public class GCCLexer {
     private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
     public static final TokenTable TOKEN_TABLE = new TokenTable(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
-    public static final int // 种别编码 TokenIndex NULL=0,
+    public static final int // 种别编码 INVALID_TYPE = 0,EOF = -1,
             WS=1, COMMENT=2, CONFIG_START=3, CONFIG_END=4, BG_START=5, BG_END=6, COL_START=7,
             COL_END=8, X_RANGE_START=9, X_RANGE_END=10, Y_RANGE_START=11, Y_RANGE_END=12,
             SHAPE_START=13, SHAPE_END=14, POINTS_START=15, POINTS_END=16, LINE_START=17,

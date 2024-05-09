@@ -1,6 +1,6 @@
 package com.ljl.gcc;
 
-public class TerminalNode {
+public class TerminalNode implements ParseTree{
     public Token symbol;
     public RuleContext parent;
 
@@ -8,7 +8,7 @@ public class TerminalNode {
         this.symbol = symbol;
     }
 
-    public RuleContext getChild(int i) {
+    public ParseTree getChild(int i) {
         return null;
     }
 

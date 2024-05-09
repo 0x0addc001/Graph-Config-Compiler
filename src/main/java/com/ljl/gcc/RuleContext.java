@@ -2,9 +2,9 @@ package com.ljl.gcc;
 
 import java.util.*;
 
-public class RuleContext{
+public class RuleContext implements ParseTree{
     public RuleContext parent;
-    public List<RuleContext> children;
+    public List<ParseTree> children;
 
     public RuleContext() {
     }
@@ -49,7 +49,7 @@ public class RuleContext{
         this.parent = parent;
     }
 
-    public <T extends List<RuleContext>> T addAnyChild(T t) {
+    public <T extends ParseTree> T addAnyChild(T t) {
         if (this.children == null) {
             this.children = new ArrayList();
         }
@@ -58,7 +58,7 @@ public class RuleContext{
         return t;
     }
 
-    public addChild(RuleContext ruleInvocation) {
+    public RuleContext addChild(RuleContext ruleInvocation) {
         return this.addAnyChild(ruleInvocation);
     }
 
@@ -78,8 +78,8 @@ public class RuleContext{
         return this.getParent();
     }
 
-    public List<RuleContext> getChild(int i) {
-        return this.children != null && i >= 0 && i < this.children.size() ? (List<RuleContext>) this.children.get(i) : null;
+    public ParseTree getChild(int i) {
+        return this.children != null && i >= 0 && i < this.children.size() ? (ParseTree) this.children.get(i) : null;
     }
 
     public <T extends ParseTree> T getChild(Class<? extends T> ctxType, int i) {
@@ -92,7 +92,7 @@ public class RuleContext{
                 if (ctxType.isInstance(o)) {
                     ++j;
                     if (j == i) {
-                        return (ParseTree)ctxType.cast(o);
+                        return ctxType.cast(o); // (ParseTree)
                     }
                 }
             }
@@ -176,7 +176,7 @@ public class RuleContext{
                         contexts = new ArrayList();
                     }
 
-                    contexts.add((ParserRuleContext)ctxType.cast(o));
+                    contexts.add(ctxType.cast(o)); // (RuleContext)
                 }
             }
 

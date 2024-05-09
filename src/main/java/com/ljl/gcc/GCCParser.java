@@ -1,149 +1,1113 @@
 package com.ljl.gcc;
 
-import java.util.*;
-import java.io.File;
+import java.util.List;
 
 public class GCCParser {
-    String gc = "";
-    ArrayList<String> token;
 
-    public GCCParser(String gc) {
-        this.gc = gc;
-        this.token = new ArrayList<String>();
-    }
+	public static final int
+			WS=1, COMMENT=2, CONFIG_START=3, CONFIG_END=4, BG_START=5, BG_END=6, COL_START=7,
+			COL_END=8, X_RANGE_START=9, X_RANGE_END=10, Y_RANGE_START=11, Y_RANGE_END=12,
+			SHAPE_START=13, SHAPE_END=14, POINTS_START=15, POINTS_END=16, LINE_START=17,
+			LINE_END=18, LINES_START=19, LINES_END=20, CURVE_START=21, CURVE_END=22,
+			SCALE_START=23, SCALE_END=24, PAD_START=25, PAD_END=26, CENTER_START=27,
+			CENTER_END=28, WID_START=29, WID_END=30, WIDTH_START=31, WIDTH_END=32,
+			HEIGHT_START=33, HEIGHT_END=34, LIST_START=35, LIST_END=36, POINT_START=37,
+			POINT_END=38, SLOPE_START=39, SLOPE_END=40, RADIUS_START=41, RADIUS_END=42,
+			RANGE_START=43, RANGE_END=44, AMOUNT_START=45, AMOUNT_END=46, FUNCTION_START=47,
+			FUNCTION_END=48, DIRECTION_START=49, DIRECTION_END=50, POS_START=51, POS_END=52,
+			FROM_START=53, FROM_END=54, STEP_START=55, STEP_END=56, PRECISION_START=57,
+			PRECISION_END=58, TYPE_START=59, TYPE_END=60, BOOLEAN=61, INF=62, COMMENT_START=63,
+			COMMENT_END=64, NUMBER=65, COMMA=66, SEMICOLON=67, DIRECTION_TYPE=68,
+			COLOR_TYPE=69, SHAPE_TYPE=70, FUNCTION_EXPR=71;
+	public static final int
+			RULE_config = 0, RULE_element = 1, RULE_bg = 2, RULE_shape = 3, RULE_points = 4,
+			RULE_line = 5, RULE_lines = 6, RULE_curve = 7, RULE_scale = 8, RULE_col = 9,
+			RULE_x_range = 10, RULE_y_range = 11, RULE_wid = 12, RULE_width = 13,
+			RULE_height = 14, RULE_pad = 15, RULE_radius = 16, RULE_list = 17, RULE_point = 18,
+			RULE_slope = 19, RULE_range = 20, RULE_amount = 21, RULE_direction = 22,
+			RULE_pos = 23, RULE_from = 24, RULE_step = 25, RULE_precision = 26, RULE_type = 27,
+			RULE_center = 28, RULE_function = 29, RULE_number_pair = 30, RULE_number_pair_list = 31,
+			RULE_number_triplet = 32, RULE_color_val = 33;
 
-    public String parseGC() {
-        gc = gc.trim();
-        if(gc.length() == 0) { // 判断是否为空
-            return "";
-        }
-        else if(gc.charAt(0)=='<' && gc.charAt(1) != '/') { // 判断是否为起始标签
-            String st = startTag(); // 获取起始标签
-            String r = parseGC(); // 向下递归解析
-            boolean result = endTag(st); // 获取结束标签并判断是否匹配起始标签
-            String r1 = parseGC(); // 向下递归解析
-            if(!result || r1==null || r == null) {
-                System.out.println("Invalid GC!!!");
-                return null;
-            }
-            if(r1.length()>0) {
-                return "{'"+st+"':"+r+","+r1.substring(1, r1.length()-1)+"}"; // 返回多个属性集合
-            }
-            else {
+	private List<Token> _input;
+	private int _currentIndex;
+	private RuleContext _ctx;
+	protected boolean matchedEOF;
 
-                return "{'"+st+"':"+r+"}"; // 返回单个属性集合
-            }
-        }
-        else{ // 判断是否为内容
-            String content = content();
-            return content;
-        }
-    }
-    public String content() { // 处理内容
-        int e = gc.indexOf("<"); // 获取<的位置
-        String result = gc.substring(0, e).trim(); // 获取内容
-        if(!result.equals("")) { // 判断是否为空
-            if(!(isBoolean(result) || isNumber(result))) {
-                result = "'" + result + "'";
-            }
-            token.add(result);
-        }
-        gc = gc.substring(e); // 向后解析
-        return result;
-    }
-    public boolean isBoolean(String str) {
-        return str.equalsIgnoreCase("true") || str.equalsIgnoreCase("false");
-    }
-    public boolean isNumber(String str) {
-        try {
-            Double.parseDouble(str);
-        }
-        catch(Exception e) {
-            return false;
-        }
-        return true;
-    }
-    public String startTag() { // 处理起始标签<example>
-        int s = gc.indexOf("<");
-        int e = gc.indexOf(">");
-        String result = gc.substring(s + 1, e); // s跳过<, e跳过>
-        gc = gc.substring(e+1); // 向后解析
-        token.add(result); // 添加到token中
-        return result;
-    }
-    public boolean endTag(String start) { // 处理结束标签</example>
-        int s = gc.indexOf("<");
-        int e = gc.indexOf(">");
-        if(e<0 || s<0) {
-            return false;
-        }
-        String tag = gc.substring(s+2, e); // s跳过</, e跳过>
-        boolean result = gc.charAt(s+1) == '/' && start.equalsIgnoreCase(tag);
-        gc = gc.substring(e+1); // 向后解析
-        return result;
-    }
-    public static void main(String args[]) {
-        //Reading input from the file.
-        System.out.println("Input: ");
-        System.out.println("----------------------------------------------------------------------");
-        StringBuilder input = new StringBuilder();
-        try{
-            File file = new File(GCCParser.class.getClassLoader().getResource("example-simple.gc").getFile());
-            Scanner scan = new Scanner(file);
-            String line = "";
-            while(scan.hasNextLine()){
-                line =scan.nextLine();
-                if(!line.equals("")){
-                    System.out.println(line);
-                    input.append(line);
-                }
-            }
-        }catch(Exception e){
-            System.out.println("File could not Loaded!!");
-        }
+	public GCCParser(List<Token> input) {
+		this._input = input;
+	}
 
-        System.out.println("----------------------------------------------------------------------");
-        GCCParser file = new GCCParser(input.toString());
-        String output = file.parseGC();
-        System.out.println("Tokens : "+file.token.toString());
-        System.out.println("----------------------------------------------------------------------");
-        System.out.println(format(output));
-        System.out.println("----------------------------------------------------------------------");
+	public Token getCurrentToken() {
+		return this._input.get(_currentIndex);
+	}
 
-    }
-    public static String format(String str) {
-        if(str == null) {
-            System.out.print("NOT Valid JSON");
-            return "";
-        }
-        String result = "";
-        int tabs = 0;
-        for(int i=0; i<str.length(); i++) {
-            if(str.charAt(i) == '{') {
-                tabs++;
-                result += "{\n";
-                for(int j=0; j<tabs; j++)
-                    result += "\t";
-            }
-            else if(str.charAt(i)=='}'){
-                result+="\n";
-                tabs--;
-                for(int j=0; j<tabs; j++)
-                    result += "\t";
+	public int getCurrentTokenType() {return this._input.get(_currentIndex).getType();}
 
-                result += "}";
-            }
-            else if(str.charAt(i) == ',') {
-                result += ",\n";
-                for(int j=0; j<tabs; j++)
-                    result += "\t";
-            }
-            else {
-                result += str.charAt(i);
-            }
 
-        }
-        return result;
-    }
+	public Token consume() {
+		Token o = this.getCurrentToken();
+		if (o.getType() != -1) {
+			this._currentIndex++;
+		}
+		return o;
+	}
+
+	public Token retreat() {
+		Token o = this.getCurrentToken();
+		if (o.getType() != -1) {
+			this._currentIndex--;
+		}
+		return o;
+	}
+
+	public Token match(int ttype) throws Exception {
+		Token t = this.getCurrentToken();
+		if (t.getType() == ttype) {
+			if (ttype == -1) {
+				this.matchedEOF = true;
+			}
+			this.consume();
+		} else {
+			this.retreat();
+			throw new Exception("Token type mismatch: " + t.getType());
+		}
+		return t;
+	}
+
+	public static class ConfigContext extends RuleContext {
+		public TerminalNode CONFIG_START() { return getToken(GCCParser.CONFIG_START, 0); }
+		public TerminalNode CONFIG_END() { return getToken(GCCParser.CONFIG_END, 0); }
+		public List<ElementContext> element() {
+			return getRuleContexts(ElementContext.class);
+		}
+		public ElementContext element(int i) {
+			return getRuleContext(ElementContext.class,i);
+		}
+		public ConfigContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_config; }
+	}
+
+	public final ConfigContext config() throws Exception {
+		ConfigContext _localctx = new ConfigContext(_ctx);
+		int _la;
+		try {
+			match(CONFIG_START);
+			while (getCurrentTokenType() != CONFIG_END) {
+				element();
+			}
+			match(CONFIG_END);
+		}
+		catch(Exception re){
+			System.out.println("Recognition exception in config");
+		}
+		return _localctx;
+	}
+
+	public static class ElementContext extends RuleContext {
+		public BgContext bg() {
+			return getRuleContext(BgContext.class,0);
+		}
+		public ShapeContext shape() {
+			return getRuleContext(ShapeContext.class,0);
+		}
+		public PointsContext points() {
+			return getRuleContext(PointsContext.class,0);
+		}
+		public LineContext line() {
+			return getRuleContext(LineContext.class,0);
+		}
+		public LinesContext lines() {
+			return getRuleContext(LinesContext.class,0);
+		}
+		public CurveContext curve() {
+			return getRuleContext(CurveContext.class,0);
+		}
+		public ScaleContext scale() {
+			return getRuleContext(ScaleContext.class,0);
+		}
+		public ElementContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_element; }
+	}
+
+	public final ElementContext element() throws Exception {
+		ElementContext _localctx = new ElementContext(_ctx);
+		try {
+			switch (getCurrentTokenType()) {
+			case BG_START:
+				bg();
+				break;
+			case SHAPE_START:
+				shape();
+				break;
+			case POINTS_START:
+				points();
+				break;
+			case LINE_START:
+				line();
+				break;
+			case LINES_START:
+				lines();
+				break;
+			case CURVE_START:
+				curve();
+				break;
+			case SCALE_START:
+				scale();
+				break;
+			default:
+				throw new Exception("No Viable Alternative in element: " + getCurrentTokenType());
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in element");
+		}
+		return _localctx;
+	}
+
+	public static class BgContext extends RuleContext {
+		public TerminalNode BG_START() { return getToken(GCCParser.BG_START, 0); }
+		public ColContext col() {
+			return getRuleContext(ColContext.class,0);
+		}
+		public X_rangeContext x_range() {
+			return getRuleContext(X_rangeContext.class,0);
+		}
+		public Y_rangeContext y_range() {
+			return getRuleContext(Y_rangeContext.class,0);
+		}
+		public TerminalNode BG_END() { return getToken(GCCParser.BG_END, 0); }
+		public BgContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_bg; }
+	}
+
+	public final BgContext bg() throws Exception {
+		BgContext _localctx = new BgContext(_ctx);
+		try {
+			match(BG_START);
+			col();
+			x_range();
+			y_range();
+			match(BG_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in bg");
+		}
+		return _localctx;
+	}
+
+	public static class ShapeContext extends RuleContext {
+		public TerminalNode SHAPE_START() { return getToken(GCCParser.SHAPE_START, 0); }
+		public ColContext col() {
+			return getRuleContext(ColContext.class,0);
+		}
+		public WidContext wid() {
+			return getRuleContext(WidContext.class,0);
+		}
+		public PadContext pad() {
+			return getRuleContext(PadContext.class,0);
+		}
+		public TypeContext type() {
+			return getRuleContext(TypeContext.class,0);
+		}
+		public CenterContext center() {
+			return getRuleContext(CenterContext.class,0);
+		}
+		public WidthContext width() {
+			return getRuleContext(WidthContext.class,0);
+		}
+		public HeightContext height() {
+			return getRuleContext(HeightContext.class,0);
+		}
+		public TerminalNode SHAPE_END() { return getToken(GCCParser.SHAPE_END, 0); }
+		public ShapeContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_shape; }
+	}
+
+	public final ShapeContext shape() throws Exception {
+		ShapeContext _localctx = new ShapeContext(_ctx);
+		try {
+			match(SHAPE_START);
+			col();
+			wid();
+			pad();
+			type();
+			center();
+			width();
+			height();
+			match(SHAPE_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in shape");
+		}
+		return _localctx;
+	}
+
+	public static class PointsContext extends RuleContext {
+		public TerminalNode POINTS_START() { return getToken(GCCParser.POINTS_START, 0); }
+		public ColContext col() {
+			return getRuleContext(ColContext.class,0);
+		}
+		public WidContext wid() {
+			return getRuleContext(WidContext.class,0);
+		}
+		public PadContext pad() {
+			return getRuleContext(PadContext.class,0);
+		}
+		public RadiusContext radius() {
+			return getRuleContext(RadiusContext.class,0);
+		}
+		public ListContext list() {
+			return getRuleContext(ListContext.class,0);
+		}
+		public TerminalNode POINTS_END() { return getToken(GCCParser.POINTS_END, 0); }
+		public PointsContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_points; }
+	}
+
+	public final PointsContext points() throws Exception {
+		PointsContext _localctx = new PointsContext(_ctx);
+		try {
+			match(POINTS_START);
+			col();
+			wid();
+			pad();
+			radius();
+			list();
+			match(POINTS_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in points");
+		}
+		return _localctx;
+	}
+
+	public static class LineContext extends RuleContext {
+		public TerminalNode LINE_START() { return getToken(GCCParser.LINE_START, 0); }
+		public ColContext col() {
+			return getRuleContext(ColContext.class,0);
+		}
+		public WidContext wid() {
+			return getRuleContext(WidContext.class,0);
+		}
+		public PointContext point() {
+			return getRuleContext(PointContext.class,0);
+		}
+		public SlopeContext slope() {
+			return getRuleContext(SlopeContext.class,0);
+		}
+		public TerminalNode LINE_END() { return getToken(GCCParser.LINE_END, 0); }
+		public LineContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_line; }
+	}
+
+	public final LineContext line() throws Exception {
+		LineContext _localctx = new LineContext(_ctx);
+		try {
+			match(LINE_START);
+			col();
+			wid();
+			point();
+			slope();
+			match(LINE_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in line");
+		}
+		return _localctx;
+	}
+
+	public static class LinesContext extends RuleContext {
+		public TerminalNode LINES_START() { return getToken(GCCParser.LINES_START, 0); }
+		public ColContext col() {
+			return getRuleContext(ColContext.class,0);
+		}
+		public WidContext wid() {
+			return getRuleContext(WidContext.class,0);
+		}
+		public ListContext list() {
+			return getRuleContext(ListContext.class,0);
+		}
+		public TerminalNode LINES_END() { return getToken(GCCParser.LINES_END, 0); }
+		public LinesContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_lines; }
+	}
+
+	public final LinesContext lines() throws Exception {
+		LinesContext _localctx = new LinesContext(_ctx);
+		try {
+			match(LINES_START);
+			col();
+			wid();
+			list();
+			match(LINES_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in lines");
+		}
+		return _localctx;
+	}
+
+	public static class CurveContext extends RuleContext {
+		public TerminalNode CURVE_START() { return getToken(GCCParser.CURVE_START, 0); }
+		public ColContext col() {
+			return getRuleContext(ColContext.class,0);
+		}
+		public WidContext wid() {
+			return getRuleContext(WidContext.class,0);
+		}
+		public RangeContext range() {
+			return getRuleContext(RangeContext.class,0);
+		}
+		public AmountContext amount() {
+			return getRuleContext(AmountContext.class,0);
+		}
+		public FunctionContext function() {
+			return getRuleContext(FunctionContext.class,0);
+		}
+		public TerminalNode CURVE_END() { return getToken(GCCParser.CURVE_END, 0); }
+		public CurveContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_curve; }
+	}
+
+	public final CurveContext curve() throws Exception {
+		CurveContext _localctx = new CurveContext(_ctx);
+		try {
+			match(CURVE_START);
+			col();
+			wid();
+			range();
+			amount();
+			function();
+			match(CURVE_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in curve");
+		}
+		return _localctx;
+	}
+
+	public static class ScaleContext extends RuleContext {
+		public TerminalNode SCALE_START() { return getToken(GCCParser.SCALE_START, 0); }
+		public ColContext col() {
+			return getRuleContext(ColContext.class,0);
+		}
+		public WidContext wid() {
+			return getRuleContext(WidContext.class,0);
+		}
+		public DirectionContext direction() {
+			return getRuleContext(DirectionContext.class,0);
+		}
+		public PosContext pos() {
+			return getRuleContext(PosContext.class,0);
+		}
+		public FromContext from() {
+			return getRuleContext(FromContext.class,0);
+		}
+		public StepContext step() {
+			return getRuleContext(StepContext.class,0);
+		}
+		public AmountContext amount() {
+			return getRuleContext(AmountContext.class,0);
+		}
+		public PrecisionContext precision() {
+			return getRuleContext(PrecisionContext.class,0);
+		}
+		public TerminalNode SCALE_END() { return getToken(GCCParser.SCALE_END, 0); }
+		public ScaleContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_scale; }
+	}
+
+	public final ScaleContext scale() throws Exception {
+		ScaleContext _localctx = new ScaleContext(_ctx);
+		try {
+			match(SCALE_START);
+			col();
+			wid();
+			direction();
+			pos();
+			from();
+			step();
+			amount();
+			precision();
+			match(SCALE_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in scale");
+		}
+		return _localctx;
+	}
+
+	public static class ColContext extends RuleContext {
+		public TerminalNode COL_START() { return getToken(GCCParser.COL_START, 0); }
+		public TerminalNode COL_END() { return getToken(GCCParser.COL_END, 0); }
+		public Color_valContext color_val() {
+			return getRuleContext(Color_valContext.class,0);
+		}
+		public ColContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_col; }
+	}
+
+	public final ColContext col() throws Exception {
+		ColContext _localctx = new ColContext(_ctx);
+		int _la;
+		try {
+			match(COL_START);
+			_la = getCurrentTokenType();
+			if (_la==NUMBER || _la==COLOR_TYPE) {
+				color_val();
+			}
+			match(COL_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in col");
+		}
+		return _localctx;
+	}
+
+
+	public static class X_rangeContext extends RuleContext {
+		public TerminalNode X_RANGE_START() { return getToken(GCCParser.X_RANGE_START, 0); }
+		public Number_pairContext number_pair() {
+			return getRuleContext(Number_pairContext.class,0);
+		}
+		public TerminalNode X_RANGE_END() { return getToken(GCCParser.X_RANGE_END, 0); }
+		public X_rangeContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_x_range; }
+	}
+
+	public final X_rangeContext x_range() throws Exception {
+		X_rangeContext _localctx = new X_rangeContext(_ctx);
+		try {
+			match(X_RANGE_START);
+			number_pair();
+			match(X_RANGE_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in x_range");
+		}
+		return _localctx;
+	}
+
+	public static class Y_rangeContext extends RuleContext {
+		public TerminalNode Y_RANGE_START() { return getToken(GCCParser.Y_RANGE_START, 0); }
+		public Number_pairContext number_pair() {
+			return getRuleContext(Number_pairContext.class,0);
+		}
+		public TerminalNode Y_RANGE_END() { return getToken(GCCParser.Y_RANGE_END, 0); }
+		public Y_rangeContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_y_range; }
+	}
+
+	public final Y_rangeContext y_range() throws Exception {
+		Y_rangeContext _localctx = new Y_rangeContext(_ctx);
+		try {
+			match(Y_RANGE_START);
+			number_pair();
+			match(Y_RANGE_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in y_range");
+		}
+		return _localctx;
+	}
+
+
+	public static class WidContext extends RuleContext {
+		public TerminalNode WID_START() { return getToken(GCCParser.WID_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
+		public TerminalNode WID_END() { return getToken(GCCParser.WID_END, 0); }
+		public WidContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_wid; }
+	}
+
+	public final WidContext wid() throws Exception {
+		WidContext _localctx = new WidContext(_ctx);
+		try {
+			match(WID_START);
+			match(NUMBER);
+			match(WID_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in wid");
+		}
+		return _localctx;
+	}
+
+
+	public static class WidthContext extends RuleContext {
+		public TerminalNode WIDTH_START() { return getToken(GCCParser.WIDTH_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
+		public TerminalNode WIDTH_END() { return getToken(GCCParser.WIDTH_END, 0); }
+		public WidthContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_width; }
+	}
+
+	public final WidthContext width() throws Exception {
+		WidthContext _localctx = new WidthContext(_ctx);
+		try {
+			match(WIDTH_START);
+			match(NUMBER);
+			match(WIDTH_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in width");
+		}
+		return _localctx;
+	}
+
+
+	public static class HeightContext extends RuleContext {
+		public TerminalNode HEIGHT_START() { return getToken(GCCParser.HEIGHT_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
+		public TerminalNode HEIGHT_END() { return getToken(GCCParser.HEIGHT_END, 0); }
+		public HeightContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_height; }
+	}
+
+	public final HeightContext height() throws Exception {
+		HeightContext _localctx = new HeightContext(_ctx);
+		try {
+			match(HEIGHT_START);
+			match(NUMBER);
+			match(HEIGHT_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in height");
+		}
+		return _localctx;
+	}
+
+
+	public static class PadContext extends RuleContext {
+		public TerminalNode PAD_START() { return getToken(GCCParser.PAD_START, 0); }
+		public TerminalNode BOOLEAN() { return getToken(GCCParser.BOOLEAN, 0); }
+		public TerminalNode PAD_END() { return getToken(GCCParser.PAD_END, 0); }
+		public PadContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_pad; }
+	}
+
+	public final PadContext pad() throws Exception {
+		PadContext _localctx = new PadContext(_ctx);
+		try {
+			match(PAD_START);
+			match(BOOLEAN);
+			match(PAD_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in pad");
+		}
+		return _localctx;
+	}
+
+
+	public static class RadiusContext extends RuleContext {
+		public TerminalNode RADIUS_START() { return getToken(GCCParser.RADIUS_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
+		public TerminalNode RADIUS_END() { return getToken(GCCParser.RADIUS_END, 0); }
+		public RadiusContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_radius; }
+	}
+
+	public final RadiusContext radius() throws Exception {
+		RadiusContext _localctx = new RadiusContext(_ctx);
+		try {
+			match(RADIUS_START);
+			match(NUMBER);
+			match(RADIUS_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in radius");
+		}
+		return _localctx;
+	}
+
+
+	public static class ListContext extends RuleContext {
+		public TerminalNode LIST_START() { return getToken(GCCParser.LIST_START, 0); }
+		public Number_pair_listContext number_pair_list() {
+			return getRuleContext(Number_pair_listContext.class,0);
+		}
+		public TerminalNode LIST_END() { return getToken(GCCParser.LIST_END, 0); }
+		public ListContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_list; }
+	}
+
+	public final ListContext list() throws Exception {
+		ListContext _localctx = new ListContext(_ctx);
+		try {
+			match(LIST_START);
+			number_pair_list();
+			match(LIST_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in list");
+		}
+		return _localctx;
+	}
+
+
+	public static class PointContext extends RuleContext {
+		public TerminalNode POINT_START() { return getToken(GCCParser.POINT_START, 0); }
+		public Number_pairContext number_pair() {
+			return getRuleContext(Number_pairContext.class,0);
+		}
+		public TerminalNode POINT_END() { return getToken(GCCParser.POINT_END, 0); }
+		public PointContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_point; }
+	}
+
+	public final PointContext point() throws Exception {
+		PointContext _localctx = new PointContext(_ctx);
+		try {
+			match(POINT_START);
+			number_pair();
+			match(POINT_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in point");
+		}
+		return _localctx;
+	}
+
+
+	public static class SlopeContext extends RuleContext {
+		public TerminalNode SLOPE_START() { return getToken(GCCParser.SLOPE_START, 0); }
+		public TerminalNode SLOPE_END() { return getToken(GCCParser.SLOPE_END, 0); }
+		public TerminalNode INF() { return getToken(GCCParser.INF, 0); }
+		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
+		public SlopeContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_slope; }
+	}
+
+	public final SlopeContext slope() throws Exception {
+		SlopeContext _localctx = new SlopeContext(_ctx);
+		int _la;
+		try {
+			match(SLOPE_START);
+			_la = getCurrentTokenType();
+			if ( !(_la==INF || _la==NUMBER) ) {
+				throw new Exception("No Viable Alternative in slope: " + getCurrentTokenType());
+			}
+			else {
+				if ( getCurrentTokenType()==Token.EOF ) matchedEOF = true;
+				consume();
+			}
+			match(SLOPE_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in slope");
+		}
+		return _localctx;
+	}
+
+
+	public static class RangeContext extends RuleContext {
+		public TerminalNode RANGE_START() { return getToken(GCCParser.RANGE_START, 0); }
+		public Number_pairContext number_pair() {
+			return getRuleContext(Number_pairContext.class,0);
+		}
+		public TerminalNode RANGE_END() { return getToken(GCCParser.RANGE_END, 0); }
+		public RangeContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_range; }
+	}
+
+	public final RangeContext range() throws Exception {
+		RangeContext _localctx = new RangeContext(_ctx);
+		try {
+			match(RANGE_START);
+			number_pair();
+			match(RANGE_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in range");
+		}
+		return _localctx;
+	}
+
+
+	public static class AmountContext extends RuleContext {
+		public TerminalNode AMOUNT_START() { return getToken(GCCParser.AMOUNT_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
+		public TerminalNode AMOUNT_END() { return getToken(GCCParser.AMOUNT_END, 0); }
+		public AmountContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_amount; }
+	}
+
+	public final AmountContext amount() throws Exception {
+		AmountContext _localctx = new AmountContext(_ctx);
+		try {
+			match(AMOUNT_START);
+			match(NUMBER);
+			match(AMOUNT_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in amount");
+		}
+		return _localctx;
+	}
+
+
+	public static class DirectionContext extends RuleContext {
+		public TerminalNode DIRECTION_START() { return getToken(GCCParser.DIRECTION_START, 0); }
+		public TerminalNode DIRECTION_TYPE() { return getToken(GCCParser.DIRECTION_TYPE, 0); }
+		public TerminalNode DIRECTION_END() { return getToken(GCCParser.DIRECTION_END, 0); }
+		public DirectionContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_direction; }
+	}
+
+	public final DirectionContext direction() throws Exception {
+		DirectionContext _localctx = new DirectionContext(_ctx);
+		try {
+			match(DIRECTION_START);
+			match(DIRECTION_TYPE);
+			match(DIRECTION_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in direction");
+		}
+		return _localctx;
+	}
+
+
+	public static class PosContext extends RuleContext {
+		public TerminalNode POS_START() { return getToken(GCCParser.POS_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
+		public TerminalNode POS_END() { return getToken(GCCParser.POS_END, 0); }
+		public PosContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_pos; }
+	}
+
+	public final PosContext pos() throws Exception {
+		PosContext _localctx = new PosContext(_ctx);
+		try {
+			match(POS_START);
+			match(NUMBER);
+			match(POS_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in pos");
+		}
+		return _localctx;
+	}
+
+
+	public static class FromContext extends RuleContext {
+		public TerminalNode FROM_START() { return getToken(GCCParser.FROM_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
+		public TerminalNode FROM_END() { return getToken(GCCParser.FROM_END, 0); }
+		public FromContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_from; }
+	}
+
+	public final FromContext from() throws Exception {
+		FromContext _localctx = new FromContext(_ctx);
+		try {
+			match(FROM_START);
+			match(NUMBER);
+			match(FROM_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in from");
+		}
+		return _localctx;
+	}
+
+
+	public static class StepContext extends RuleContext {
+		public TerminalNode STEP_START() { return getToken(GCCParser.STEP_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
+		public TerminalNode STEP_END() { return getToken(GCCParser.STEP_END, 0); }
+		public StepContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_step; }
+	}
+
+	public final StepContext step() throws Exception {
+		StepContext _localctx = new StepContext(_ctx);
+		try {
+			match(STEP_START);
+			match(NUMBER);
+			match(STEP_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in step");
+		}
+		return _localctx;
+	}
+
+
+	public static class PrecisionContext extends RuleContext {
+		public TerminalNode PRECISION_START() { return getToken(GCCParser.PRECISION_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
+		public TerminalNode PRECISION_END() { return getToken(GCCParser.PRECISION_END, 0); }
+		public PrecisionContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_precision; }
+	}
+
+	public final PrecisionContext precision() throws Exception {
+		PrecisionContext _localctx = new PrecisionContext(_ctx);
+		try {
+			match(PRECISION_START);
+			match(NUMBER);
+			match(PRECISION_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in precision");
+		}
+		return _localctx;
+	}
+
+
+	public static class TypeContext extends RuleContext {
+		public TerminalNode TYPE_START() { return getToken(GCCParser.TYPE_START, 0); }
+		public TerminalNode SHAPE_TYPE() { return getToken(GCCParser.SHAPE_TYPE, 0); }
+		public TerminalNode TYPE_END() { return getToken(GCCParser.TYPE_END, 0); }
+		public TypeContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_type; }
+	}
+
+	public final TypeContext type() throws Exception {
+		TypeContext _localctx = new TypeContext(_ctx);
+		try {
+			match(TYPE_START);
+			match(SHAPE_TYPE);
+			match(TYPE_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in type");
+		}
+		return _localctx;
+	}
+
+
+	public static class CenterContext extends RuleContext {
+		public TerminalNode CENTER_START() { return getToken(GCCParser.CENTER_START, 0); }
+		public Number_pairContext number_pair() {
+			return getRuleContext(Number_pairContext.class,0);
+		}
+		public TerminalNode CENTER_END() { return getToken(GCCParser.CENTER_END, 0); }
+		public CenterContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_center; }
+	}
+
+	public final CenterContext center() throws Exception {
+		CenterContext _localctx = new CenterContext(_ctx);
+		try {
+			match(CENTER_START);
+			number_pair();
+			match(CENTER_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in center");
+		}
+		return _localctx;
+	}
+
+
+	public static class FunctionContext extends RuleContext {
+		public TerminalNode FUNCTION_START() { return getToken(GCCParser.FUNCTION_START, 0); }
+		public TerminalNode FUNCTION_EXPR() { return getToken(GCCParser.FUNCTION_EXPR, 0); }
+		public TerminalNode FUNCTION_END() { return getToken(GCCParser.FUNCTION_END, 0); }
+		public FunctionContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_function; }
+	}
+
+	public final FunctionContext function() throws Exception {
+		FunctionContext _localctx = new FunctionContext(_ctx);
+		try {
+			match(FUNCTION_START);
+			match(FUNCTION_EXPR);
+			match(FUNCTION_END);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in function");
+		}
+		return _localctx;
+	}
+
+
+	public static class Number_pairContext extends RuleContext {
+		public List<TerminalNode> NUMBER() { return getTokens(GCCParser.NUMBER); }
+		public TerminalNode NUMBER(int i) {
+			return getToken(GCCParser.NUMBER, i);
+		}
+		public TerminalNode COMMA() { return getToken(GCCParser.COMMA, 0); }
+		public TerminalNode SEMICOLON() { return getToken(GCCParser.SEMICOLON, 0); }
+		public Number_pairContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_number_pair; }
+	}
+
+	public final Number_pairContext number_pair() throws Exception {
+		Number_pairContext _localctx = new Number_pairContext(_ctx);
+		int _la;
+		try {
+			match(NUMBER);
+			match(COMMA);
+			match(NUMBER);
+			_la = getCurrentTokenType();
+			if (_la==SEMICOLON) {
+				match(SEMICOLON);
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in number_pair");
+		}
+		return _localctx;
+	}
+
+
+	public static class Number_pair_listContext extends RuleContext {
+		public List<Number_pairContext> number_pair() {
+			return getRuleContexts(Number_pairContext.class);
+		}
+		public Number_pairContext number_pair(int i) {
+			return getRuleContext(Number_pairContext.class,i);
+		}
+		public Number_pair_listContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_number_pair_list; }
+	}
+
+	public final Number_pair_listContext number_pair_list() throws Exception {
+		Number_pair_listContext _localctx = new Number_pair_listContext(_ctx);
+		int _la;
+		try {
+			_la = getCurrentTokenType();
+			do {
+				number_pair();
+				_la = getCurrentTokenType();
+			} while ( _la==NUMBER );
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in number_pair_list");
+		}
+		return _localctx;
+	}
+
+
+	public static class Number_tripletContext extends RuleContext {
+		public List<TerminalNode> NUMBER() { return getTokens(GCCParser.NUMBER); }
+		public TerminalNode NUMBER(int i) {
+			return getToken(GCCParser.NUMBER, i);
+		}
+		public List<TerminalNode> COMMA() { return getTokens(GCCParser.COMMA); }
+		public TerminalNode COMMA(int i) {
+			return getToken(GCCParser.COMMA, i);
+		}
+		public Number_tripletContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_number_triplet; }
+	}
+
+	public final Number_tripletContext number_triplet() throws Exception {
+		Number_tripletContext _localctx = new Number_tripletContext(_ctx);
+		try {
+			match(NUMBER);
+			match(COMMA);
+			match(NUMBER);
+			match(COMMA);
+			match(NUMBER);
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in number_triplet");;
+		}
+		return _localctx;
+	}
+
+
+	public static class Color_valContext extends RuleContext {
+		public TerminalNode COLOR_TYPE() { return getToken(GCCParser.COLOR_TYPE, 0); }
+		public Number_tripletContext number_triplet() {
+			return getRuleContext(Number_tripletContext.class,0);
+		}
+		public Color_valContext(RuleContext parent) {
+			super(parent);
+		}
+		@Override public int getRuleIndex() { return RULE_color_val; }
+	}
+
+	public final Color_valContext color_val() throws Exception {
+		Color_valContext _localctx = new Color_valContext(_ctx);
+		try {
+			switch (getCurrentTokenType()) {
+			case COLOR_TYPE:
+				match(COLOR_TYPE);
+				break;
+			case NUMBER:
+				number_triplet();
+				break;
+			default:
+				throw new Exception("No viable alternative in color_val: " + getCurrentTokenType());
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Recognition exception in color_val");;
+		}
+		return _localctx;
+	}
 
 }

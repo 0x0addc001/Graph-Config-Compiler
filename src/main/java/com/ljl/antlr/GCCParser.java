@@ -228,8 +228,8 @@ public class GCCParser extends Parser {
 		public ScaleContext scale() {
 			return getRuleContext(ScaleContext.class,0);
 		}
-		public ElementContext(ParserRuleContext parent) {
-			super(parent);
+		public ElementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_element; }
 		@Override
@@ -248,7 +248,7 @@ public class GCCParser extends Parser {
 	}
 
 	public final ElementContext element() throws RecognitionException {
-		ElementContext _localctx = new ElementContext(_ctx);
+		ElementContext _localctx = new ElementContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_element);
 		try {
 			setState(84);
