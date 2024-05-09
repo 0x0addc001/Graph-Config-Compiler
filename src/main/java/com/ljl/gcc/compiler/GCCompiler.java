@@ -1,10 +1,10 @@
-package com.ljl.gcc;
+package com.ljl.gcc.compiler;
 
-import com.ljl.gcc.lexer.GCLexer;
-import com.ljl.gcc.parser.GCParser;
-import com.ljl.gcc.parser.TreeNode;
-import com.ljl.gcc.token.Token;
-import com.ljl.gcc.token.TokenTable;
+import com.ljl.gcc.compiler.lexer.GCLexer;
+import com.ljl.gcc.compiler.parser.GCParser;
+import com.ljl.gcc.compiler.parser.TreeNode;
+import com.ljl.gcc.compiler.token.Token;
+import com.ljl.gcc.compiler.token.TokenTable;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -89,12 +89,18 @@ public class GCCompiler {
     }
 
     public static void main(String args[]) {
+        GCCompiler compiler = new GCCompiler();
+        String text = compiler.read("example.gc");
+        compiler.compile(text);
+    }
+
+    public String read(String filePath) {
         //Reading input from the file.
-        System.out.println("Input: ");
         System.out.println("----------------------------------------------------------------------");
+        System.out.println("Input: ");
         StringBuilder input = new StringBuilder();
         try{
-            File file = new File(GCCompiler.class.getClassLoader().getResource("example.gc").getFile());
+            File file = new File(GCCompiler.class.getClassLoader().getResource(filePath).getFile());
             Scanner scan = new Scanner(file);
             String line = "";
             while(scan.hasNextLine()){
@@ -108,11 +114,15 @@ public class GCCompiler {
             System.out.println("File could not Loaded!!");
             System.err.println("无法找到资源文件 example.gc");
         }
+        System.out.println("----------------------------------------------------------------------");
+        return input.toString();
+    }
 
+    public TreeNode compile(String input) {
         System.out.println("----------------------------------------------------------------------");
         System.out.println("Lex Output: ");
         // 创建Lexer并传入输入流
-        GCLexer lexer = new GCLexer(input.toString());
+        GCLexer lexer = new GCLexer(input);
         // 开始词法分析
         if(lexer.lex()) {
             System.out.println("Lex Successfully");
@@ -134,6 +144,7 @@ public class GCCompiler {
                 // 打印语法树
                 printTree(rootNode, 0);
                 System.out.println("----------------------------------------------------------------------");
+                return rootNode;
             }
             else {
                 System.out.println("Parse Failed");
@@ -142,15 +153,16 @@ public class GCCompiler {
         else {
             System.out.println("Lex Failed");
         }
+        return null;
     }
 
-    public static void printTokens(List<Token> tokens){
+    public void printTokens(List<Token> tokens){
         for(Token token : tokens){
             System.out.println(token.toString());
         }
     }
 
-    private static void printTree(TreeNode treeNode, int level) {
+    private void printTree(TreeNode treeNode, int level) {
         for (int i = 0; i < level; i++) {
             System.out.print("  "); // 每一级缩进两个空格
         }

@@ -1,9 +1,8 @@
-package com.ljl.gcc.parser;
+package com.ljl.gcc.compiler.parser;
 
-import com.ljl.gcc.GCCompiler;
-import com.ljl.gcc.token.Token;
+import com.ljl.gcc.compiler.GCCompiler;
+import com.ljl.gcc.compiler.token.Token;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class GCParser extends GCCompiler {

@@ -1,6 +1,6 @@
-package com.ljl.gcc.parser;
+package com.ljl.gcc.compiler.parser;
 
-import com.ljl.gcc.token.Token;
+import com.ljl.gcc.compiler.token.Token;
 
 import java.util.ArrayList;
 import java.util.Collections;

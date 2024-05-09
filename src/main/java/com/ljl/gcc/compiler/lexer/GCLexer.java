@@ -1,7 +1,7 @@
-package com.ljl.gcc.lexer;
+package com.ljl.gcc.compiler.lexer;
 
-import com.ljl.gcc.GCCompiler;
-import com.ljl.gcc.token.Token;
+import com.ljl.gcc.compiler.GCCompiler;
+import com.ljl.gcc.compiler.token.Token;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ public class GCLexer extends GCCompiler {
 
     public GCLexer(String input) {
         this._input = input;
-        this.filterWhitespace();
-        this.filterComment();
+        this.stripWhitespaceText();
+        this.ignoreComments();
         this._output = new ArrayList<>();
     }
 
@@ -22,12 +22,12 @@ public class GCLexer extends GCCompiler {
         return _output;
     }
 
-    public void filterWhitespace() {
+    public void stripWhitespaceText() {
         // 过滤空格、制表符、回车符、换行符
         this._input = this._input.replaceAll("[ \t\r\n]+", "");
     }
 
-    public void filterComment() {
+    public void ignoreComments() {
         // 过滤注释
         this._input = this._input.replaceAll("<!--.*?-->", ""); //?:非贪婪匹配（尽可能少的匹配字符）
     }

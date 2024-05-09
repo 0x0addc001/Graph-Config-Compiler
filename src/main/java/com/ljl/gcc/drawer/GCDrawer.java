@@ -4,6 +4,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.event.*;
+
+import com.ljl.gcc.compiler.GCCompiler;
+import com.ljl.gcc.compiler.parser.TreeNode;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -25,6 +28,7 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 public class GCDrawer extends JFrame {
+    GCCompiler compiler = new GCCompiler();
     JPanel panelConfig = new JPanel();
     JPanel panelConfigBtn = new JPanel();
     JButton show = new JButton("绘图");
@@ -33,6 +37,7 @@ public class GCDrawer extends JFrame {
     myCanvas cv = new myCanvas();
     Component[] configs={show,configSample};
     public static ArrayList<MyElement> MyElements =new ArrayList<MyElement>();
+
     public GCDrawer(){
         super("计算机211_李嘉梁_211302104");
         setBounds(400, 400, 1700, 1000);
@@ -60,300 +65,266 @@ public class GCDrawer extends JFrame {
                 } catch (DocumentException ex) {
                     ex.printStackTrace();
                 }
+                String text = compiler.read("example.gc");
+                System.out.println(text);
+                fieldConfig.setText(text);
             }
         });
         show.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //SAXReader saxReader = new SAXReader();
                 try {
-                    //Document document = saxReader.read(GCDrawer.class.getClassLoader()
-                    //        .getResource("config.xml"));
-                    Document document = DocumentHelper.parseText(fieldConfig.getText());
-                    Element rootElement = document.getRootElement();
-                    List<Element> ElementList = rootElement.elements();
                     MyElements.clear();
-                    for (Element myElement : ElementList) {//bg,points,lines,line,curve,shape,xScale,yScale
-                        if(myElement.getName().equals("bg")){
-                            Bg myBg = new Bg();
-                            myBg.elementName="bg";
-                            List<Element> myElementAttributeList = myElement.elements();
-                            for (Element Attribute : myElementAttributeList) {//col,xRange,yRange
-                                if(Attribute.getName().equals("col")){
-                                    if(Attribute.getText().contains(",")){
-                                        float R=Float.parseFloat(Attribute.getText().split(",")[0]);
-                                        float G=Float.parseFloat(Attribute.getText().split(",")[1]);
-                                        float B=Float.parseFloat(Attribute.getText().split(",")[2]);
-                                        int r= (int)R;
-                                        int g= (int)G;
-                                        int b= (int)B;
-                                        myBg.col= new Color(r,g,b);
-                                    }
-                                    else if(Attribute.getText().trim().equals(""))myBg.col = Color.BLACK;
-                                    else{
-                                        Field field = Class.forName("java.awt.Color").getField(Attribute.getText().trim());
-                                        myBg.col = (Color)field.get(null);
-                                        //System.out.println(myBg.col);
-                                    }
-                                }
-                                else if(Attribute.getName().equals("xRange")){
-                                    myBg.xRangeLeft=Double.parseDouble(Attribute.getText().split(",")[0]);
-                                    myBg.xRangeRight=Double.parseDouble(Attribute.getText().split(",")[1]);
-                                }
-                                else if(Attribute.getName().equals("yRange")){
-                                    myBg.yRangeBottom=Double.parseDouble(Attribute.getText().split(",")[0]);
-                                    myBg.yRangeTop=Double.parseDouble(Attribute.getText().split(",")[1]);
-                                }
-                            }
-                            MyElements.add(myBg);
-                        }
-                        else if(myElement.getName().equals("points")){
-                            Points myPoints = new Points();
-                            myPoints.elementName="points";
-                            List<Element> myElementAttributeList = myElement.elements();
-                            for (Element Attribute : myElementAttributeList) {//col,wid,pad,radius,list
-                                if(Attribute.getName().equals("col")){
-                                    if(Attribute.getText().contains(",")){
-                                        float R=Float.parseFloat(Attribute.getText().split(",")[0]);
-                                        float G=Float.parseFloat(Attribute.getText().split(",")[1]);
-                                        float B=Float.parseFloat(Attribute.getText().split(",")[2]);
-                                        int r= (int)R;
-                                        int g= (int)G;
-                                        int b= (int)B;
-                                        myPoints.col= new Color(r,g,b);
-                                    }
-                                    else if(Attribute.getText().trim().equals(""))myPoints.col = Color.BLACK;
-                                    else{
-                                        Field field = Class.forName("java.awt.Color").getField(Attribute.getText().trim());
-                                        myPoints.col = (Color)field.get(null);
-                                        //System.out.println(myShape.col);
-                                    }
-                                }
-                                else if(Attribute.getName().equals("wid")){
-                                    myPoints.wid=Float.parseFloat(Attribute.getText());
-                                }
-                                else if(Attribute.getName().equals("pad")){
-                                    myPoints.pad=Attribute.getText().trim();
-                                }
-                                else if(Attribute.getName().equals("radius")){
-                                    myPoints.radius=Double.parseDouble(Attribute.getText());
-                                }
-                                else if(Attribute.getName().equals("list")){
-                                    String s=Attribute.getText();
-                                    BufferedReader br = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(s.getBytes(Charset.forName("utf8"))), Charset.forName("utf8")));
-                                    String line;
-                                    while ( (line = br.readLine()) != null ) {
-                                        if(!line.trim().equals("")){
-                                            myPoints.x.add(Double.parseDouble(line.split(",")[0]));
-                                            myPoints.y.add(Double.parseDouble(line.split(",")[1]));
+                    TreeNode configNode = compiler.compile(fieldConfig.getText());
+                    if(configNode.getClass().getSimpleName().equals("ConfigNode")) {
+                        for (int i = 0; i < configNode.getChildCount(); i++) {//bg,points,lines,line,curve,shape,xScale,yScale
+                            TreeNode elementNode = configNode.getChild(i);
+                            if (elementNode.getClass().getSimpleName().equals("ElementNode")) {
+                                TreeNode myElement = elementNode.getChild(0);
+                                if (myElement.getClass().getSimpleName().equals("BgNode")) {
+                                    Bg myBg = new Bg();
+                                    myBg.elementName = "bg";
+                                    List<Element> myElementAttributeList = myElement.elements();
+                                    for (Element Attribute : myElementAttributeList) {//col,xRange,yRange
+                                        if (Attribute.getName().equals("col")) {
+                                            if (Attribute.getText().contains(",")) {
+                                                float R = Float.parseFloat(Attribute.getText().split(",")[0]);
+                                                float G = Float.parseFloat(Attribute.getText().split(",")[1]);
+                                                float B = Float.parseFloat(Attribute.getText().split(",")[2]);
+                                                int r = (int) R;
+                                                int g = (int) G;
+                                                int b = (int) B;
+                                                myBg.col = new Color(r, g, b);
+                                            } else if (Attribute.getText().trim().equals("")) myBg.col = Color.BLACK;
+                                            else {
+                                                Field field = Class.forName("java.awt.Color").getField(Attribute.getText().trim());
+                                                myBg.col = (Color) field.get(null);
+                                                //System.out.println(myBg.col);
+                                            }
+                                        } else if (Attribute.getName().equals("xRange")) {
+                                            myBg.xRangeLeft = Double.parseDouble(Attribute.getText().split(",")[0]);
+                                            myBg.xRangeRight = Double.parseDouble(Attribute.getText().split(",")[1]);
+                                        } else if (Attribute.getName().equals("yRange")) {
+                                            myBg.yRangeBottom = Double.parseDouble(Attribute.getText().split(",")[0]);
+                                            myBg.yRangeTop = Double.parseDouble(Attribute.getText().split(",")[1]);
                                         }
                                     }
-                                }
-                            }
-                            MyElements.add(myPoints);
-                        }
-                        else if(myElement.getName().equals("lines")){
-                            Lines myLines = new Lines();
-                            myLines.elementName="lines";
-                            List<Element> myElementAttributeList = myElement.elements();
-                            for (Element Attribute : myElementAttributeList) {//col,wid,pad,radius,list
-                                if(Attribute.getName().equals("col")){
-                                    if(Attribute.getText().contains(",")){
-                                        float R=Float.parseFloat(Attribute.getText().split(",")[0]);
-                                        float G=Float.parseFloat(Attribute.getText().split(",")[1]);
-                                        float B=Float.parseFloat(Attribute.getText().split(",")[2]);
-                                        int r= (int)R;
-                                        int g= (int)G;
-                                        int b= (int)B;
-                                        myLines.col= new Color(r,g,b);
-                                    }
-                                    else if(Attribute.getText().trim().equals(""))myLines.col = Color.BLACK;
-                                    else{
-                                        Field field = Class.forName("java.awt.Color").getField(Attribute.getText().trim());
-                                        myLines.col = (Color)field.get(null);
-                                        System.out.println(myLines.col);
-                                    }
-                                }
-                                else if(Attribute.getName().equals("wid")){
-                                    myLines.wid=Float.parseFloat(Attribute.getText());
-                                }
-                                else if(Attribute.getName().equals("list")){
-                                    String s=Attribute.getText();
-                                    BufferedReader br = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(s.getBytes(Charset.forName("utf8"))), Charset.forName("utf8")));
-                                    String line;
-                                    while ( (line = br.readLine()) != null ) {
-                                        if(!line.trim().equals("")){
-                                            myLines.x.add(Double.parseDouble(line.split(",")[0]));
-                                            myLines.y.add(Double.parseDouble(line.split(",")[1]));
+                                    MyElements.add(myBg);
+                                } else if (myElement.getName().equals("points")) {
+                                    Points myPoints = new Points();
+                                    myPoints.elementName = "points";
+                                    List<Element> myElementAttributeList = myElement.elements();
+                                    for (Element Attribute : myElementAttributeList) {//col,wid,pad,radius,list
+                                        if (Attribute.getName().equals("col")) {
+                                            if (Attribute.getText().contains(",")) {
+                                                float R = Float.parseFloat(Attribute.getText().split(",")[0]);
+                                                float G = Float.parseFloat(Attribute.getText().split(",")[1]);
+                                                float B = Float.parseFloat(Attribute.getText().split(",")[2]);
+                                                int r = (int) R;
+                                                int g = (int) G;
+                                                int b = (int) B;
+                                                myPoints.col = new Color(r, g, b);
+                                            } else if (Attribute.getText().trim().equals(""))
+                                                myPoints.col = Color.BLACK;
+                                            else {
+                                                Field field = Class.forName("java.awt.Color").getField(Attribute.getText().trim());
+                                                myPoints.col = (Color) field.get(null);
+                                                //System.out.println(myShape.col);
+                                            }
+                                        } else if (Attribute.getName().equals("wid")) {
+                                            myPoints.wid = Float.parseFloat(Attribute.getText());
+                                        } else if (Attribute.getName().equals("pad")) {
+                                            myPoints.pad = Attribute.getText().trim();
+                                        } else if (Attribute.getName().equals("radius")) {
+                                            myPoints.radius = Double.parseDouble(Attribute.getText());
+                                        } else if (Attribute.getName().equals("list")) {
+                                            String s = Attribute.getText();
+                                            BufferedReader br = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(s.getBytes(Charset.forName("utf8"))), Charset.forName("utf8")));
+                                            String line;
+                                            while ((line = br.readLine()) != null) {
+                                                if (!line.trim().equals("")) {
+                                                    myPoints.x.add(Double.parseDouble(line.split(",")[0]));
+                                                    myPoints.y.add(Double.parseDouble(line.split(",")[1]));
+                                                }
+                                            }
                                         }
                                     }
+                                    MyElements.add(myPoints);
+                                } else if (myElement.getName().equals("lines")) {
+                                    Lines myLines = new Lines();
+                                    myLines.elementName = "lines";
+                                    List<Element> myElementAttributeList = myElement.elements();
+                                    for (Element Attribute : myElementAttributeList) {//col,wid,pad,radius,list
+                                        if (Attribute.getName().equals("col")) {
+                                            if (Attribute.getText().contains(",")) {
+                                                float R = Float.parseFloat(Attribute.getText().split(",")[0]);
+                                                float G = Float.parseFloat(Attribute.getText().split(",")[1]);
+                                                float B = Float.parseFloat(Attribute.getText().split(",")[2]);
+                                                int r = (int) R;
+                                                int g = (int) G;
+                                                int b = (int) B;
+                                                myLines.col = new Color(r, g, b);
+                                            } else if (Attribute.getText().trim().equals("")) myLines.col = Color.BLACK;
+                                            else {
+                                                Field field = Class.forName("java.awt.Color").getField(Attribute.getText().trim());
+                                                myLines.col = (Color) field.get(null);
+                                                System.out.println(myLines.col);
+                                            }
+                                        } else if (Attribute.getName().equals("wid")) {
+                                            myLines.wid = Float.parseFloat(Attribute.getText());
+                                        } else if (Attribute.getName().equals("list")) {
+                                            String s = Attribute.getText();
+                                            BufferedReader br = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(s.getBytes(Charset.forName("utf8"))), Charset.forName("utf8")));
+                                            String line;
+                                            while ((line = br.readLine()) != null) {
+                                                if (!line.trim().equals("")) {
+                                                    myLines.x.add(Double.parseDouble(line.split(",")[0]));
+                                                    myLines.y.add(Double.parseDouble(line.split(",")[1]));
+                                                }
+                                            }
+                                        }
+                                    }
+                                    MyElements.add(myLines);
+                                } else if (myElement.getName().equals("line")) {
+                                    Line myLine = new Line();
+                                    myLine.elementName = "line";
+                                    List<Element> myElementAttributeList = myElement.elements();
+                                    for (Element Attribute : myElementAttributeList) {//col,wid,point,slope
+                                        if (Attribute.getName().equals("col")) {
+                                            if (Attribute.getText().contains(",")) {
+                                                float R = Float.parseFloat(Attribute.getText().split(",")[0]);
+                                                float G = Float.parseFloat(Attribute.getText().split(",")[1]);
+                                                float B = Float.parseFloat(Attribute.getText().split(",")[2]);
+                                                int r = (int) R;
+                                                int g = (int) G;
+                                                int b = (int) B;
+                                                myLine.col = new Color(r, g, b);
+                                            } else if (Attribute.getText().trim().equals("")) myLine.col = Color.BLACK;
+                                            else {
+                                                Field field = Class.forName("java.awt.Color").getField(Attribute.getText().trim());
+                                                myLine.col = (Color) field.get(null);
+                                                //System.out.println(myShape.col);
+                                            }
+                                        } else if (Attribute.getName().equals("wid")) {
+                                            myLine.wid = Float.parseFloat(Attribute.getText());
+                                        } else if (Attribute.getName().equals("point")) {
+                                            myLine.x = Double.parseDouble(Attribute.getText().split(",")[0]);
+                                            myLine.y = Double.parseDouble(Attribute.getText().split(",")[1]);
+                                        } else if (Attribute.getName().equals("slope")) {
+                                            myLine.slope = Attribute.getText().trim();
+                                        }
+                                    }
+                                    MyElements.add(myLine);
+                                } else if (myElement.getName().equals("curve")) {
+                                    Curve myCurve = new Curve();
+                                    myCurve.elementName = "curve";
+                                    List<Element> myElementAttributeList = myElement.elements();
+                                    for (Element Attribute : myElementAttributeList) {//col,wid,point,slope
+                                        if (Attribute.getName().equals("col")) {
+                                            if (Attribute.getText().contains(",")) {
+                                                float R = Float.parseFloat(Attribute.getText().split(",")[0]);
+                                                float G = Float.parseFloat(Attribute.getText().split(",")[1]);
+                                                float B = Float.parseFloat(Attribute.getText().split(",")[2]);
+                                                int r = (int) R;
+                                                int g = (int) G;
+                                                int b = (int) B;
+                                                myCurve.col = new Color(r, g, b);
+                                            } else if (Attribute.getText().trim().equals("")) myCurve.col = Color.BLACK;
+                                            else {
+                                                Field field = Class.forName("java.awt.Color").getField(Attribute.getText().trim());
+                                                myCurve.col = (Color) field.get(null);
+                                                //System.out.println(myShape.col);
+                                            }
+                                        } else if (Attribute.getName().equals("wid")) {
+                                            myCurve.wid = Float.parseFloat(Attribute.getText());
+                                        } else if (Attribute.getName().equals("range")) {
+                                            myCurve.rangeLeft = Double.parseDouble(Attribute.getText().split(",")[0]);
+                                            myCurve.rangeRight = Double.parseDouble(Attribute.getText().split(",")[1]);
+                                        } else if (Attribute.getName().equals("function")) {
+                                            myCurve.function = Attribute.getText().trim();
+                                        } else if (Attribute.getName().equals("amount")) {
+                                            myCurve.amount = Double.parseDouble(Attribute.getText());
+                                        }
+                                    }
+                                    MyElements.add(myCurve);
+                                } else if (myElement.getName().equals("shape")) {
+                                    Shape myShape = new Shape();
+                                    myShape.elementName = "shape";
+                                    List<Element> myElementAttributeList = myElement.elements();
+                                    for (Element Attribute : myElementAttributeList) {//col,wid,type,pad,center,width,height
+                                        if (Attribute.getName().equals("col")) {
+                                            if (Attribute.getText().contains(",")) {
+                                                float R = Float.parseFloat(Attribute.getText().split(",")[0]);
+                                                float G = Float.parseFloat(Attribute.getText().split(",")[1]);
+                                                float B = Float.parseFloat(Attribute.getText().split(",")[2]);
+                                                int r = (int) R;
+                                                int g = (int) G;
+                                                int b = (int) B;
+                                                myShape.col = new Color(r, g, b);
+                                            } else if (Attribute.getText().trim().equals("")) myShape.col = Color.BLACK;
+                                            else {
+                                                Field field = Class.forName("java.awt.Color").getField(Attribute.getText().trim());
+                                                myShape.col = (Color) field.get(null);
+                                                //System.out.println(myShape.col);
+                                            }
+                                        } else if (Attribute.getName().equals("wid")) {
+                                            myShape.wid = Float.parseFloat(Attribute.getText());
+                                        } else if (Attribute.getName().equals("type")) {
+                                            myShape.type = Attribute.getText().trim();
+                                        } else if (Attribute.getName().equals("pad")) {
+                                            myShape.pad = Attribute.getText().trim();
+                                        } else if (Attribute.getName().equals("center")) {
+                                            //myShape.center=Attribute.getText();
+                                            myShape.x = Double.parseDouble(Attribute.getText().split(",")[0]);
+                                            myShape.y = Double.parseDouble(Attribute.getText().split(",")[1]);
+                                        } else if (Attribute.getName().equals("width")) {
+                                            myShape.width = Double.parseDouble(Attribute.getText());
+                                            ;
+                                        } else if (Attribute.getName().equals("height")) {
+                                            myShape.height = Double.parseDouble(Attribute.getText());
+                                        }
+                                    }
+                                    MyElements.add(myShape);
+                                } else if (myElement.getName().equals("scale")) {
+                                    Scale myScale = new Scale();
+                                    myScale.elementName = "scale";
+                                    List<Element> myElementAttributeList = myElement.elements();
+                                    for (Element Attribute : myElementAttributeList) {//col,wid,direction,pos,from,step,amount,precision
+                                        if (Attribute.getName().equals("col")) {
+                                            if (Attribute.getText().contains(",")) {
+                                                float R = Float.parseFloat(Attribute.getText().split(",")[0]);
+                                                float G = Float.parseFloat(Attribute.getText().split(",")[1]);
+                                                float B = Float.parseFloat(Attribute.getText().split(",")[2]);
+                                                int r = (int) R;
+                                                int g = (int) G;
+                                                int b = (int) B;
+                                                myScale.col = new Color(r, g, b);
+                                            } else if (Attribute.getText().trim().equals("")) myScale.col = Color.BLACK;
+                                            else {
+                                                Field field = Class.forName("java.awt.Color").getField(Attribute.getText().trim());
+                                                myScale.col = (Color) field.get(null);
+                                                //System.out.println(myShape.col);
+                                            }
+                                        } else if (Attribute.getName().equals("wid")) {
+                                            myScale.wid = Float.parseFloat(Attribute.getText());
+                                        } else if (Attribute.getName().equals("direction")) {
+                                            myScale.direction = Attribute.getText().trim();
+                                        } else if (Attribute.getName().equals("pos")) {
+                                            myScale.pos = Double.parseDouble(Attribute.getText());
+                                        } else if (Attribute.getName().equals("from")) {
+                                            myScale.from = Double.parseDouble(Attribute.getText());
+                                        } else if (Attribute.getName().equals("step")) {
+                                            myScale.step = Double.parseDouble(Attribute.getText());
+                                            ;
+                                        } else if (Attribute.getName().equals("amount")) {
+                                            myScale.amount = Double.parseDouble(Attribute.getText());
+                                        } else if (Attribute.getName().equals("precision")) {
+                                            myScale.precision = Double.parseDouble(Attribute.getText());
+                                        }
+                                    }
+                                    MyElements.add(myScale);
                                 }
                             }
-                            MyElements.add(myLines);
-                        }
-                        else if(myElement.getName().equals("line")){
-                            Line myLine = new Line();
-                            myLine.elementName="line";
-                            List<Element> myElementAttributeList = myElement.elements();
-                            for (Element Attribute : myElementAttributeList) {//col,wid,point,slope
-                                if(Attribute.getName().equals("col")){
-                                    if(Attribute.getText().contains(",")){
-                                        float R=Float.parseFloat(Attribute.getText().split(",")[0]);
-                                        float G=Float.parseFloat(Attribute.getText().split(",")[1]);
-                                        float B=Float.parseFloat(Attribute.getText().split(",")[2]);
-                                        int r= (int)R;
-                                        int g= (int)G;
-                                        int b= (int)B;
-                                        myLine.col= new Color(r,g,b);
-                                    }
-                                    else if(Attribute.getText().trim().equals(""))myLine.col = Color.BLACK;
-                                    else{
-                                        Field field = Class.forName("java.awt.Color").getField(Attribute.getText().trim());
-                                        myLine.col = (Color)field.get(null);
-                                        //System.out.println(myShape.col);
-                                    }
-                                }
-                                else if(Attribute.getName().equals("wid")){
-                                    myLine.wid=Float.parseFloat(Attribute.getText());
-                                }
-                                else if(Attribute.getName().equals("point")){
-                                    myLine.x=Double.parseDouble(Attribute.getText().split(",")[0]);
-                                    myLine.y=Double.parseDouble(Attribute.getText().split(",")[1]);
-                                }
-                                else if(Attribute.getName().equals("slope")){
-                                    myLine.slope=Attribute.getText().trim();
-                                }
-                            }
-                            MyElements.add(myLine);
-                        }
-                        else if(myElement.getName().equals("curve")){
-                            Curve myCurve = new Curve();
-                            myCurve.elementName="curve";
-                            List<Element> myElementAttributeList = myElement.elements();
-                            for (Element Attribute : myElementAttributeList) {//col,wid,point,slope
-                                if(Attribute.getName().equals("col")){
-                                    if(Attribute.getText().contains(",")){
-                                        float R=Float.parseFloat(Attribute.getText().split(",")[0]);
-                                        float G=Float.parseFloat(Attribute.getText().split(",")[1]);
-                                        float B=Float.parseFloat(Attribute.getText().split(",")[2]);
-                                        int r= (int)R;
-                                        int g= (int)G;
-                                        int b= (int)B;
-                                        myCurve.col= new Color(r,g,b);
-                                    }
-                                    else if(Attribute.getText().trim().equals(""))myCurve.col = Color.BLACK;
-                                    else{
-                                        Field field = Class.forName("java.awt.Color").getField(Attribute.getText().trim());
-                                        myCurve.col = (Color)field.get(null);
-                                        //System.out.println(myShape.col);
-                                    }
-                                }
-                                else if(Attribute.getName().equals("wid")){
-                                    myCurve.wid=Float.parseFloat(Attribute.getText());
-                                }
-                                else if(Attribute.getName().equals("range")){
-                                    myCurve.rangeLeft=Double.parseDouble(Attribute.getText().split(",")[0]);
-                                    myCurve.rangeRight=Double.parseDouble(Attribute.getText().split(",")[1]);
-                                }
-                                else if(Attribute.getName().equals("function")){
-                                    myCurve.function=Attribute.getText().trim();
-                                }
-                                else if(Attribute.getName().equals("amount")){
-                                    myCurve.amount=Double.parseDouble(Attribute.getText());
-                                }
-                            }
-                            MyElements.add(myCurve);
-                        }
-                        else if(myElement.getName().equals("shape")){
-                            Shape myShape = new Shape();
-                            myShape.elementName="shape";
-                            List<Element> myElementAttributeList = myElement.elements();
-                            for (Element Attribute : myElementAttributeList) {//col,wid,type,pad,center,width,height
-                                if(Attribute.getName().equals("col")){
-                                    if(Attribute.getText().contains(",")){
-                                        float R=Float.parseFloat(Attribute.getText().split(",")[0]);
-                                        float G=Float.parseFloat(Attribute.getText().split(",")[1]);
-                                        float B=Float.parseFloat(Attribute.getText().split(",")[2]);
-                                        int r= (int)R;
-                                        int g= (int)G;
-                                        int b= (int)B;
-                                        myShape.col= new Color(r,g,b);
-                                    }
-                                    else if(Attribute.getText().trim().equals(""))myShape.col = Color.BLACK;
-                                    else{
-                                        Field field = Class.forName("java.awt.Color").getField(Attribute.getText().trim());
-                                        myShape.col = (Color)field.get(null);
-                                        //System.out.println(myShape.col);
-                                    }
-                                }
-                                else if(Attribute.getName().equals("wid")){
-                                    myShape.wid=Float.parseFloat(Attribute.getText());
-                                }
-                                else if(Attribute.getName().equals("type")){
-                                    myShape.type=Attribute.getText().trim();
-                                }
-                                else if(Attribute.getName().equals("pad")){
-                                    myShape.pad=Attribute.getText().trim();
-                                }
-                                else if(Attribute.getName().equals("center")){
-                                    //myShape.center=Attribute.getText();
-                                    myShape.x=Double.parseDouble(Attribute.getText().split(",")[0]);
-                                    myShape.y=Double.parseDouble(Attribute.getText().split(",")[1]);
-                                }
-                                else if(Attribute.getName().equals("width")){
-                                    myShape.width=Double.parseDouble(Attribute.getText());;
-                                }
-                                else if(Attribute.getName().equals("height")){
-                                    myShape.height=Double.parseDouble(Attribute.getText());
-                                }
-                            }
-                            MyElements.add(myShape);
-                        }
-                        else if(myElement.getName().equals("scale")){
-                            Scale myScale = new Scale();
-                            myScale.elementName="scale";
-                            List<Element> myElementAttributeList = myElement.elements();
-                            for (Element Attribute : myElementAttributeList) {//col,wid,direction,pos,from,step,amount,precision
-                                if(Attribute.getName().equals("col")){
-                                    if(Attribute.getText().contains(",")){
-                                        float R=Float.parseFloat(Attribute.getText().split(",")[0]);
-                                        float G=Float.parseFloat(Attribute.getText().split(",")[1]);
-                                        float B=Float.parseFloat(Attribute.getText().split(",")[2]);
-                                        int r= (int)R;
-                                        int g= (int)G;
-                                        int b= (int)B;
-                                        myScale.col= new Color(r,g,b);
-                                    }
-                                    else if(Attribute.getText().trim().equals(""))myScale.col = Color.BLACK;
-                                    else{
-                                        Field field = Class.forName("java.awt.Color").getField(Attribute.getText().trim());
-                                        myScale.col = (Color)field.get(null);
-                                        //System.out.println(myShape.col);
-                                    }
-                                }
-                                else if(Attribute.getName().equals("wid")){
-                                    myScale.wid=Float.parseFloat(Attribute.getText());
-                                }
-                                else if(Attribute.getName().equals("direction")){
-                                    myScale.direction=Attribute.getText().trim();
-                                }
-                                else if(Attribute.getName().equals("pos")){
-                                    myScale.pos=Double.parseDouble(Attribute.getText());
-                                }
-                                else if(Attribute.getName().equals("from")){
-                                    myScale.from=Double.parseDouble(Attribute.getText());
-                                }
-                                else if(Attribute.getName().equals("step")){
-                                    myScale.step=Double.parseDouble(Attribute.getText());;
-                                }
-                                else if(Attribute.getName().equals("amount")){
-                                    myScale.amount=Double.parseDouble(Attribute.getText());
-                                }
-                                else if(Attribute.getName().equals("precision")){
-                                    myScale.precision=Double.parseDouble(Attribute.getText());
-                                }
-                            }
-                            MyElements.add(myScale);
                         }
                     }
                     cv.repaint();

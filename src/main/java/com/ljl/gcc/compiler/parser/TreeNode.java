@@ -1,4 +1,4 @@
-package com.ljl.gcc.parser;
+package com.ljl.gcc.compiler.parser;
 
 public interface TreeNode {
     TreeNode getParent();

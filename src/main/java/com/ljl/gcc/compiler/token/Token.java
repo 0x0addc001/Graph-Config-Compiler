@@ -1,6 +1,6 @@
-package com.ljl.gcc.token;
+package com.ljl.gcc.compiler.token;
 
-import com.ljl.gcc.GCCompiler;
+import com.ljl.gcc.compiler.GCCompiler;
 
 public class Token extends GCCompiler {
 

@@ -4,36 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/GCCompiler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/parser/GCParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/parser/TokenNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/parser/TreeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="GCCParser.java 100%-COMPLETE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCLexer.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCLexer.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCLexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCLexer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCLexer.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParser.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCParser.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParser.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParser.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParserBaseListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParserBaseVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParserListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParserVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/GCCDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/GCCLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/lexer/GCLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/GCCParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/ParseTree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/RuleContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/parser/RuleNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/TerminalNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/token/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/TokenTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/token/TokenTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config-simple.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/example-simple.gc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/GCCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/GCCompiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/lexer/GCLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/GCLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/parser/GCParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/GCParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/parser/RuleNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/RuleNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/parser/TokenNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/TokenNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/parser/TreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/TreeNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/token/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/token/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/token/TokenTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/token/TokenTable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,11 +88,11 @@
   </component>
   <component name="RunManager" selected="应用程序.GCCompiler">
     <configuration name="GCCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ljl.gcc.GCCompiler" />
+      <option name="MAIN_CLASS_NAME" value="com.ljl.gcc.compiler.GCCompiler" />
       <module name="Graph-Config-Compiler" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ljl.gcc.*" />
+          <option name="PATTERN" value="com.ljl.gcc.compiler.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -205,7 +186,7 @@
       <workItem from="1715085806064" duration="4166000" />
       <workItem from="1715127528866" duration="50842000" />
       <workItem from="1715232523273" duration="389000" />
-      <workItem from="1715232919887" duration="10390000" />
+      <workItem from="1715232919887" duration="13544000" />
     </task>
     <task id="LOCAL-00001" summary="GCCLexer.java COMPLETE">
       <created>1715160213832</created>
@@ -228,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715221290493</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="GCCParser.java 100%-COMPLETE">
+      <created>1715244329011</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715244329011</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,6 +237,7 @@
     <MESSAGE value="GCCLexer.java COMPLETE" />
     <MESSAGE value="GCCParser2.java SEMI-COMPLETE" />
     <MESSAGE value="GCCParser.java 90%-COMPLETE" />
-    <option name="LAST_COMMIT_MESSAGE" value="GCCParser.java 90%-COMPLETE" />
+    <MESSAGE value="GCCParser.java 100%-COMPLETE" />
+    <option name="LAST_COMMIT_MESSAGE" value="GCCParser.java 100%-COMPLETE" />
   </component>
 </project>
