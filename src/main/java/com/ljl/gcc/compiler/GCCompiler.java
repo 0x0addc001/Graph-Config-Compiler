@@ -106,8 +106,8 @@ public class GCCompiler {
             while(scan.hasNextLine()){
                 line =scan.nextLine();
                 if(!line.equals("")){
-                    System.out.println(line);
-                    input.append(line);
+//                    System.out.println(line);
+                    input.append(line).append("\n");
                 }
             }
         }catch(Exception e){

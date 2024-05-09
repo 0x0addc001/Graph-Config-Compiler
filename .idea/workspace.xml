@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/GCCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/GCCompiler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +79,7 @@
       <recent name="com.ljl.test.xmlcompiler" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.GCCompiler">
+  <component name="RunManager" selected="应用程序.GCDrawer">
     <configuration name="GCCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ljl.gcc.compiler.GCCompiler" />
       <module name="Graph-Config-Compiler" />
@@ -178,7 +179,7 @@
       <workItem from="1715085806064" duration="4166000" />
       <workItem from="1715127528866" duration="50842000" />
       <workItem from="1715232523273" duration="389000" />
-      <workItem from="1715232919887" duration="19430000" />
+      <workItem from="1715232919887" duration="25379000" />
     </task>
     <task id="LOCAL-00001" summary="GCCLexer.java COMPLETE">
       <created>1715160213832</created>
@@ -215,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715247487857</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="GCCDrawer.java 60%-COMPLETE">
+      <created>1715256235814</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715256235814</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +246,7 @@
     <MESSAGE value="GCCParser.java 90%-COMPLETE" />
     <MESSAGE value="GCCParser.java 100%-COMPLETE" />
     <MESSAGE value="GCCDrawer.java 50%-COMPLETE" />
-    <option name="LAST_COMMIT_MESSAGE" value="GCCDrawer.java 50%-COMPLETE" />
+    <MESSAGE value="GCCDrawer.java 60%-COMPLETE" />
+    <option name="LAST_COMMIT_MESSAGE" value="GCCDrawer.java 60%-COMPLETE" />
   </component>
 </project>
