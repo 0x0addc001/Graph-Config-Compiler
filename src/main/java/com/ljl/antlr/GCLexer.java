@@ -1,4 +1,4 @@
-// Generated from D:/CompilerPrincipleProjects/Graph-Config-Compiler-Project/Graph-Config-Compiler/src/main/java/com/ljl/antlr/GCCLexer.g4 by ANTLR 4.13.1
+// Generated from D:/CompilerPrincipleProjects/Graph-Config-Compiler-Project/Graph-Config-Compiler/src/main/java/com/ljl/antlr/GCLexer.g4 by ANTLR 4.13.1
 package com.ljl.antlr;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
@@ -10,7 +10,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
-public class GCCLexer extends Lexer {
+public class GCLexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.13.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -127,13 +127,13 @@ public class GCCLexer extends Lexer {
 	}
 
 
-	public GCCLexer(CharStream input) {
+	public GCLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "GCCLexer.g4"; }
+	public String getGrammarFileName() { return "GCLexer.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

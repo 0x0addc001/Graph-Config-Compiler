@@ -1,4 +1,4 @@
-package com.ljl.gcc;
+package com.ljl.gcc.drawer;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -24,7 +24,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-public class GCCDrawer extends JFrame {
+public class GCDrawer extends JFrame {
     JPanel panelConfig = new JPanel();
     JPanel panelConfigBtn = new JPanel();
     JButton show = new JButton("绘图");
@@ -33,7 +33,7 @@ public class GCCDrawer extends JFrame {
     myCanvas cv = new myCanvas();
     Component[] configs={show,configSample};
     public static ArrayList<MyElement> MyElements =new ArrayList<MyElement>();
-    public GCCDrawer(){
+    public GCDrawer(){
         super("计算机211_李嘉梁_211302104");
         setBounds(400, 400, 1700, 1000);
         add(panelConfig, BorderLayout.EAST);
@@ -52,7 +52,7 @@ public class GCCDrawer extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 SAXReader saxReader = new SAXReader();
                 try {
-                    Document document = saxReader.read(GCCDrawer.class.getClassLoader()
+                    Document document = saxReader.read(GCDrawer.class.getClassLoader()
                             .getResource("config.xml"));
                     String text = document.asXML();
                     //System.out.println(text);
@@ -67,7 +67,7 @@ public class GCCDrawer extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //SAXReader saxReader = new SAXReader();
                 try {
-                    //Document document = saxReader.read(GCCDrawer.class.getClassLoader()
+                    //Document document = saxReader.read(GCDrawer.class.getClassLoader()
                     //        .getResource("config.xml"));
                     Document document = DocumentHelper.parseText(fieldConfig.getText());
                     Element rootElement = document.getRootElement();
@@ -375,7 +375,7 @@ public class GCCDrawer extends JFrame {
     }
 
     public static void main(String[] args) {
-        new GCCDrawer();
+        new GCDrawer();
     }
 }
 class myCanvas extends Canvas{
@@ -399,7 +399,7 @@ class myCanvas extends Canvas{
     }
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D)g;
-        for(MyElement myElement: GCCDrawer.MyElements){
+        for(MyElement myElement: GCDrawer.MyElements){
             if(myElement.elementName.equals("bg")){
                 Bg myBg= (Bg)myElement;
                 setBackground(myBg.col);

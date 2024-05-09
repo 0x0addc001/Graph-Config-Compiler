@@ -5,15 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/ParseTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/GCCompiler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/parser/GCParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/parser/TokenNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/parser/TreeNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/GCCLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/GCCLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/GCCParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/GCCParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/GCCParser2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/RuleContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/RuleContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/TerminalNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/TerminalNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCLexer.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCLexer.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCLexer.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCLexer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCLexer.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParser.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCParser.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParser.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParser.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParserBaseListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParserBaseVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParserListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCCParserVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/GCCDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/GCCLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/lexer/GCLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/GCCParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/ParseTree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/RuleContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/parser/RuleNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/TerminalNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/token/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/TokenTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/token/TokenTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config-simple.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/example-simple.gc" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +80,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/ljl/test" />
     <property name="project.structure.last.edited" value="SDK" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -69,11 +89,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\test" />
       <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\gcc" />
       <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\resources" />
       <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\gcc\antlr\test" />
       <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\test\antlr\gcc" />
-      <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\test\xmltojsoncompiler" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\test" />
@@ -85,18 +105,9 @@
       <recent name="com.ljl.test.xmlcompiler" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.GCCLexer">
-    <configuration name="GCCDrawer" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.ljl.gcc.GCCDrawer" />
-      <module name="Graph-Config-Compiler" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GCCLexer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ljl.gcc.GCCLexer" />
+  <component name="RunManager" selected="应用程序.GCCompiler">
+    <configuration name="GCCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ljl.gcc.GCCompiler" />
       <module name="Graph-Config-Compiler" />
       <extension name="coverage">
         <pattern>
@@ -108,8 +119,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GCCParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ljl.gcc.GCCParser" />
+    <configuration name="GCDrawer" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.ljl.gcc.drawer.GCDrawer" />
       <module name="Graph-Config-Compiler" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -129,16 +142,14 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="应用程序.GCCDrawer" />
+      <item itemvalue="应用程序.GCDrawer" />
       <item itemvalue="应用程序.Main" />
-      <item itemvalue="应用程序.GCCParser" />
-      <item itemvalue="应用程序.GCCLexer" />
+      <item itemvalue="应用程序.GCCompiler" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.GCCLexer" />
+        <item itemvalue="应用程序.GCCompiler" />
         <item itemvalue="应用程序.Main" />
-        <item itemvalue="应用程序.GCCParser" />
       </list>
     </recent_temporary>
   </component>
@@ -192,7 +203,9 @@
       <workItem from="1715063215165" duration="8930000" />
       <workItem from="1715073246226" duration="6416000" />
       <workItem from="1715085806064" duration="4166000" />
-      <workItem from="1715127528866" duration="44625000" />
+      <workItem from="1715127528866" duration="50842000" />
+      <workItem from="1715232523273" duration="389000" />
+      <workItem from="1715232919887" duration="10390000" />
     </task>
     <task id="LOCAL-00001" summary="GCCLexer.java COMPLETE">
       <created>1715160213832</created>
@@ -208,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715174269606</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="GCCParser.java 90%-COMPLETE">
+      <created>1715221290493</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715221290493</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +248,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="GCCLexer.java COMPLETE" />
     <MESSAGE value="GCCParser2.java SEMI-COMPLETE" />
-    <option name="LAST_COMMIT_MESSAGE" value="GCCParser2.java SEMI-COMPLETE" />
+    <MESSAGE value="GCCParser.java 90%-COMPLETE" />
+    <option name="LAST_COMMIT_MESSAGE" value="GCCParser.java 90%-COMPLETE" />
   </component>
 </project>

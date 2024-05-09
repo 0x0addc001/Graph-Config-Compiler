@@ -1,4 +1,4 @@
-package com.ljl.gcc;
+package com.ljl.gcc.token;
 
 public class TokenTable {
     private static final String[] EMPTY_NAMES = new String[0];

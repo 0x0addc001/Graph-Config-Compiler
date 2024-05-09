@@ -1,29 +1,34 @@
-package com.ljl.gcc;
+package com.ljl.gcc.parser;
 
-import java.util.*;
+import com.ljl.gcc.token.Token;
 
-public class RuleContext implements ParseTree{
-    public RuleContext parent;
-    public List<ParseTree> children;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-    public RuleContext() {
+public class RuleNode implements TreeNode {
+    public RuleNode parent;
+    public List<TreeNode> children;
+
+    public RuleNode() {
     }
 
-    public RuleContext(RuleContext parent) {
+    public RuleNode(RuleNode parent) {
         this.parent = parent;
     }
 
     public int depth() {
         int n = 0;
 
-        for(RuleContext p = this; p != null; ++n) {
+        for(RuleNode p = this; p != null; ++n) {
             p = p.parent;
         }
 
         return n;
     }
 
-    public RuleContext getRuleContext() {
+    public RuleNode getRuleNode() {
         return this;
     }
 
@@ -45,11 +50,11 @@ public class RuleContext implements ParseTree{
         return -1;
     }
 
-    public void setParent(RuleContext parent) {
+    public void setParent(RuleNode parent) {
         this.parent = parent;
     }
 
-    public <T extends ParseTree> T addAnyChild(T t) {
+    public <T extends TreeNode> T addAnyChild(T t) {
         if (this.children == null) {
             this.children = new ArrayList();
         }
@@ -58,11 +63,11 @@ public class RuleContext implements ParseTree{
         return t;
     }
 
-    public RuleContext addChild(RuleContext ruleInvocation) {
+    public RuleNode addChild(RuleNode ruleInvocation) {
         return this.addAnyChild(ruleInvocation);
     }
 
-    public TerminalNode addChild(TerminalNode t) {
+    public TokenNode addChild(TokenNode t) {
         t.setParent(this);
         return this.addAnyChild(t);
     }
@@ -74,25 +79,25 @@ public class RuleContext implements ParseTree{
 
     }
 
-    public RuleContext getParent() {
+    public RuleNode getParent() {
         return this.getParent();
     }
 
-    public ParseTree getChild(int i) {
-        return this.children != null && i >= 0 && i < this.children.size() ? (ParseTree) this.children.get(i) : null;
+    public TreeNode getChild(int i) {
+        return this.children != null && i >= 0 && i < this.children.size() ? (TreeNode) this.children.get(i) : null;
     }
 
-    public <T extends ParseTree> T getChild(Class<? extends T> ctxType, int i) {
+    public <T extends TreeNode> T getChild(Class<? extends T> rndType, int i) {
         if (this.children != null && i >= 0 && i < this.children.size()) {
             int j = -1;
-            Iterator var4 = this.children.iterator();
+            Iterator var = this.children.iterator();
 
-            while(var4.hasNext()) {
-                ParseTree o = (ParseTree)var4.next();
-                if (ctxType.isInstance(o)) {
+            while(var.hasNext()) {
+                TreeNode o = (TreeNode)var.next();
+                if (rndType.isInstance(o)) {
                     ++j;
                     if (j == i) {
-                        return ctxType.cast(o); // (ParseTree)
+                        return rndType.cast(o); // TreeNode -> rndTypeNode
                     }
                 }
             }
@@ -103,16 +108,16 @@ public class RuleContext implements ParseTree{
         }
     }
 
-    public TerminalNode getToken(int ttype, int i) {
+    public TokenNode getTokenNode(int ttype, int i) {
         if (this.children != null && i >= 0 && i < this.children.size()) {
             int j = -1;
-            Iterator var4 = this.children.iterator();
+            Iterator var = this.children.iterator();
 
-            while(var4.hasNext()) {
-                ParseTree o = (ParseTree)var4.next();
-                if (o instanceof TerminalNode) {
-                    TerminalNode tnode = (TerminalNode)o;
-                    Token symbol = tnode.getSymbol();
+            while(var.hasNext()) {
+                TreeNode o = (TreeNode)var.next();
+                if (o instanceof TokenNode) {
+                    TokenNode tnode = (TokenNode)o;
+                    Token symbol = tnode.getToken();
                     if (symbol.getType() == ttype) {
                         ++j;
                         if (j == i) {
@@ -128,18 +133,18 @@ public class RuleContext implements ParseTree{
         }
     }
 
-    public List<TerminalNode> getTokens(int ttype) {
+    public List<TokenNode> getTokenNodes(int ttype) {
         if (this.children == null) {
             return Collections.emptyList();
         } else {
-            List<TerminalNode> tokens = null;
-            Iterator var3 = this.children.iterator();
+            List<TokenNode> tokens = null;
+            Iterator var = this.children.iterator();
 
-            while(var3.hasNext()) {
-                ParseTree o = (ParseTree)var3.next();
-                if (o instanceof TerminalNode) {
-                    TerminalNode tnode = (TerminalNode)o;
-                    Token symbol = tnode.getSymbol();
+            while(var.hasNext()) {
+                TreeNode o = (TreeNode)var.next();
+                if (o instanceof TokenNode) {
+                    TokenNode tnode = (TokenNode)o;
+                    Token symbol = tnode.getToken();
                     if (symbol.getType() == ttype) {
                         if (tokens == null) {
                             tokens = new ArrayList();
@@ -158,25 +163,25 @@ public class RuleContext implements ParseTree{
         }
     }
 
-    public <T extends RuleContext> T getRuleContext(Class<? extends T> ctxType, int i) {
-        return this.getChild(ctxType, i);
+    public <T extends RuleNode> T getRuleNode(Class<? extends T> rndType, int i) {
+        return this.getChild(rndType, i);
     }
 
-    public <T extends RuleContext> List<T> getRuleContexts(Class<? extends T> ctxType) {
+    public <T extends RuleNode> List<T> getRuleNodes(Class<? extends T> rndType) {
         if (this.children == null) {
             return Collections.emptyList();
         } else {
             List<T> contexts = null;
-            Iterator var3 = this.children.iterator();
+            Iterator var = this.children.iterator();
 
-            while(var3.hasNext()) {
-                ParseTree o = (ParseTree)var3.next();
-                if (ctxType.isInstance(o)) {
+            while(var.hasNext()) {
+                TreeNode o = (TreeNode)var.next();
+                if (rndType.isInstance(o)) {
                     if (contexts == null) {
                         contexts = new ArrayList();
                     }
 
-                    contexts.add(ctxType.cast(o)); // (RuleContext)
+                    contexts.add(rndType.cast(o)); // TreeNode -> rndTypeNode
                 }
             }
 

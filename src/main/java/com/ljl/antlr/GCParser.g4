@@ -1,7 +1,7 @@
-parser grammar GCCParser;
+parser grammar GCParser;
 
 options {
-    tokenVocab = GCCLexer;
+    tokenVocab = GCLexer;
 }
 
 // Define parser rules

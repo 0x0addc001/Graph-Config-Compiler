@@ -1,4 +1,4 @@
-// Generated from D:/CompilerPrincipleProjects/Graph-Config-Compiler-Project/Graph-Config-Compiler/src/main/java/com/ljl/antlr/GCCParser.g4 by ANTLR 4.13.1
+// Generated from D:/CompilerPrincipleProjects/Graph-Config-Compiler-Project/Graph-Config-Compiler/src/main/java/com/ljl/antlr/GCParser.g4 by ANTLR 4.13.1
 package com.ljl.antlr;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -10,42 +10,42 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
-public class GCCParser extends Parser {
+public class GCParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.13.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		WS=1, COMMENT=2, CONFIG_START=3, CONFIG_END=4, BG_START=5, BG_END=6, COL_START=7,
-		COL_END=8, X_RANGE_START=9, X_RANGE_END=10, Y_RANGE_START=11, Y_RANGE_END=12,
-		SHAPE_START=13, SHAPE_END=14, POINTS_START=15, POINTS_END=16, LINE_START=17,
-		LINE_END=18, LINES_START=19, LINES_END=20, CURVE_START=21, CURVE_END=22,
-		SCALE_START=23, SCALE_END=24, PAD_START=25, PAD_END=26, CENTER_START=27,
-		CENTER_END=28, WID_START=29, WID_END=30, WIDTH_START=31, WIDTH_END=32,
-		HEIGHT_START=33, HEIGHT_END=34, LIST_START=35, LIST_END=36, POINT_START=37,
-		POINT_END=38, SLOPE_START=39, SLOPE_END=40, RADIUS_START=41, RADIUS_END=42,
-		RANGE_START=43, RANGE_END=44, AMOUNT_START=45, AMOUNT_END=46, FUNCTION_START=47,
-		FUNCTION_END=48, DIRECTION_START=49, DIRECTION_END=50, POS_START=51, POS_END=52,
-		FROM_START=53, FROM_END=54, STEP_START=55, STEP_END=56, PRECISION_START=57,
-		PRECISION_END=58, TYPE_START=59, TYPE_END=60, BOOLEAN=61, INF=62, COMMENT_START=63,
-		COMMENT_END=64, NUMBER=65, COMMA=66, SEMICOLON=67, DIRECTION_TYPE=68,
+		WS=1, COMMENT=2, CONFIG_START=3, CONFIG_END=4, BG_START=5, BG_END=6, COL_START=7, 
+		COL_END=8, X_RANGE_START=9, X_RANGE_END=10, Y_RANGE_START=11, Y_RANGE_END=12, 
+		SHAPE_START=13, SHAPE_END=14, POINTS_START=15, POINTS_END=16, LINE_START=17, 
+		LINE_END=18, LINES_START=19, LINES_END=20, CURVE_START=21, CURVE_END=22, 
+		SCALE_START=23, SCALE_END=24, PAD_START=25, PAD_END=26, CENTER_START=27, 
+		CENTER_END=28, WID_START=29, WID_END=30, WIDTH_START=31, WIDTH_END=32, 
+		HEIGHT_START=33, HEIGHT_END=34, LIST_START=35, LIST_END=36, POINT_START=37, 
+		POINT_END=38, SLOPE_START=39, SLOPE_END=40, RADIUS_START=41, RADIUS_END=42, 
+		RANGE_START=43, RANGE_END=44, AMOUNT_START=45, AMOUNT_END=46, FUNCTION_START=47, 
+		FUNCTION_END=48, DIRECTION_START=49, DIRECTION_END=50, POS_START=51, POS_END=52, 
+		FROM_START=53, FROM_END=54, STEP_START=55, STEP_END=56, PRECISION_START=57, 
+		PRECISION_END=58, TYPE_START=59, TYPE_END=60, BOOLEAN=61, INF=62, COMMENT_START=63, 
+		COMMENT_END=64, NUMBER=65, COMMA=66, SEMICOLON=67, DIRECTION_TYPE=68, 
 		COLOR_TYPE=69, SHAPE_TYPE=70, FUNCTION_EXPR=71;
 	public static final int
-		RULE_config = 0, RULE_element = 1, RULE_bg = 2, RULE_shape = 3, RULE_points = 4,
-		RULE_line = 5, RULE_lines = 6, RULE_curve = 7, RULE_scale = 8, RULE_col = 9,
-		RULE_x_range = 10, RULE_y_range = 11, RULE_wid = 12, RULE_width = 13,
-		RULE_height = 14, RULE_pad = 15, RULE_radius = 16, RULE_list = 17, RULE_point = 18,
-		RULE_slope = 19, RULE_range = 20, RULE_amount = 21, RULE_direction = 22,
-		RULE_pos = 23, RULE_from = 24, RULE_step = 25, RULE_precision = 26, RULE_type = 27,
-		RULE_center = 28, RULE_function = 29, RULE_number_pair = 30, RULE_number_pair_list = 31,
+		RULE_config = 0, RULE_element = 1, RULE_bg = 2, RULE_shape = 3, RULE_points = 4, 
+		RULE_line = 5, RULE_lines = 6, RULE_curve = 7, RULE_scale = 8, RULE_col = 9, 
+		RULE_x_range = 10, RULE_y_range = 11, RULE_wid = 12, RULE_width = 13, 
+		RULE_height = 14, RULE_pad = 15, RULE_radius = 16, RULE_list = 17, RULE_point = 18, 
+		RULE_slope = 19, RULE_range = 20, RULE_amount = 21, RULE_direction = 22, 
+		RULE_pos = 23, RULE_from = 24, RULE_step = 25, RULE_precision = 26, RULE_type = 27, 
+		RULE_center = 28, RULE_function = 29, RULE_number_pair = 30, RULE_number_pair_list = 31, 
 		RULE_number_triplet = 32, RULE_color_val = 33;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"config", "element", "bg", "shape", "points", "line", "lines", "curve",
-			"scale", "col", "x_range", "y_range", "wid", "width", "height", "pad",
-			"radius", "list", "point", "slope", "range", "amount", "direction", "pos",
-			"from", "step", "precision", "type", "center", "function", "number_pair",
+			"config", "element", "bg", "shape", "points", "line", "lines", "curve", 
+			"scale", "col", "x_range", "y_range", "wid", "width", "height", "pad", 
+			"radius", "list", "point", "slope", "range", "amount", "direction", "pos", 
+			"from", "step", "precision", "type", "center", "function", "number_pair", 
 			"number_pair_list", "number_triplet", "color_val"
 		};
 	}
@@ -53,35 +53,35 @@ public class GCCParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, null, null, "'<config>'", "'</config>'", "'<bg>'", "'</bg>'", "'<col>'",
-			"'</col>'", "'<xRange>'", "'</xRange>'", "'<yRange>'", "'</yRange>'",
-			"'<shape>'", "'</shape>'", "'<points>'", "'</points>'", "'<line>'", "'</line>'",
-			"'<lines>'", "'</lines>'", "'<curve>'", "'</curve>'", "'<scale>'", "'</scale>'",
-			"'<pad>'", "'</pad>'", "'<center>'", "'</center>'", "'<wid>'", "'</wid>'",
-			"'<width>'", "'</width>'", "'<height>'", "'</height>'", "'<list>'", "'</list>'",
-			"'<point>'", "'</point>'", "'<slope>'", "'</slope>'", "'<radius>'", "'</radius>'",
-			"'<range>'", "'</range>'", "'<amount>'", "'</amount>'", "'<function>'",
-			"'</function>'", "'<direction>'", "'</direction>'", "'<pos>'", "'</pos>'",
-			"'<from>'", "'</from>'", "'<step>'", "'</step>'", "'<precision>'", "'</precision>'",
-			"'<type>'", "'</type>'", null, "'inf'", "'<!--'", "'-->'", null, "','",
+			null, null, null, "'<config>'", "'</config>'", "'<bg>'", "'</bg>'", "'<col>'", 
+			"'</col>'", "'<xRange>'", "'</xRange>'", "'<yRange>'", "'</yRange>'", 
+			"'<shape>'", "'</shape>'", "'<points>'", "'</points>'", "'<line>'", "'</line>'", 
+			"'<lines>'", "'</lines>'", "'<curve>'", "'</curve>'", "'<scale>'", "'</scale>'", 
+			"'<pad>'", "'</pad>'", "'<center>'", "'</center>'", "'<wid>'", "'</wid>'", 
+			"'<width>'", "'</width>'", "'<height>'", "'</height>'", "'<list>'", "'</list>'", 
+			"'<point>'", "'</point>'", "'<slope>'", "'</slope>'", "'<radius>'", "'</radius>'", 
+			"'<range>'", "'</range>'", "'<amount>'", "'</amount>'", "'<function>'", 
+			"'</function>'", "'<direction>'", "'</direction>'", "'<pos>'", "'</pos>'", 
+			"'<from>'", "'</from>'", "'<step>'", "'</step>'", "'<precision>'", "'</precision>'", 
+			"'<type>'", "'</type>'", null, "'inf'", "'<!--'", "'-->'", null, "','", 
 			"';'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "WS", "COMMENT", "CONFIG_START", "CONFIG_END", "BG_START", "BG_END",
-			"COL_START", "COL_END", "X_RANGE_START", "X_RANGE_END", "Y_RANGE_START",
-			"Y_RANGE_END", "SHAPE_START", "SHAPE_END", "POINTS_START", "POINTS_END",
-			"LINE_START", "LINE_END", "LINES_START", "LINES_END", "CURVE_START",
-			"CURVE_END", "SCALE_START", "SCALE_END", "PAD_START", "PAD_END", "CENTER_START",
-			"CENTER_END", "WID_START", "WID_END", "WIDTH_START", "WIDTH_END", "HEIGHT_START",
-			"HEIGHT_END", "LIST_START", "LIST_END", "POINT_START", "POINT_END", "SLOPE_START",
-			"SLOPE_END", "RADIUS_START", "RADIUS_END", "RANGE_START", "RANGE_END",
-			"AMOUNT_START", "AMOUNT_END", "FUNCTION_START", "FUNCTION_END", "DIRECTION_START",
-			"DIRECTION_END", "POS_START", "POS_END", "FROM_START", "FROM_END", "STEP_START",
-			"STEP_END", "PRECISION_START", "PRECISION_END", "TYPE_START", "TYPE_END",
-			"BOOLEAN", "INF", "COMMENT_START", "COMMENT_END", "NUMBER", "COMMA",
+			null, "WS", "COMMENT", "CONFIG_START", "CONFIG_END", "BG_START", "BG_END", 
+			"COL_START", "COL_END", "X_RANGE_START", "X_RANGE_END", "Y_RANGE_START", 
+			"Y_RANGE_END", "SHAPE_START", "SHAPE_END", "POINTS_START", "POINTS_END", 
+			"LINE_START", "LINE_END", "LINES_START", "LINES_END", "CURVE_START", 
+			"CURVE_END", "SCALE_START", "SCALE_END", "PAD_START", "PAD_END", "CENTER_START", 
+			"CENTER_END", "WID_START", "WID_END", "WIDTH_START", "WIDTH_END", "HEIGHT_START", 
+			"HEIGHT_END", "LIST_START", "LIST_END", "POINT_START", "POINT_END", "SLOPE_START", 
+			"SLOPE_END", "RADIUS_START", "RADIUS_END", "RANGE_START", "RANGE_END", 
+			"AMOUNT_START", "AMOUNT_END", "FUNCTION_START", "FUNCTION_END", "DIRECTION_START", 
+			"DIRECTION_END", "POS_START", "POS_END", "FROM_START", "FROM_END", "STEP_START", 
+			"STEP_END", "PRECISION_START", "PRECISION_END", "TYPE_START", "TYPE_END", 
+			"BOOLEAN", "INF", "COMMENT_START", "COMMENT_END", "NUMBER", "COMMA", 
 			"SEMICOLON", "DIRECTION_TYPE", "COLOR_TYPE", "SHAPE_TYPE", "FUNCTION_EXPR"
 		};
 	}
@@ -120,7 +120,7 @@ public class GCCParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "GCCParser.g4"; }
+	public String getGrammarFileName() { return "GCParser.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -131,15 +131,15 @@ public class GCCParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public GCCParser(TokenStream input) {
+	public GCParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ConfigContext extends ParserRuleContext {
-		public TerminalNode CONFIG_START() { return getToken(GCCParser.CONFIG_START, 0); }
-		public TerminalNode CONFIG_END() { return getToken(GCCParser.CONFIG_END, 0); }
+		public TerminalNode CONFIG_START() { return getToken(GCParser.CONFIG_START, 0); }
+		public TerminalNode CONFIG_END() { return getToken(GCParser.CONFIG_END, 0); }
 		public List<ElementContext> element() {
 			return getRuleContexts(ElementContext.class);
 		}
@@ -152,15 +152,15 @@ public class GCCParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_config; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterConfig(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterConfig(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitConfig(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitConfig(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitConfig(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitConfig(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -234,15 +234,15 @@ public class GCCParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_element; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterElement(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterElement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitElement(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitElement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitElement(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitElement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -320,7 +320,7 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class BgContext extends ParserRuleContext {
-		public TerminalNode BG_START() { return getToken(GCCParser.BG_START, 0); }
+		public TerminalNode BG_START() { return getToken(GCParser.BG_START, 0); }
 		public ColContext col() {
 			return getRuleContext(ColContext.class,0);
 		}
@@ -330,22 +330,22 @@ public class GCCParser extends Parser {
 		public Y_rangeContext y_range() {
 			return getRuleContext(Y_rangeContext.class,0);
 		}
-		public TerminalNode BG_END() { return getToken(GCCParser.BG_END, 0); }
+		public TerminalNode BG_END() { return getToken(GCParser.BG_END, 0); }
 		public BgContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_bg; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterBg(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterBg(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitBg(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitBg(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitBg(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitBg(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -381,7 +381,7 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ShapeContext extends ParserRuleContext {
-		public TerminalNode SHAPE_START() { return getToken(GCCParser.SHAPE_START, 0); }
+		public TerminalNode SHAPE_START() { return getToken(GCParser.SHAPE_START, 0); }
 		public ColContext col() {
 			return getRuleContext(ColContext.class,0);
 		}
@@ -403,22 +403,22 @@ public class GCCParser extends Parser {
 		public HeightContext height() {
 			return getRuleContext(HeightContext.class,0);
 		}
-		public TerminalNode SHAPE_END() { return getToken(GCCParser.SHAPE_END, 0); }
+		public TerminalNode SHAPE_END() { return getToken(GCParser.SHAPE_END, 0); }
 		public ShapeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_shape; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterShape(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterShape(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitShape(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitShape(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitShape(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitShape(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -462,7 +462,7 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class PointsContext extends ParserRuleContext {
-		public TerminalNode POINTS_START() { return getToken(GCCParser.POINTS_START, 0); }
+		public TerminalNode POINTS_START() { return getToken(GCParser.POINTS_START, 0); }
 		public ColContext col() {
 			return getRuleContext(ColContext.class,0);
 		}
@@ -478,22 +478,22 @@ public class GCCParser extends Parser {
 		public ListContext list() {
 			return getRuleContext(ListContext.class,0);
 		}
-		public TerminalNode POINTS_END() { return getToken(GCCParser.POINTS_END, 0); }
+		public TerminalNode POINTS_END() { return getToken(GCParser.POINTS_END, 0); }
 		public PointsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_points; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterPoints(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterPoints(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitPoints(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitPoints(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitPoints(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitPoints(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -533,7 +533,7 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class LineContext extends ParserRuleContext {
-		public TerminalNode LINE_START() { return getToken(GCCParser.LINE_START, 0); }
+		public TerminalNode LINE_START() { return getToken(GCParser.LINE_START, 0); }
 		public ColContext col() {
 			return getRuleContext(ColContext.class,0);
 		}
@@ -546,22 +546,22 @@ public class GCCParser extends Parser {
 		public SlopeContext slope() {
 			return getRuleContext(SlopeContext.class,0);
 		}
-		public TerminalNode LINE_END() { return getToken(GCCParser.LINE_END, 0); }
+		public TerminalNode LINE_END() { return getToken(GCParser.LINE_END, 0); }
 		public LineContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_line; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterLine(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterLine(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitLine(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitLine(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitLine(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitLine(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -599,7 +599,7 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class LinesContext extends ParserRuleContext {
-		public TerminalNode LINES_START() { return getToken(GCCParser.LINES_START, 0); }
+		public TerminalNode LINES_START() { return getToken(GCParser.LINES_START, 0); }
 		public ColContext col() {
 			return getRuleContext(ColContext.class,0);
 		}
@@ -609,22 +609,22 @@ public class GCCParser extends Parser {
 		public ListContext list() {
 			return getRuleContext(ListContext.class,0);
 		}
-		public TerminalNode LINES_END() { return getToken(GCCParser.LINES_END, 0); }
+		public TerminalNode LINES_END() { return getToken(GCParser.LINES_END, 0); }
 		public LinesContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_lines; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterLines(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterLines(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitLines(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitLines(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitLines(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitLines(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -660,7 +660,7 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class CurveContext extends ParserRuleContext {
-		public TerminalNode CURVE_START() { return getToken(GCCParser.CURVE_START, 0); }
+		public TerminalNode CURVE_START() { return getToken(GCParser.CURVE_START, 0); }
 		public ColContext col() {
 			return getRuleContext(ColContext.class,0);
 		}
@@ -676,22 +676,22 @@ public class GCCParser extends Parser {
 		public FunctionContext function() {
 			return getRuleContext(FunctionContext.class,0);
 		}
-		public TerminalNode CURVE_END() { return getToken(GCCParser.CURVE_END, 0); }
+		public TerminalNode CURVE_END() { return getToken(GCParser.CURVE_END, 0); }
 		public CurveContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_curve; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterCurve(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterCurve(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitCurve(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitCurve(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitCurve(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitCurve(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -731,7 +731,7 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ScaleContext extends ParserRuleContext {
-		public TerminalNode SCALE_START() { return getToken(GCCParser.SCALE_START, 0); }
+		public TerminalNode SCALE_START() { return getToken(GCParser.SCALE_START, 0); }
 		public ColContext col() {
 			return getRuleContext(ColContext.class,0);
 		}
@@ -756,22 +756,22 @@ public class GCCParser extends Parser {
 		public PrecisionContext precision() {
 			return getRuleContext(PrecisionContext.class,0);
 		}
-		public TerminalNode SCALE_END() { return getToken(GCCParser.SCALE_END, 0); }
+		public TerminalNode SCALE_END() { return getToken(GCParser.SCALE_END, 0); }
 		public ScaleContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_scale; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterScale(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterScale(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitScale(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitScale(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitScale(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitScale(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -817,8 +817,8 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ColContext extends ParserRuleContext {
-		public TerminalNode COL_START() { return getToken(GCCParser.COL_START, 0); }
-		public TerminalNode COL_END() { return getToken(GCCParser.COL_END, 0); }
+		public TerminalNode COL_START() { return getToken(GCParser.COL_START, 0); }
+		public TerminalNode COL_END() { return getToken(GCParser.COL_END, 0); }
 		public Color_valContext color_val() {
 			return getRuleContext(Color_valContext.class,0);
 		}
@@ -828,15 +828,15 @@ public class GCCParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_col; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterCol(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterCol(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitCol(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitCol(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitCol(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitCol(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -877,26 +877,26 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class X_rangeContext extends ParserRuleContext {
-		public TerminalNode X_RANGE_START() { return getToken(GCCParser.X_RANGE_START, 0); }
+		public TerminalNode X_RANGE_START() { return getToken(GCParser.X_RANGE_START, 0); }
 		public Number_pairContext number_pair() {
 			return getRuleContext(Number_pairContext.class,0);
 		}
-		public TerminalNode X_RANGE_END() { return getToken(GCCParser.X_RANGE_END, 0); }
+		public TerminalNode X_RANGE_END() { return getToken(GCParser.X_RANGE_END, 0); }
 		public X_rangeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_x_range; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterX_range(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterX_range(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitX_range(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitX_range(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitX_range(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitX_range(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -928,26 +928,26 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Y_rangeContext extends ParserRuleContext {
-		public TerminalNode Y_RANGE_START() { return getToken(GCCParser.Y_RANGE_START, 0); }
+		public TerminalNode Y_RANGE_START() { return getToken(GCParser.Y_RANGE_START, 0); }
 		public Number_pairContext number_pair() {
 			return getRuleContext(Number_pairContext.class,0);
 		}
-		public TerminalNode Y_RANGE_END() { return getToken(GCCParser.Y_RANGE_END, 0); }
+		public TerminalNode Y_RANGE_END() { return getToken(GCParser.Y_RANGE_END, 0); }
 		public Y_rangeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_y_range; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterY_range(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterY_range(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitY_range(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitY_range(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitY_range(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitY_range(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -979,24 +979,24 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class WidContext extends ParserRuleContext {
-		public TerminalNode WID_START() { return getToken(GCCParser.WID_START, 0); }
-		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
-		public TerminalNode WID_END() { return getToken(GCCParser.WID_END, 0); }
+		public TerminalNode WID_START() { return getToken(GCParser.WID_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCParser.NUMBER, 0); }
+		public TerminalNode WID_END() { return getToken(GCParser.WID_END, 0); }
 		public WidContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_wid; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterWid(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterWid(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitWid(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitWid(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitWid(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitWid(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1028,24 +1028,24 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class WidthContext extends ParserRuleContext {
-		public TerminalNode WIDTH_START() { return getToken(GCCParser.WIDTH_START, 0); }
-		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
-		public TerminalNode WIDTH_END() { return getToken(GCCParser.WIDTH_END, 0); }
+		public TerminalNode WIDTH_START() { return getToken(GCParser.WIDTH_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCParser.NUMBER, 0); }
+		public TerminalNode WIDTH_END() { return getToken(GCParser.WIDTH_END, 0); }
 		public WidthContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_width; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterWidth(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterWidth(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitWidth(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitWidth(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitWidth(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitWidth(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1077,24 +1077,24 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class HeightContext extends ParserRuleContext {
-		public TerminalNode HEIGHT_START() { return getToken(GCCParser.HEIGHT_START, 0); }
-		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
-		public TerminalNode HEIGHT_END() { return getToken(GCCParser.HEIGHT_END, 0); }
+		public TerminalNode HEIGHT_START() { return getToken(GCParser.HEIGHT_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCParser.NUMBER, 0); }
+		public TerminalNode HEIGHT_END() { return getToken(GCParser.HEIGHT_END, 0); }
 		public HeightContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_height; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterHeight(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterHeight(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitHeight(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitHeight(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitHeight(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitHeight(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1126,24 +1126,24 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class PadContext extends ParserRuleContext {
-		public TerminalNode PAD_START() { return getToken(GCCParser.PAD_START, 0); }
-		public TerminalNode BOOLEAN() { return getToken(GCCParser.BOOLEAN, 0); }
-		public TerminalNode PAD_END() { return getToken(GCCParser.PAD_END, 0); }
+		public TerminalNode PAD_START() { return getToken(GCParser.PAD_START, 0); }
+		public TerminalNode BOOLEAN() { return getToken(GCParser.BOOLEAN, 0); }
+		public TerminalNode PAD_END() { return getToken(GCParser.PAD_END, 0); }
 		public PadContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_pad; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterPad(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterPad(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitPad(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitPad(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitPad(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitPad(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1175,24 +1175,24 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class RadiusContext extends ParserRuleContext {
-		public TerminalNode RADIUS_START() { return getToken(GCCParser.RADIUS_START, 0); }
-		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
-		public TerminalNode RADIUS_END() { return getToken(GCCParser.RADIUS_END, 0); }
+		public TerminalNode RADIUS_START() { return getToken(GCParser.RADIUS_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCParser.NUMBER, 0); }
+		public TerminalNode RADIUS_END() { return getToken(GCParser.RADIUS_END, 0); }
 		public RadiusContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_radius; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterRadius(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterRadius(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitRadius(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitRadius(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitRadius(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitRadius(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1224,26 +1224,26 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ListContext extends ParserRuleContext {
-		public TerminalNode LIST_START() { return getToken(GCCParser.LIST_START, 0); }
+		public TerminalNode LIST_START() { return getToken(GCParser.LIST_START, 0); }
 		public Number_pair_listContext number_pair_list() {
 			return getRuleContext(Number_pair_listContext.class,0);
 		}
-		public TerminalNode LIST_END() { return getToken(GCCParser.LIST_END, 0); }
+		public TerminalNode LIST_END() { return getToken(GCParser.LIST_END, 0); }
 		public ListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_list; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterList(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterList(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitList(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitList(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitList(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitList(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1275,26 +1275,26 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class PointContext extends ParserRuleContext {
-		public TerminalNode POINT_START() { return getToken(GCCParser.POINT_START, 0); }
+		public TerminalNode POINT_START() { return getToken(GCParser.POINT_START, 0); }
 		public Number_pairContext number_pair() {
 			return getRuleContext(Number_pairContext.class,0);
 		}
-		public TerminalNode POINT_END() { return getToken(GCCParser.POINT_END, 0); }
+		public TerminalNode POINT_END() { return getToken(GCParser.POINT_END, 0); }
 		public PointContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_point; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterPoint(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterPoint(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitPoint(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitPoint(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitPoint(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitPoint(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1326,25 +1326,25 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class SlopeContext extends ParserRuleContext {
-		public TerminalNode SLOPE_START() { return getToken(GCCParser.SLOPE_START, 0); }
-		public TerminalNode SLOPE_END() { return getToken(GCCParser.SLOPE_END, 0); }
-		public TerminalNode INF() { return getToken(GCCParser.INF, 0); }
-		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
+		public TerminalNode SLOPE_START() { return getToken(GCParser.SLOPE_START, 0); }
+		public TerminalNode SLOPE_END() { return getToken(GCParser.SLOPE_END, 0); }
+		public TerminalNode INF() { return getToken(GCParser.INF, 0); }
+		public TerminalNode NUMBER() { return getToken(GCParser.NUMBER, 0); }
 		public SlopeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_slope; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterSlope(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterSlope(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitSlope(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitSlope(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitSlope(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitSlope(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1385,26 +1385,26 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class RangeContext extends ParserRuleContext {
-		public TerminalNode RANGE_START() { return getToken(GCCParser.RANGE_START, 0); }
+		public TerminalNode RANGE_START() { return getToken(GCParser.RANGE_START, 0); }
 		public Number_pairContext number_pair() {
 			return getRuleContext(Number_pairContext.class,0);
 		}
-		public TerminalNode RANGE_END() { return getToken(GCCParser.RANGE_END, 0); }
+		public TerminalNode RANGE_END() { return getToken(GCParser.RANGE_END, 0); }
 		public RangeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_range; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterRange(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterRange(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitRange(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitRange(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitRange(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitRange(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1436,24 +1436,24 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class AmountContext extends ParserRuleContext {
-		public TerminalNode AMOUNT_START() { return getToken(GCCParser.AMOUNT_START, 0); }
-		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
-		public TerminalNode AMOUNT_END() { return getToken(GCCParser.AMOUNT_END, 0); }
+		public TerminalNode AMOUNT_START() { return getToken(GCParser.AMOUNT_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCParser.NUMBER, 0); }
+		public TerminalNode AMOUNT_END() { return getToken(GCParser.AMOUNT_END, 0); }
 		public AmountContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_amount; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterAmount(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterAmount(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitAmount(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitAmount(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitAmount(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitAmount(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1485,24 +1485,24 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class DirectionContext extends ParserRuleContext {
-		public TerminalNode DIRECTION_START() { return getToken(GCCParser.DIRECTION_START, 0); }
-		public TerminalNode DIRECTION_TYPE() { return getToken(GCCParser.DIRECTION_TYPE, 0); }
-		public TerminalNode DIRECTION_END() { return getToken(GCCParser.DIRECTION_END, 0); }
+		public TerminalNode DIRECTION_START() { return getToken(GCParser.DIRECTION_START, 0); }
+		public TerminalNode DIRECTION_TYPE() { return getToken(GCParser.DIRECTION_TYPE, 0); }
+		public TerminalNode DIRECTION_END() { return getToken(GCParser.DIRECTION_END, 0); }
 		public DirectionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_direction; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterDirection(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterDirection(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitDirection(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitDirection(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitDirection(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitDirection(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1534,24 +1534,24 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class PosContext extends ParserRuleContext {
-		public TerminalNode POS_START() { return getToken(GCCParser.POS_START, 0); }
-		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
-		public TerminalNode POS_END() { return getToken(GCCParser.POS_END, 0); }
+		public TerminalNode POS_START() { return getToken(GCParser.POS_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCParser.NUMBER, 0); }
+		public TerminalNode POS_END() { return getToken(GCParser.POS_END, 0); }
 		public PosContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_pos; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterPos(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterPos(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitPos(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitPos(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitPos(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitPos(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1583,24 +1583,24 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class FromContext extends ParserRuleContext {
-		public TerminalNode FROM_START() { return getToken(GCCParser.FROM_START, 0); }
-		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
-		public TerminalNode FROM_END() { return getToken(GCCParser.FROM_END, 0); }
+		public TerminalNode FROM_START() { return getToken(GCParser.FROM_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCParser.NUMBER, 0); }
+		public TerminalNode FROM_END() { return getToken(GCParser.FROM_END, 0); }
 		public FromContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_from; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterFrom(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterFrom(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitFrom(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitFrom(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitFrom(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitFrom(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1632,24 +1632,24 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class StepContext extends ParserRuleContext {
-		public TerminalNode STEP_START() { return getToken(GCCParser.STEP_START, 0); }
-		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
-		public TerminalNode STEP_END() { return getToken(GCCParser.STEP_END, 0); }
+		public TerminalNode STEP_START() { return getToken(GCParser.STEP_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCParser.NUMBER, 0); }
+		public TerminalNode STEP_END() { return getToken(GCParser.STEP_END, 0); }
 		public StepContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_step; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterStep(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterStep(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitStep(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitStep(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitStep(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitStep(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1681,24 +1681,24 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class PrecisionContext extends ParserRuleContext {
-		public TerminalNode PRECISION_START() { return getToken(GCCParser.PRECISION_START, 0); }
-		public TerminalNode NUMBER() { return getToken(GCCParser.NUMBER, 0); }
-		public TerminalNode PRECISION_END() { return getToken(GCCParser.PRECISION_END, 0); }
+		public TerminalNode PRECISION_START() { return getToken(GCParser.PRECISION_START, 0); }
+		public TerminalNode NUMBER() { return getToken(GCParser.NUMBER, 0); }
+		public TerminalNode PRECISION_END() { return getToken(GCParser.PRECISION_END, 0); }
 		public PrecisionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_precision; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterPrecision(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterPrecision(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitPrecision(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitPrecision(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitPrecision(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitPrecision(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1730,24 +1730,24 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class TypeContext extends ParserRuleContext {
-		public TerminalNode TYPE_START() { return getToken(GCCParser.TYPE_START, 0); }
-		public TerminalNode SHAPE_TYPE() { return getToken(GCCParser.SHAPE_TYPE, 0); }
-		public TerminalNode TYPE_END() { return getToken(GCCParser.TYPE_END, 0); }
+		public TerminalNode TYPE_START() { return getToken(GCParser.TYPE_START, 0); }
+		public TerminalNode SHAPE_TYPE() { return getToken(GCParser.SHAPE_TYPE, 0); }
+		public TerminalNode TYPE_END() { return getToken(GCParser.TYPE_END, 0); }
 		public TypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_type; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterType(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterType(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitType(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitType(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitType(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitType(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1779,26 +1779,26 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class CenterContext extends ParserRuleContext {
-		public TerminalNode CENTER_START() { return getToken(GCCParser.CENTER_START, 0); }
+		public TerminalNode CENTER_START() { return getToken(GCParser.CENTER_START, 0); }
 		public Number_pairContext number_pair() {
 			return getRuleContext(Number_pairContext.class,0);
 		}
-		public TerminalNode CENTER_END() { return getToken(GCCParser.CENTER_END, 0); }
+		public TerminalNode CENTER_END() { return getToken(GCParser.CENTER_END, 0); }
 		public CenterContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_center; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterCenter(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterCenter(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitCenter(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitCenter(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitCenter(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitCenter(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1830,24 +1830,24 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class FunctionContext extends ParserRuleContext {
-		public TerminalNode FUNCTION_START() { return getToken(GCCParser.FUNCTION_START, 0); }
-		public TerminalNode FUNCTION_EXPR() { return getToken(GCCParser.FUNCTION_EXPR, 0); }
-		public TerminalNode FUNCTION_END() { return getToken(GCCParser.FUNCTION_END, 0); }
+		public TerminalNode FUNCTION_START() { return getToken(GCParser.FUNCTION_START, 0); }
+		public TerminalNode FUNCTION_EXPR() { return getToken(GCParser.FUNCTION_EXPR, 0); }
+		public TerminalNode FUNCTION_END() { return getToken(GCParser.FUNCTION_END, 0); }
 		public FunctionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_function; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterFunction(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterFunction(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitFunction(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitFunction(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitFunction(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitFunction(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1879,27 +1879,27 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Number_pairContext extends ParserRuleContext {
-		public List<TerminalNode> NUMBER() { return getTokens(GCCParser.NUMBER); }
+		public List<TerminalNode> NUMBER() { return getTokens(GCParser.NUMBER); }
 		public TerminalNode NUMBER(int i) {
-			return getToken(GCCParser.NUMBER, i);
+			return getToken(GCParser.NUMBER, i);
 		}
-		public TerminalNode COMMA() { return getToken(GCCParser.COMMA, 0); }
-		public TerminalNode SEMICOLON() { return getToken(GCCParser.SEMICOLON, 0); }
+		public TerminalNode COMMA() { return getToken(GCParser.COMMA, 0); }
+		public TerminalNode SEMICOLON() { return getToken(GCParser.SEMICOLON, 0); }
 		public Number_pairContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_number_pair; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterNumber_pair(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterNumber_pair(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitNumber_pair(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitNumber_pair(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitNumber_pair(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitNumber_pair(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1954,15 +1954,15 @@ public class GCCParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_number_pair_list; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterNumber_pair_list(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterNumber_pair_list(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitNumber_pair_list(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitNumber_pair_list(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitNumber_pair_list(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitNumber_pair_list(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1974,7 +1974,7 @@ public class GCCParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(235);
+			setState(235); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
@@ -1984,7 +1984,7 @@ public class GCCParser extends Parser {
 				number_pair();
 				}
 				}
-				setState(237);
+				setState(237); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==NUMBER );
@@ -2003,13 +2003,13 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Number_tripletContext extends ParserRuleContext {
-		public List<TerminalNode> NUMBER() { return getTokens(GCCParser.NUMBER); }
+		public List<TerminalNode> NUMBER() { return getTokens(GCParser.NUMBER); }
 		public TerminalNode NUMBER(int i) {
-			return getToken(GCCParser.NUMBER, i);
+			return getToken(GCParser.NUMBER, i);
 		}
-		public List<TerminalNode> COMMA() { return getTokens(GCCParser.COMMA); }
+		public List<TerminalNode> COMMA() { return getTokens(GCParser.COMMA); }
 		public TerminalNode COMMA(int i) {
-			return getToken(GCCParser.COMMA, i);
+			return getToken(GCParser.COMMA, i);
 		}
 		public Number_tripletContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -2017,15 +2017,15 @@ public class GCCParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_number_triplet; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterNumber_triplet(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterNumber_triplet(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitNumber_triplet(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitNumber_triplet(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitNumber_triplet(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitNumber_triplet(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2061,7 +2061,7 @@ public class GCCParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Color_valContext extends ParserRuleContext {
-		public TerminalNode COLOR_TYPE() { return getToken(GCCParser.COLOR_TYPE, 0); }
+		public TerminalNode COLOR_TYPE() { return getToken(GCParser.COLOR_TYPE, 0); }
 		public Number_tripletContext number_triplet() {
 			return getRuleContext(Number_tripletContext.class,0);
 		}
@@ -2071,15 +2071,15 @@ public class GCCParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_color_val; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).enterColor_val(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).enterColor_val(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GCCParserListener ) ((GCCParserListener)listener).exitColor_val(this);
+			if ( listener instanceof GCParserListener ) ((GCParserListener)listener).exitColor_val(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GCCParserVisitor ) return ((GCCParserVisitor<? extends T>)visitor).visitColor_val(this);
+			if ( visitor instanceof GCParserVisitor ) return ((GCParserVisitor<? extends T>)visitor).visitColor_val(this);
 			else return visitor.visitChildren(this);
 		}
 	}

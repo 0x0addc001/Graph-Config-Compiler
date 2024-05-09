@@ -1,4 +1,4 @@
-// Generated from D:/CompilerPrincipleProjects/Graph-Config-Compiler-Project/Graph-Config-Compiler/src/main/java/com/ljl/antlr/GCCParser.g4 by ANTLR 4.13.1
+// Generated from D:/CompilerPrincipleProjects/Graph-Config-Compiler-Project/Graph-Config-Compiler/src/main/java/com/ljl/antlr/GCParser.g4 by ANTLR 4.13.1
 package com.ljl.antlr;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -6,420 +6,420 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * This class provides an empty implementation of {@link GCCParserListener},
+ * This class provides an empty implementation of {@link GCParserListener},
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
 @SuppressWarnings("CheckReturnValue")
-public class GCCParserBaseListener implements GCCParserListener {
+public class GCParserBaseListener implements GCParserListener {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConfig(GCCParser.ConfigContext ctx) { }
+	@Override public void enterConfig(GCParser.ConfigContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConfig(GCCParser.ConfigContext ctx) { }
+	@Override public void exitConfig(GCParser.ConfigContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterElement(GCCParser.ElementContext ctx) { }
+	@Override public void enterElement(GCParser.ElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitElement(GCCParser.ElementContext ctx) { }
+	@Override public void exitElement(GCParser.ElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBg(GCCParser.BgContext ctx) { }
+	@Override public void enterBg(GCParser.BgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBg(GCCParser.BgContext ctx) { }
+	@Override public void exitBg(GCParser.BgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterShape(GCCParser.ShapeContext ctx) { }
+	@Override public void enterShape(GCParser.ShapeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitShape(GCCParser.ShapeContext ctx) { }
+	@Override public void exitShape(GCParser.ShapeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPoints(GCCParser.PointsContext ctx) { }
+	@Override public void enterPoints(GCParser.PointsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPoints(GCCParser.PointsContext ctx) { }
+	@Override public void exitPoints(GCParser.PointsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLine(GCCParser.LineContext ctx) { }
+	@Override public void enterLine(GCParser.LineContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLine(GCCParser.LineContext ctx) { }
+	@Override public void exitLine(GCParser.LineContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLines(GCCParser.LinesContext ctx) { }
+	@Override public void enterLines(GCParser.LinesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLines(GCCParser.LinesContext ctx) { }
+	@Override public void exitLines(GCParser.LinesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCurve(GCCParser.CurveContext ctx) { }
+	@Override public void enterCurve(GCParser.CurveContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCurve(GCCParser.CurveContext ctx) { }
+	@Override public void exitCurve(GCParser.CurveContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterScale(GCCParser.ScaleContext ctx) { }
+	@Override public void enterScale(GCParser.ScaleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitScale(GCCParser.ScaleContext ctx) { }
+	@Override public void exitScale(GCParser.ScaleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCol(GCCParser.ColContext ctx) { }
+	@Override public void enterCol(GCParser.ColContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCol(GCCParser.ColContext ctx) { }
+	@Override public void exitCol(GCParser.ColContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterX_range(GCCParser.X_rangeContext ctx) { }
+	@Override public void enterX_range(GCParser.X_rangeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitX_range(GCCParser.X_rangeContext ctx) { }
+	@Override public void exitX_range(GCParser.X_rangeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterY_range(GCCParser.Y_rangeContext ctx) { }
+	@Override public void enterY_range(GCParser.Y_rangeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitY_range(GCCParser.Y_rangeContext ctx) { }
+	@Override public void exitY_range(GCParser.Y_rangeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWid(GCCParser.WidContext ctx) { }
+	@Override public void enterWid(GCParser.WidContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitWid(GCCParser.WidContext ctx) { }
+	@Override public void exitWid(GCParser.WidContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWidth(GCCParser.WidthContext ctx) { }
+	@Override public void enterWidth(GCParser.WidthContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitWidth(GCCParser.WidthContext ctx) { }
+	@Override public void exitWidth(GCParser.WidthContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterHeight(GCCParser.HeightContext ctx) { }
+	@Override public void enterHeight(GCParser.HeightContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitHeight(GCCParser.HeightContext ctx) { }
+	@Override public void exitHeight(GCParser.HeightContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPad(GCCParser.PadContext ctx) { }
+	@Override public void enterPad(GCParser.PadContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPad(GCCParser.PadContext ctx) { }
+	@Override public void exitPad(GCParser.PadContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRadius(GCCParser.RadiusContext ctx) { }
+	@Override public void enterRadius(GCParser.RadiusContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRadius(GCCParser.RadiusContext ctx) { }
+	@Override public void exitRadius(GCParser.RadiusContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterList(GCCParser.ListContext ctx) { }
+	@Override public void enterList(GCParser.ListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitList(GCCParser.ListContext ctx) { }
+	@Override public void exitList(GCParser.ListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPoint(GCCParser.PointContext ctx) { }
+	@Override public void enterPoint(GCParser.PointContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPoint(GCCParser.PointContext ctx) { }
+	@Override public void exitPoint(GCParser.PointContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSlope(GCCParser.SlopeContext ctx) { }
+	@Override public void enterSlope(GCParser.SlopeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSlope(GCCParser.SlopeContext ctx) { }
+	@Override public void exitSlope(GCParser.SlopeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRange(GCCParser.RangeContext ctx) { }
+	@Override public void enterRange(GCParser.RangeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRange(GCCParser.RangeContext ctx) { }
+	@Override public void exitRange(GCParser.RangeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAmount(GCCParser.AmountContext ctx) { }
+	@Override public void enterAmount(GCParser.AmountContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAmount(GCCParser.AmountContext ctx) { }
+	@Override public void exitAmount(GCParser.AmountContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDirection(GCCParser.DirectionContext ctx) { }
+	@Override public void enterDirection(GCParser.DirectionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDirection(GCCParser.DirectionContext ctx) { }
+	@Override public void exitDirection(GCParser.DirectionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPos(GCCParser.PosContext ctx) { }
+	@Override public void enterPos(GCParser.PosContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPos(GCCParser.PosContext ctx) { }
+	@Override public void exitPos(GCParser.PosContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFrom(GCCParser.FromContext ctx) { }
+	@Override public void enterFrom(GCParser.FromContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFrom(GCCParser.FromContext ctx) { }
+	@Override public void exitFrom(GCParser.FromContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStep(GCCParser.StepContext ctx) { }
+	@Override public void enterStep(GCParser.StepContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStep(GCCParser.StepContext ctx) { }
+	@Override public void exitStep(GCParser.StepContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrecision(GCCParser.PrecisionContext ctx) { }
+	@Override public void enterPrecision(GCParser.PrecisionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrecision(GCCParser.PrecisionContext ctx) { }
+	@Override public void exitPrecision(GCParser.PrecisionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterType(GCCParser.TypeContext ctx) { }
+	@Override public void enterType(GCParser.TypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitType(GCCParser.TypeContext ctx) { }
+	@Override public void exitType(GCParser.TypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCenter(GCCParser.CenterContext ctx) { }
+	@Override public void enterCenter(GCParser.CenterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCenter(GCCParser.CenterContext ctx) { }
+	@Override public void exitCenter(GCParser.CenterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunction(GCCParser.FunctionContext ctx) { }
+	@Override public void enterFunction(GCParser.FunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunction(GCCParser.FunctionContext ctx) { }
+	@Override public void exitFunction(GCParser.FunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumber_pair(GCCParser.Number_pairContext ctx) { }
+	@Override public void enterNumber_pair(GCParser.Number_pairContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumber_pair(GCCParser.Number_pairContext ctx) { }
+	@Override public void exitNumber_pair(GCParser.Number_pairContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumber_pair_list(GCCParser.Number_pair_listContext ctx) { }
+	@Override public void enterNumber_pair_list(GCParser.Number_pair_listContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumber_pair_list(GCCParser.Number_pair_listContext ctx) { }
+	@Override public void exitNumber_pair_list(GCParser.Number_pair_listContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumber_triplet(GCCParser.Number_tripletContext ctx) { }
+	@Override public void enterNumber_triplet(GCParser.Number_tripletContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumber_triplet(GCCParser.Number_tripletContext ctx) { }
+	@Override public void exitNumber_triplet(GCParser.Number_tripletContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterColor_val(GCCParser.Color_valContext ctx) { }
+	@Override public void enterColor_val(GCParser.Color_valContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitColor_val(GCCParser.Color_valContext ctx) { }
+	@Override public void exitColor_val(GCParser.Color_valContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

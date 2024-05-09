@@ -13,13 +13,13 @@ public class Main {
             CharStream input = CharStreams.fromStream(inputStream);
 
             // 创建Lexer并传入输入流
-            GCCLexer lexer = new GCCLexer(input);
+            GCLexer lexer = new GCLexer(input);
 
             // 创建Token流
             CommonTokenStream tokens = new CommonTokenStream(lexer);
 
             // 创建Parser并传入Token流
-            GCCParser parser = new GCCParser(tokens);
+            GCParser parser = new GCParser(tokens);
 
             // 开始解析，获取语法树
             ParseTree tree = parser.config();

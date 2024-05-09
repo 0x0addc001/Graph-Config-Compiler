@@ -1,6 +1,8 @@
-package com.ljl.gcc;
+package com.ljl.gcc.token;
 
-public class Token {
+import com.ljl.gcc.GCCompiler;
+
+public class Token extends GCCompiler {
 
     public static final int INVALID_TYPE = 0;
     public static final int EOF = -1;
@@ -43,4 +45,12 @@ public class Token {
         this.index = index;
     }
 
+    @Override
+    public String toString() {
+        return "Token{" +
+                "type=" + TOKENTABLE.getSymbolicName(this.type) +
+                ", text='" + text + '\'' +
+                ", index=" + index +
+                '}';
+    }
 }

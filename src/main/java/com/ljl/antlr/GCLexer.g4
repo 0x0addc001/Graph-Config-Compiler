@@ -1,4 +1,4 @@
-lexer grammar GCCLexer;
+lexer grammar GCLexer;
 
 // Define tokens
 
