@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/GCCompiler.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/GCLexer.l" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/GCParser.tab.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/GCParser.tab.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/GCParser.y" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/install.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/lex.yy.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/run.bat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/GCCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/GCCompiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/example.gc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/example.gc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/example.gc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,12 +53,15 @@
     </option>
   </component>
   <component name="ProjectId" id="2P8WL5mkwxVgNmKvy7VnaiecisX" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -179,7 +190,8 @@
       <workItem from="1715085806064" duration="4166000" />
       <workItem from="1715127528866" duration="50842000" />
       <workItem from="1715232523273" duration="389000" />
-      <workItem from="1715232919887" duration="25379000" />
+      <workItem from="1715232919887" duration="25413000" />
+      <workItem from="1715299243713" duration="8641000" />
     </task>
     <task id="LOCAL-00001" summary="GCCLexer.java COMPLETE">
       <created>1715160213832</created>
@@ -223,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715256235814</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="GCCDrawer.java 100%-COMPLETE">
+      <created>1715262969659</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715262969659</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,12 +260,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="GCCLexer.java COMPLETE" />
     <MESSAGE value="GCCParser2.java SEMI-COMPLETE" />
     <MESSAGE value="GCCParser.java 90%-COMPLETE" />
     <MESSAGE value="GCCParser.java 100%-COMPLETE" />
     <MESSAGE value="GCCDrawer.java 50%-COMPLETE" />
     <MESSAGE value="GCCDrawer.java 60%-COMPLETE" />
-    <option name="LAST_COMMIT_MESSAGE" value="GCCDrawer.java 60%-COMPLETE" />
+    <MESSAGE value="GCCDrawer.java 100%-COMPLETE" />
+    <option name="LAST_COMMIT_MESSAGE" value="GCCDrawer.java 100%-COMPLETE" />
   </component>
 </project>
