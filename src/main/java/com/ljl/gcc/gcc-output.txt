@@ -1,0 +1,812 @@
+----------------------------------------------------------------------
+Input: 
+<config>
+    <!--
+    【1】配置文件用xml格式，注释采用标准的xml注释格式。
+    【2】有7类设定：
+    （1）<bg>：用于设定画布的背景颜色及横向和纵向坐标范围；
+    （2）<points>：用于画一个或多个点，可以对点的颜色和填充等进行配置；
+    （3）<lines>：用于画折线，可以对折线的颜色和粗细进行配置：
+    （4）<line>：根据提供的单个点和斜率，画射线；
+    （5）<curve>：用于画曲线，画出采用公式描述的曲线；
+    （6）<shape>：用于画矩形和椭圆，能够对填充颜色进行配置；
+    （7）<scale>：用于画x,y轴刻度；
+    【3】与颜色相关的标签中，均可以采用两种方式之一设定：
+    （1）用名称颜色，名称颜色共11种：
+    red, orange, yellow, green,
+    cyan, blue, indigo, violet,
+    white, gray, black    （2）用RGB颜色，例如：
+    255,0,155
+    【4】其它设定包括：
+    （1）所有与线的粗细有关的设定都默认为1；
+    （2）所有与颜色相关的设定的默认值都为黑色（0,0,0)；背景为白色；
+    （3）画曲线时，默认离散点的数量为500；
+    （4）画刻度时，默认间隔数量<amount>为10.
+    【5】以下为各种设置示例：
+    -->
+    <bg>
+        <col> 255,255,255 </col>
+        <xRange> -0.1, 1.1 </xRange>
+        <yRange> -0.1, 1.1 </yRange>
+    </bg>
+    <shape>
+        <col> 180,180,180 </col>
+        <wid> 1 </wid>
+        <pad> true </pad>
+        <type> oval </type>
+        <!-- type includes oval & rect -->
+        <center> 0.6, 0.8 </center>
+        <width> 0.3 </width>
+        <height> 0.2 </height>
+    </shape>
+    <shape>
+        <col> 180,180,180 </col>
+        <wid> 5 </wid>
+        <pad> false </pad>
+        <type> rect </type>
+        <!-- type includes oval & rect -->
+        <center> 0.3, 0.4 </center>
+        <width> 0.3 </width>
+        <height> 0.2 </height>
+    </shape>
+    <points>
+        <col> red </col>
+        <wid> 2 </wid>
+        <pad> true </pad>
+        <radius> 6 </radius>
+        <list>
+            0.2, 0.2;
+            0.2, 0.5;
+            0.2, 0.8;
+            0.5, 0.8;
+            0.8, 0.8;
+            0.8, 0.5;
+            0.8, 0.2;
+            0.5, 0.2;
+        </list>
+    </points>
+    <line>
+        <col>  </col>
+        <wid> 2 </wid>
+        <point> 0.3, 0.3 </point>
+        <slope> inf </slope>
+    </line>
+    <line>
+        <col>  </col>
+        <wid> 2 </wid>
+        <point> 0.3, 0.3 </point>
+        <slope> 0.7 </slope>
+    </line>
+    <lines>
+        <col> orange </col>
+        <wid> 3 </wid>
+        <list>
+            0.2, 0.2;
+            0.2, 0.5;
+            0.2, 0.8;
+            0.5, 0.8;
+            0.8, 0.8;
+            0.8, 0.5;
+            0.8, 0.2;
+            0.5, 0.2;
+            0.5, 0.5;
+        </list>
+    </lines>
+    <curve>
+        <col> 0,0,255 </col>
+        <wid> 3 </wid>
+        <range> 0, 1 </range>
+        <amount> 500 </amount>
+        <function> {Math.pow(x,2)-0.05} </function>
+    </curve>
+    <scale>
+        <col> 180,180,180 </col>
+        <wid> 1 </wid>
+        <direction> x </direction>
+        <pos> 0.0 </pos>
+        <from> 0 </from>
+        <step> 0.1 </step>
+        <amount> 10 </amount>
+        <precision> 1 </precision>
+    </scale>
+    <scale>
+        <col> black </col>
+        <wid> 1 </wid>
+        <direction> y </direction>
+        <pos> 0 </pos>
+        <from> 0 </from>
+        <step> 0.1 </step>
+        <amount> 10 </amount>
+        <precision> 1 </precision>
+    </scale>
+</config>
+
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Lex Output: 
+Lex Successfully
+Tokens: 
+Token{type=CONFIG_START, text='<config>', index=0}
+Token{type=BG_START, text='<bg>', index=1}
+Token{type=COL_START, text='<col>', index=2}
+Token{type=NUMBER, text='255', index=3}
+Token{type=COMMA, text=',', index=4}
+Token{type=NUMBER, text='255', index=5}
+Token{type=COMMA, text=',', index=6}
+Token{type=NUMBER, text='255', index=7}
+Token{type=COL_END, text='</col>', index=8}
+Token{type=X_RANGE_START, text='<xRange>', index=9}
+Token{type=NUMBER, text='-0.1', index=10}
+Token{type=COMMA, text=',', index=11}
+Token{type=NUMBER, text='1.1', index=12}
+Token{type=X_RANGE_END, text='</xRange>', index=13}
+Token{type=Y_RANGE_START, text='<yRange>', index=14}
+Token{type=NUMBER, text='-0.1', index=15}
+Token{type=COMMA, text=',', index=16}
+Token{type=NUMBER, text='1.1', index=17}
+Token{type=Y_RANGE_END, text='</yRange>', index=18}
+Token{type=BG_END, text='</bg>', index=19}
+Token{type=SHAPE_START, text='<shape>', index=20}
+Token{type=COL_START, text='<col>', index=21}
+Token{type=NUMBER, text='180', index=22}
+Token{type=COMMA, text=',', index=23}
+Token{type=NUMBER, text='180', index=24}
+Token{type=COMMA, text=',', index=25}
+Token{type=NUMBER, text='180', index=26}
+Token{type=COL_END, text='</col>', index=27}
+Token{type=WID_START, text='<wid>', index=28}
+Token{type=NUMBER, text='1', index=29}
+Token{type=WID_END, text='</wid>', index=30}
+Token{type=PAD_START, text='<pad>', index=31}
+Token{type=BOOLEAN, text='true', index=32}
+Token{type=PAD_END, text='</pad>', index=33}
+Token{type=TYPE_START, text='<type>', index=34}
+Token{type=SHAPE_TYPE, text='oval', index=35}
+Token{type=TYPE_END, text='</type>', index=36}
+Token{type=CENTER_START, text='<center>', index=37}
+Token{type=NUMBER, text='0.6', index=38}
+Token{type=COMMA, text=',', index=39}
+Token{type=NUMBER, text='0.8', index=40}
+Token{type=CENTER_END, text='</center>', index=41}
+Token{type=WIDTH_START, text='<width>', index=42}
+Token{type=NUMBER, text='0.3', index=43}
+Token{type=WIDTH_END, text='</width>', index=44}
+Token{type=HEIGHT_START, text='<height>', index=45}
+Token{type=NUMBER, text='0.2', index=46}
+Token{type=HEIGHT_END, text='</height>', index=47}
+Token{type=SHAPE_END, text='</shape>', index=48}
+Token{type=SHAPE_START, text='<shape>', index=49}
+Token{type=COL_START, text='<col>', index=50}
+Token{type=NUMBER, text='180', index=51}
+Token{type=COMMA, text=',', index=52}
+Token{type=NUMBER, text='180', index=53}
+Token{type=COMMA, text=',', index=54}
+Token{type=NUMBER, text='180', index=55}
+Token{type=COL_END, text='</col>', index=56}
+Token{type=WID_START, text='<wid>', index=57}
+Token{type=NUMBER, text='5', index=58}
+Token{type=WID_END, text='</wid>', index=59}
+Token{type=PAD_START, text='<pad>', index=60}
+Token{type=BOOLEAN, text='false', index=61}
+Token{type=PAD_END, text='</pad>', index=62}
+Token{type=TYPE_START, text='<type>', index=63}
+Token{type=SHAPE_TYPE, text='rect', index=64}
+Token{type=TYPE_END, text='</type>', index=65}
+Token{type=CENTER_START, text='<center>', index=66}
+Token{type=NUMBER, text='0.3', index=67}
+Token{type=COMMA, text=',', index=68}
+Token{type=NUMBER, text='0.4', index=69}
+Token{type=CENTER_END, text='</center>', index=70}
+Token{type=WIDTH_START, text='<width>', index=71}
+Token{type=NUMBER, text='0.3', index=72}
+Token{type=WIDTH_END, text='</width>', index=73}
+Token{type=HEIGHT_START, text='<height>', index=74}
+Token{type=NUMBER, text='0.2', index=75}
+Token{type=HEIGHT_END, text='</height>', index=76}
+Token{type=SHAPE_END, text='</shape>', index=77}
+Token{type=POINTS_START, text='<points>', index=78}
+Token{type=COL_START, text='<col>', index=79}
+Token{type=COLOR_TYPE, text='red', index=80}
+Token{type=COL_END, text='</col>', index=81}
+Token{type=WID_START, text='<wid>', index=82}
+Token{type=NUMBER, text='2', index=83}
+Token{type=WID_END, text='</wid>', index=84}
+Token{type=PAD_START, text='<pad>', index=85}
+Token{type=BOOLEAN, text='true', index=86}
+Token{type=PAD_END, text='</pad>', index=87}
+Token{type=RADIUS_START, text='<radius>', index=88}
+Token{type=NUMBER, text='6', index=89}
+Token{type=RADIUS_END, text='</radius>', index=90}
+Token{type=LIST_START, text='<list>', index=91}
+Token{type=NUMBER, text='0.2', index=92}
+Token{type=COMMA, text=',', index=93}
+Token{type=NUMBER, text='0.2', index=94}
+Token{type=SEMICOLON, text=';', index=95}
+Token{type=NUMBER, text='0.2', index=96}
+Token{type=COMMA, text=',', index=97}
+Token{type=NUMBER, text='0.5', index=98}
+Token{type=SEMICOLON, text=';', index=99}
+Token{type=NUMBER, text='0.2', index=100}
+Token{type=COMMA, text=',', index=101}
+Token{type=NUMBER, text='0.8', index=102}
+Token{type=SEMICOLON, text=';', index=103}
+Token{type=NUMBER, text='0.5', index=104}
+Token{type=COMMA, text=',', index=105}
+Token{type=NUMBER, text='0.8', index=106}
+Token{type=SEMICOLON, text=';', index=107}
+Token{type=NUMBER, text='0.8', index=108}
+Token{type=COMMA, text=',', index=109}
+Token{type=NUMBER, text='0.8', index=110}
+Token{type=SEMICOLON, text=';', index=111}
+Token{type=NUMBER, text='0.8', index=112}
+Token{type=COMMA, text=',', index=113}
+Token{type=NUMBER, text='0.5', index=114}
+Token{type=SEMICOLON, text=';', index=115}
+Token{type=NUMBER, text='0.8', index=116}
+Token{type=COMMA, text=',', index=117}
+Token{type=NUMBER, text='0.2', index=118}
+Token{type=SEMICOLON, text=';', index=119}
+Token{type=NUMBER, text='0.5', index=120}
+Token{type=COMMA, text=',', index=121}
+Token{type=NUMBER, text='0.2', index=122}
+Token{type=SEMICOLON, text=';', index=123}
+Token{type=LIST_END, text='</list>', index=124}
+Token{type=POINTS_END, text='</points>', index=125}
+Token{type=LINE_START, text='<line>', index=126}
+Token{type=COL_START, text='<col>', index=127}
+Token{type=COL_END, text='</col>', index=128}
+Token{type=WID_START, text='<wid>', index=129}
+Token{type=NUMBER, text='2', index=130}
+Token{type=WID_END, text='</wid>', index=131}
+Token{type=POINT_START, text='<point>', index=132}
+Token{type=NUMBER, text='0.3', index=133}
+Token{type=COMMA, text=',', index=134}
+Token{type=NUMBER, text='0.3', index=135}
+Token{type=POINT_END, text='</point>', index=136}
+Token{type=SLOPE_START, text='<slope>', index=137}
+Token{type=INF, text='inf', index=138}
+Token{type=SLOPE_END, text='</slope>', index=139}
+Token{type=LINE_END, text='</line>', index=140}
+Token{type=LINE_START, text='<line>', index=141}
+Token{type=COL_START, text='<col>', index=142}
+Token{type=COL_END, text='</col>', index=143}
+Token{type=WID_START, text='<wid>', index=144}
+Token{type=NUMBER, text='2', index=145}
+Token{type=WID_END, text='</wid>', index=146}
+Token{type=POINT_START, text='<point>', index=147}
+Token{type=NUMBER, text='0.3', index=148}
+Token{type=COMMA, text=',', index=149}
+Token{type=NUMBER, text='0.3', index=150}
+Token{type=POINT_END, text='</point>', index=151}
+Token{type=SLOPE_START, text='<slope>', index=152}
+Token{type=NUMBER, text='0.7', index=153}
+Token{type=SLOPE_END, text='</slope>', index=154}
+Token{type=LINE_END, text='</line>', index=155}
+Token{type=LINES_START, text='<lines>', index=156}
+Token{type=COL_START, text='<col>', index=157}
+Token{type=COLOR_TYPE, text='orange', index=158}
+Token{type=COL_END, text='</col>', index=159}
+Token{type=WID_START, text='<wid>', index=160}
+Token{type=NUMBER, text='3', index=161}
+Token{type=WID_END, text='</wid>', index=162}
+Token{type=LIST_START, text='<list>', index=163}
+Token{type=NUMBER, text='0.2', index=164}
+Token{type=COMMA, text=',', index=165}
+Token{type=NUMBER, text='0.2', index=166}
+Token{type=SEMICOLON, text=';', index=167}
+Token{type=NUMBER, text='0.2', index=168}
+Token{type=COMMA, text=',', index=169}
+Token{type=NUMBER, text='0.5', index=170}
+Token{type=SEMICOLON, text=';', index=171}
+Token{type=NUMBER, text='0.2', index=172}
+Token{type=COMMA, text=',', index=173}
+Token{type=NUMBER, text='0.8', index=174}
+Token{type=SEMICOLON, text=';', index=175}
+Token{type=NUMBER, text='0.5', index=176}
+Token{type=COMMA, text=',', index=177}
+Token{type=NUMBER, text='0.8', index=178}
+Token{type=SEMICOLON, text=';', index=179}
+Token{type=NUMBER, text='0.8', index=180}
+Token{type=COMMA, text=',', index=181}
+Token{type=NUMBER, text='0.8', index=182}
+Token{type=SEMICOLON, text=';', index=183}
+Token{type=NUMBER, text='0.8', index=184}
+Token{type=COMMA, text=',', index=185}
+Token{type=NUMBER, text='0.5', index=186}
+Token{type=SEMICOLON, text=';', index=187}
+Token{type=NUMBER, text='0.8', index=188}
+Token{type=COMMA, text=',', index=189}
+Token{type=NUMBER, text='0.2', index=190}
+Token{type=SEMICOLON, text=';', index=191}
+Token{type=NUMBER, text='0.5', index=192}
+Token{type=COMMA, text=',', index=193}
+Token{type=NUMBER, text='0.2', index=194}
+Token{type=SEMICOLON, text=';', index=195}
+Token{type=NUMBER, text='0.5', index=196}
+Token{type=COMMA, text=',', index=197}
+Token{type=NUMBER, text='0.5', index=198}
+Token{type=SEMICOLON, text=';', index=199}
+Token{type=LIST_END, text='</list>', index=200}
+Token{type=LINES_END, text='</lines>', index=201}
+Token{type=CURVE_START, text='<curve>', index=202}
+Token{type=COL_START, text='<col>', index=203}
+Token{type=NUMBER, text='0', index=204}
+Token{type=COMMA, text=',', index=205}
+Token{type=NUMBER, text='0', index=206}
+Token{type=COMMA, text=',', index=207}
+Token{type=NUMBER, text='255', index=208}
+Token{type=COL_END, text='</col>', index=209}
+Token{type=WID_START, text='<wid>', index=210}
+Token{type=NUMBER, text='3', index=211}
+Token{type=WID_END, text='</wid>', index=212}
+Token{type=RANGE_START, text='<range>', index=213}
+Token{type=NUMBER, text='0', index=214}
+Token{type=COMMA, text=',', index=215}
+Token{type=NUMBER, text='1', index=216}
+Token{type=RANGE_END, text='</range>', index=217}
+Token{type=AMOUNT_START, text='<amount>', index=218}
+Token{type=NUMBER, text='500', index=219}
+Token{type=AMOUNT_END, text='</amount>', index=220}
+Token{type=FUNCTION_START, text='<function>', index=221}
+Token{type=FUNCTION_EXPR, text='{Math.pow(x,2)-0.05}', index=222}
+Token{type=FUNCTION_END, text='</function>', index=223}
+Token{type=CURVE_END, text='</curve>', index=224}
+Token{type=SCALE_START, text='<scale>', index=225}
+Token{type=COL_START, text='<col>', index=226}
+Token{type=NUMBER, text='180', index=227}
+Token{type=COMMA, text=',', index=228}
+Token{type=NUMBER, text='180', index=229}
+Token{type=COMMA, text=',', index=230}
+Token{type=NUMBER, text='180', index=231}
+Token{type=COL_END, text='</col>', index=232}
+Token{type=WID_START, text='<wid>', index=233}
+Token{type=NUMBER, text='1', index=234}
+Token{type=WID_END, text='</wid>', index=235}
+Token{type=DIRECTION_START, text='<direction>', index=236}
+Token{type=DIRECTION_TYPE, text='x', index=237}
+Token{type=DIRECTION_END, text='</direction>', index=238}
+Token{type=POS_START, text='<pos>', index=239}
+Token{type=NUMBER, text='0.0', index=240}
+Token{type=POS_END, text='</pos>', index=241}
+Token{type=FROM_START, text='<from>', index=242}
+Token{type=NUMBER, text='0', index=243}
+Token{type=FROM_END, text='</from>', index=244}
+Token{type=STEP_START, text='<step>', index=245}
+Token{type=NUMBER, text='0.1', index=246}
+Token{type=STEP_END, text='</step>', index=247}
+Token{type=AMOUNT_START, text='<amount>', index=248}
+Token{type=NUMBER, text='10', index=249}
+Token{type=AMOUNT_END, text='</amount>', index=250}
+Token{type=PRECISION_START, text='<precision>', index=251}
+Token{type=NUMBER, text='1', index=252}
+Token{type=PRECISION_END, text='</precision>', index=253}
+Token{type=SCALE_END, text='</scale>', index=254}
+Token{type=SCALE_START, text='<scale>', index=255}
+Token{type=COL_START, text='<col>', index=256}
+Token{type=COLOR_TYPE, text='black', index=257}
+Token{type=COL_END, text='</col>', index=258}
+Token{type=WID_START, text='<wid>', index=259}
+Token{type=NUMBER, text='1', index=260}
+Token{type=WID_END, text='</wid>', index=261}
+Token{type=DIRECTION_START, text='<direction>', index=262}
+Token{type=DIRECTION_TYPE, text='y', index=263}
+Token{type=DIRECTION_END, text='</direction>', index=264}
+Token{type=POS_START, text='<pos>', index=265}
+Token{type=NUMBER, text='0', index=266}
+Token{type=POS_END, text='</pos>', index=267}
+Token{type=FROM_START, text='<from>', index=268}
+Token{type=NUMBER, text='0', index=269}
+Token{type=FROM_END, text='</from>', index=270}
+Token{type=STEP_START, text='<step>', index=271}
+Token{type=NUMBER, text='0.1', index=272}
+Token{type=STEP_END, text='</step>', index=273}
+Token{type=AMOUNT_START, text='<amount>', index=274}
+Token{type=NUMBER, text='10', index=275}
+Token{type=AMOUNT_END, text='</amount>', index=276}
+Token{type=PRECISION_START, text='<precision>', index=277}
+Token{type=NUMBER, text='1', index=278}
+Token{type=PRECISION_END, text='</precision>', index=279}
+Token{type=SCALE_END, text='</scale>', index=280}
+Token{type=CONFIG_END, text='</config>', index=281}
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Parse Output: 
+Parse Successfully
+Parse Tree: 
+ConfigNode: <config><bg><col>255,255,255</col><xRange>-0.1,1.1</xRange><yRange>-0.1,1.1</yRange></bg><shape><col>180,180,180</col><wid>1</wid><pad>true</pad><type>oval</type><center>0.6,0.8</center><width>0.3</width><height>0.2</height></shape><shape><col>180,180,180</col><wid>5</wid><pad>false</pad><type>rect</type><center>0.3,0.4</center><width>0.3</width><height>0.2</height></shape><points><col>red</col><wid>2</wid><pad>true</pad><radius>6</radius><list>0.2,0.2;0.2,0.5;0.2,0.8;0.5,0.8;0.8,0.8;0.8,0.5;0.8,0.2;0.5,0.2;</list></points><line><col></col><wid>2</wid><point>0.3,0.3</point><slope>inf</slope></line><line><col></col><wid>2</wid><point>0.3,0.3</point><slope>0.7</slope></line><lines><col>orange</col><wid>3</wid><list>0.2,0.2;0.2,0.5;0.2,0.8;0.5,0.8;0.8,0.8;0.8,0.5;0.8,0.2;0.5,0.2;0.5,0.5;</list></lines><curve><col>0,0,255</col><wid>3</wid><range>0,1</range><amount>500</amount><function>{Math.pow(x,2)-0.05}</function></curve><scale><col>180,180,180</col><wid>1</wid><direction>x</direction><pos>0.0</pos><from>0</from><step>0.1</step><amount>10</amount><precision>1</precision></scale><scale><col>black</col><wid>1</wid><direction>y</direction><pos>0</pos><from>0</from><step>0.1</step><amount>10</amount><precision>1</precision></scale></config>
+  TokenNode: <config>
+  ElementNode: <bg><col>255,255,255</col><xRange>-0.1,1.1</xRange><yRange>-0.1,1.1</yRange></bg>
+    BgNode: <bg><col>255,255,255</col><xRange>-0.1,1.1</xRange><yRange>-0.1,1.1</yRange></bg>
+      TokenNode: <bg>
+      ColNode: <col>255,255,255</col>
+        TokenNode: <col>
+        Color_valNode: 255,255,255
+          Number_tripletNode: 255,255,255
+            TokenNode: 255
+            TokenNode: ,
+            TokenNode: 255
+            TokenNode: ,
+            TokenNode: 255
+        TokenNode: </col>
+      X_rangeNode: <xRange>-0.1,1.1</xRange>
+        TokenNode: <xRange>
+        Number_pairNode: -0.1,1.1
+          TokenNode: -0.1
+          TokenNode: ,
+          TokenNode: 1.1
+        TokenNode: </xRange>
+      Y_rangeNode: <yRange>-0.1,1.1</yRange>
+        TokenNode: <yRange>
+        Number_pairNode: -0.1,1.1
+          TokenNode: -0.1
+          TokenNode: ,
+          TokenNode: 1.1
+        TokenNode: </yRange>
+      TokenNode: </bg>
+  ElementNode: <shape><col>180,180,180</col><wid>1</wid><pad>true</pad><type>oval</type><center>0.6,0.8</center><width>0.3</width><height>0.2</height></shape>
+    ShapeNode: <shape><col>180,180,180</col><wid>1</wid><pad>true</pad><type>oval</type><center>0.6,0.8</center><width>0.3</width><height>0.2</height></shape>
+      TokenNode: <shape>
+      ColNode: <col>180,180,180</col>
+        TokenNode: <col>
+        Color_valNode: 180,180,180
+          Number_tripletNode: 180,180,180
+            TokenNode: 180
+            TokenNode: ,
+            TokenNode: 180
+            TokenNode: ,
+            TokenNode: 180
+        TokenNode: </col>
+      WidNode: <wid>1</wid>
+        TokenNode: <wid>
+        TokenNode: 1
+        TokenNode: </wid>
+      PadNode: <pad>true</pad>
+        TokenNode: <pad>
+        TokenNode: true
+        TokenNode: </pad>
+      TypeNode: <type>oval</type>
+        TokenNode: <type>
+        TokenNode: oval
+        TokenNode: </type>
+      CenterNode: <center>0.6,0.8</center>
+        TokenNode: <center>
+        Number_pairNode: 0.6,0.8
+          TokenNode: 0.6
+          TokenNode: ,
+          TokenNode: 0.8
+        TokenNode: </center>
+      WidthNode: <width>0.3</width>
+        TokenNode: <width>
+        TokenNode: 0.3
+        TokenNode: </width>
+      HeightNode: <height>0.2</height>
+        TokenNode: <height>
+        TokenNode: 0.2
+        TokenNode: </height>
+      TokenNode: </shape>
+  ElementNode: <shape><col>180,180,180</col><wid>5</wid><pad>false</pad><type>rect</type><center>0.3,0.4</center><width>0.3</width><height>0.2</height></shape>
+    ShapeNode: <shape><col>180,180,180</col><wid>5</wid><pad>false</pad><type>rect</type><center>0.3,0.4</center><width>0.3</width><height>0.2</height></shape>
+      TokenNode: <shape>
+      ColNode: <col>180,180,180</col>
+        TokenNode: <col>
+        Color_valNode: 180,180,180
+          Number_tripletNode: 180,180,180
+            TokenNode: 180
+            TokenNode: ,
+            TokenNode: 180
+            TokenNode: ,
+            TokenNode: 180
+        TokenNode: </col>
+      WidNode: <wid>5</wid>
+        TokenNode: <wid>
+        TokenNode: 5
+        TokenNode: </wid>
+      PadNode: <pad>false</pad>
+        TokenNode: <pad>
+        TokenNode: false
+        TokenNode: </pad>
+      TypeNode: <type>rect</type>
+        TokenNode: <type>
+        TokenNode: rect
+        TokenNode: </type>
+      CenterNode: <center>0.3,0.4</center>
+        TokenNode: <center>
+        Number_pairNode: 0.3,0.4
+          TokenNode: 0.3
+          TokenNode: ,
+          TokenNode: 0.4
+        TokenNode: </center>
+      WidthNode: <width>0.3</width>
+        TokenNode: <width>
+        TokenNode: 0.3
+        TokenNode: </width>
+      HeightNode: <height>0.2</height>
+        TokenNode: <height>
+        TokenNode: 0.2
+        TokenNode: </height>
+      TokenNode: </shape>
+  ElementNode: <points><col>red</col><wid>2</wid><pad>true</pad><radius>6</radius><list>0.2,0.2;0.2,0.5;0.2,0.8;0.5,0.8;0.8,0.8;0.8,0.5;0.8,0.2;0.5,0.2;</list></points>
+    PointsNode: <points><col>red</col><wid>2</wid><pad>true</pad><radius>6</radius><list>0.2,0.2;0.2,0.5;0.2,0.8;0.5,0.8;0.8,0.8;0.8,0.5;0.8,0.2;0.5,0.2;</list></points>
+      TokenNode: <points>
+      ColNode: <col>red</col>
+        TokenNode: <col>
+        Color_valNode: red
+          TokenNode: red
+        TokenNode: </col>
+      WidNode: <wid>2</wid>
+        TokenNode: <wid>
+        TokenNode: 2
+        TokenNode: </wid>
+      PadNode: <pad>true</pad>
+        TokenNode: <pad>
+        TokenNode: true
+        TokenNode: </pad>
+      RadiusNode: <radius>6</radius>
+        TokenNode: <radius>
+        TokenNode: 6
+        TokenNode: </radius>
+      ListNode: <list>0.2,0.2;0.2,0.5;0.2,0.8;0.5,0.8;0.8,0.8;0.8,0.5;0.8,0.2;0.5,0.2;</list>
+        TokenNode: <list>
+        Number_pair_listNode: 0.2,0.2;0.2,0.5;0.2,0.8;0.5,0.8;0.8,0.8;0.8,0.5;0.8,0.2;0.5,0.2;
+          Number_pairNode: 0.2,0.2;
+            TokenNode: 0.2
+            TokenNode: ,
+            TokenNode: 0.2
+            TokenNode: ;
+          Number_pairNode: 0.2,0.5;
+            TokenNode: 0.2
+            TokenNode: ,
+            TokenNode: 0.5
+            TokenNode: ;
+          Number_pairNode: 0.2,0.8;
+            TokenNode: 0.2
+            TokenNode: ,
+            TokenNode: 0.8
+            TokenNode: ;
+          Number_pairNode: 0.5,0.8;
+            TokenNode: 0.5
+            TokenNode: ,
+            TokenNode: 0.8
+            TokenNode: ;
+          Number_pairNode: 0.8,0.8;
+            TokenNode: 0.8
+            TokenNode: ,
+            TokenNode: 0.8
+            TokenNode: ;
+          Number_pairNode: 0.8,0.5;
+            TokenNode: 0.8
+            TokenNode: ,
+            TokenNode: 0.5
+            TokenNode: ;
+          Number_pairNode: 0.8,0.2;
+            TokenNode: 0.8
+            TokenNode: ,
+            TokenNode: 0.2
+            TokenNode: ;
+          Number_pairNode: 0.5,0.2;
+            TokenNode: 0.5
+            TokenNode: ,
+            TokenNode: 0.2
+            TokenNode: ;
+        TokenNode: </list>
+      TokenNode: </points>
+  ElementNode: <line><col></col><wid>2</wid><point>0.3,0.3</point><slope>inf</slope></line>
+    LineNode: <line><col></col><wid>2</wid><point>0.3,0.3</point><slope>inf</slope></line>
+      TokenNode: <line>
+      ColNode: <col></col>
+        TokenNode: <col>
+        TokenNode: </col>
+      WidNode: <wid>2</wid>
+        TokenNode: <wid>
+        TokenNode: 2
+        TokenNode: </wid>
+      PointNode: <point>0.3,0.3</point>
+        TokenNode: <point>
+        Number_pairNode: 0.3,0.3
+          TokenNode: 0.3
+          TokenNode: ,
+          TokenNode: 0.3
+        TokenNode: </point>
+      SlopeNode: <slope>inf</slope>
+        TokenNode: <slope>
+        TokenNode: inf
+        TokenNode: </slope>
+      TokenNode: </line>
+  ElementNode: <line><col></col><wid>2</wid><point>0.3,0.3</point><slope>0.7</slope></line>
+    LineNode: <line><col></col><wid>2</wid><point>0.3,0.3</point><slope>0.7</slope></line>
+      TokenNode: <line>
+      ColNode: <col></col>
+        TokenNode: <col>
+        TokenNode: </col>
+      WidNode: <wid>2</wid>
+        TokenNode: <wid>
+        TokenNode: 2
+        TokenNode: </wid>
+      PointNode: <point>0.3,0.3</point>
+        TokenNode: <point>
+        Number_pairNode: 0.3,0.3
+          TokenNode: 0.3
+          TokenNode: ,
+          TokenNode: 0.3
+        TokenNode: </point>
+      SlopeNode: <slope>0.7</slope>
+        TokenNode: <slope>
+        TokenNode: 0.7
+        TokenNode: </slope>
+      TokenNode: </line>
+  ElementNode: <lines><col>orange</col><wid>3</wid><list>0.2,0.2;0.2,0.5;0.2,0.8;0.5,0.8;0.8,0.8;0.8,0.5;0.8,0.2;0.5,0.2;0.5,0.5;</list></lines>
+    LinesNode: <lines><col>orange</col><wid>3</wid><list>0.2,0.2;0.2,0.5;0.2,0.8;0.5,0.8;0.8,0.8;0.8,0.5;0.8,0.2;0.5,0.2;0.5,0.5;</list></lines>
+      TokenNode: <lines>
+      ColNode: <col>orange</col>
+        TokenNode: <col>
+        Color_valNode: orange
+          TokenNode: orange
+        TokenNode: </col>
+      WidNode: <wid>3</wid>
+        TokenNode: <wid>
+        TokenNode: 3
+        TokenNode: </wid>
+      ListNode: <list>0.2,0.2;0.2,0.5;0.2,0.8;0.5,0.8;0.8,0.8;0.8,0.5;0.8,0.2;0.5,0.2;0.5,0.5;</list>
+        TokenNode: <list>
+        Number_pair_listNode: 0.2,0.2;0.2,0.5;0.2,0.8;0.5,0.8;0.8,0.8;0.8,0.5;0.8,0.2;0.5,0.2;0.5,0.5;
+          Number_pairNode: 0.2,0.2;
+            TokenNode: 0.2
+            TokenNode: ,
+            TokenNode: 0.2
+            TokenNode: ;
+          Number_pairNode: 0.2,0.5;
+            TokenNode: 0.2
+            TokenNode: ,
+            TokenNode: 0.5
+            TokenNode: ;
+          Number_pairNode: 0.2,0.8;
+            TokenNode: 0.2
+            TokenNode: ,
+            TokenNode: 0.8
+            TokenNode: ;
+          Number_pairNode: 0.5,0.8;
+            TokenNode: 0.5
+            TokenNode: ,
+            TokenNode: 0.8
+            TokenNode: ;
+          Number_pairNode: 0.8,0.8;
+            TokenNode: 0.8
+            TokenNode: ,
+            TokenNode: 0.8
+            TokenNode: ;
+          Number_pairNode: 0.8,0.5;
+            TokenNode: 0.8
+            TokenNode: ,
+            TokenNode: 0.5
+            TokenNode: ;
+          Number_pairNode: 0.8,0.2;
+            TokenNode: 0.8
+            TokenNode: ,
+            TokenNode: 0.2
+            TokenNode: ;
+          Number_pairNode: 0.5,0.2;
+            TokenNode: 0.5
+            TokenNode: ,
+            TokenNode: 0.2
+            TokenNode: ;
+          Number_pairNode: 0.5,0.5;
+            TokenNode: 0.5
+            TokenNode: ,
+            TokenNode: 0.5
+            TokenNode: ;
+        TokenNode: </list>
+      TokenNode: </lines>
+  ElementNode: <curve><col>0,0,255</col><wid>3</wid><range>0,1</range><amount>500</amount><function>{Math.pow(x,2)-0.05}</function></curve>
+    CurveNode: <curve><col>0,0,255</col><wid>3</wid><range>0,1</range><amount>500</amount><function>{Math.pow(x,2)-0.05}</function></curve>
+      TokenNode: <curve>
+      ColNode: <col>0,0,255</col>
+        TokenNode: <col>
+        Color_valNode: 0,0,255
+          Number_tripletNode: 0,0,255
+            TokenNode: 0
+            TokenNode: ,
+            TokenNode: 0
+            TokenNode: ,
+            TokenNode: 255
+        TokenNode: </col>
+      WidNode: <wid>3</wid>
+        TokenNode: <wid>
+        TokenNode: 3
+        TokenNode: </wid>
+      RangeNode: <range>0,1</range>
+        TokenNode: <range>
+        Number_pairNode: 0,1
+          TokenNode: 0
+          TokenNode: ,
+          TokenNode: 1
+        TokenNode: </range>
+      AmountNode: <amount>500</amount>
+        TokenNode: <amount>
+        TokenNode: 500
+        TokenNode: </amount>
+      FunctionNode: <function>{Math.pow(x,2)-0.05}</function>
+        TokenNode: <function>
+        TokenNode: {Math.pow(x,2)-0.05}
+        TokenNode: </function>
+      TokenNode: </curve>
+  ElementNode: <scale><col>180,180,180</col><wid>1</wid><direction>x</direction><pos>0.0</pos><from>0</from><step>0.1</step><amount>10</amount><precision>1</precision></scale>
+    ScaleNode: <scale><col>180,180,180</col><wid>1</wid><direction>x</direction><pos>0.0</pos><from>0</from><step>0.1</step><amount>10</amount><precision>1</precision></scale>
+      TokenNode: <scale>
+      ColNode: <col>180,180,180</col>
+        TokenNode: <col>
+        Color_valNode: 180,180,180
+          Number_tripletNode: 180,180,180
+            TokenNode: 180
+            TokenNode: ,
+            TokenNode: 180
+            TokenNode: ,
+            TokenNode: 180
+        TokenNode: </col>
+      WidNode: <wid>1</wid>
+        TokenNode: <wid>
+        TokenNode: 1
+        TokenNode: </wid>
+      DirectionNode: <direction>x</direction>
+        TokenNode: <direction>
+        TokenNode: x
+        TokenNode: </direction>
+      PosNode: <pos>0.0</pos>
+        TokenNode: <pos>
+        TokenNode: 0.0
+        TokenNode: </pos>
+      FromNode: <from>0</from>
+        TokenNode: <from>
+        TokenNode: 0
+        TokenNode: </from>
+      StepNode: <step>0.1</step>
+        TokenNode: <step>
+        TokenNode: 0.1
+        TokenNode: </step>
+      AmountNode: <amount>10</amount>
+        TokenNode: <amount>
+        TokenNode: 10
+        TokenNode: </amount>
+      PrecisionNode: <precision>1</precision>
+        TokenNode: <precision>
+        TokenNode: 1
+        TokenNode: </precision>
+      TokenNode: </scale>
+  ElementNode: <scale><col>black</col><wid>1</wid><direction>y</direction><pos>0</pos><from>0</from><step>0.1</step><amount>10</amount><precision>1</precision></scale>
+    ScaleNode: <scale><col>black</col><wid>1</wid><direction>y</direction><pos>0</pos><from>0</from><step>0.1</step><amount>10</amount><precision>1</precision></scale>
+      TokenNode: <scale>
+      ColNode: <col>black</col>
+        TokenNode: <col>
+        Color_valNode: black
+          TokenNode: black
+        TokenNode: </col>
+      WidNode: <wid>1</wid>
+        TokenNode: <wid>
+        TokenNode: 1
+        TokenNode: </wid>
+      DirectionNode: <direction>y</direction>
+        TokenNode: <direction>
+        TokenNode: y
+        TokenNode: </direction>
+      PosNode: <pos>0</pos>
+        TokenNode: <pos>
+        TokenNode: 0
+        TokenNode: </pos>
+      FromNode: <from>0</from>
+        TokenNode: <from>
+        TokenNode: 0
+        TokenNode: </from>
+      StepNode: <step>0.1</step>
+        TokenNode: <step>
+        TokenNode: 0.1
+        TokenNode: </step>
+      AmountNode: <amount>10</amount>
+        TokenNode: <amount>
+        TokenNode: 10
+        TokenNode: </amount>
+      PrecisionNode: <precision>1</precision>
+        TokenNode: <precision>
+        TokenNode: 1
+        TokenNode: </precision>
+      TokenNode: </scale>
+  TokenNode: </config>
+----------------------------------------------------------------------

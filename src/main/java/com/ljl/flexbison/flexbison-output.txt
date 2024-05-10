@@ -1,0 +1,144 @@
+Parsed Element List
+Parsed Number Triplet
+Parsed Color Value
+Parsed Col
+Parsed Number Pair
+Parsed XRange
+Parsed Number Pair
+Parsed YRange
+Parsed BG
+Parsed Element
+Parsed Element List
+Parsed Number Triplet
+Parsed Color Value
+Parsed Col
+Parsed Wid
+Parsed Pad
+Parsed Type
+Parsed Number Pair
+Parsed Center
+Parsed Width
+Parsed Height
+Parsed Shape
+Parsed Element
+Parsed Element List
+Parsed Number Triplet
+Parsed Color Value
+Parsed Col
+Parsed Wid
+Parsed Pad
+Parsed Type
+Parsed Number Pair
+Parsed Center
+Parsed Width
+Parsed Height
+Parsed Shape
+Parsed Element
+Parsed Element List
+Parsed Color Value
+Parsed Col
+Parsed Wid
+Parsed Pad
+Parsed Radius
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed List
+Parsed Points
+Parsed Element
+Parsed Element List
+Parsed Color Value
+Parsed Col
+Parsed Wid
+Parsed Number Pair
+Parsed Point
+Parsed Slope Value
+Parsed Slope
+Parsed Line
+Parsed Element
+Parsed Element List
+Parsed Color Value
+Parsed Col
+Parsed Wid
+Parsed Number Pair
+Parsed Point
+Parsed Slope Value
+Parsed Slope
+Parsed Line
+Parsed Element
+Parsed Element List
+Parsed Color Value
+Parsed Col
+Parsed Wid
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed Number Pair
+Parsed Number Pair List
+Parsed List
+Parsed Lines
+Parsed Element
+Parsed Element List
+Parsed Number Triplet
+Parsed Color Value
+Parsed Col
+Parsed Wid
+Parsed Number Pair
+Parsed Range
+Parsed Amount
+Parsed Function
+Parsed Curve
+Parsed Element
+Parsed Element List
+Parsed Number Triplet
+Parsed Color Value
+Parsed Col
+Parsed Wid
+Parsed Direction
+Parsed Pos
+Parsed From
+Parsed Step
+Parsed Amount
+Parsed Precision
+Parsed Scale
+Parsed Element
+Parsed Element List
+Parsed Color Value
+Parsed Col
+Parsed Wid
+Parsed Direction
+Parsed Pos
+Parsed From
+Parsed Step
+Parsed Amount
+Parsed Precision
+Parsed Scale
+Parsed Element
+Parsed Element List
+Parsed Config

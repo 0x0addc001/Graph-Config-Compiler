@@ -3,7 +3,7 @@ package com.ljl.gcc.compiler.parser;
 public interface TreeNode {
     TreeNode getParent();
 
-    void setParent(RuleNode ruleNode);
+    void setParent(RuleNode treeNode);
 
     TreeNode getChild(int index);
 

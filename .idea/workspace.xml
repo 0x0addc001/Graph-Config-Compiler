@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/GCCompiler.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/GCLexer.l" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/GCParser.tab.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/GCParser.tab.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/GCParser.y" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/install.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/lex.yy.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/run.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/antlr-output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/flexbison-output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/gcc-output.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/flexbison/example.gc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/GCCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/GCCompiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/GCLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/GCLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/GCParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/GCParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/TokenNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/TokenNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/TreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/TreeNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/example.gc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/example.gc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +89,7 @@
       <recent name="com.ljl.test.xmlcompiler" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.GCDrawer">
+  <component name="RunManager" selected="应用程序.GCCompiler">
     <configuration name="GCCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ljl.gcc.compiler.GCCompiler" />
       <module name="Graph-Config-Compiler" />
@@ -191,7 +190,7 @@
       <workItem from="1715127528866" duration="50842000" />
       <workItem from="1715232523273" duration="389000" />
       <workItem from="1715232919887" duration="25413000" />
-      <workItem from="1715299243713" duration="8641000" />
+      <workItem from="1715299243713" duration="12691000" />
     </task>
     <task id="LOCAL-00001" summary="GCCLexer.java COMPLETE">
       <created>1715160213832</created>
@@ -242,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715262969659</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="flexbison 100%-COMPLETE">
+      <created>1715315681074</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715315681074</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +274,7 @@
     <MESSAGE value="GCCDrawer.java 50%-COMPLETE" />
     <MESSAGE value="GCCDrawer.java 60%-COMPLETE" />
     <MESSAGE value="GCCDrawer.java 100%-COMPLETE" />
-    <option name="LAST_COMMIT_MESSAGE" value="GCCDrawer.java 100%-COMPLETE" />
+    <MESSAGE value="flexbison 100%-COMPLETE" />
+    <option name="LAST_COMMIT_MESSAGE" value="flexbison 100%-COMPLETE" />
   </component>
 </project>

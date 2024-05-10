@@ -107,7 +107,7 @@
         <wid> 3 </wid>
         <range> 0, 1 </range>
         <amount> 500 </amount>
-        <function> {Math.pow(x,2)-0.05} </function>
+        <function> {Math.sin(10*x)} </function>
     </curve>
 
     <scale>

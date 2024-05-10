@@ -9,9 +9,6 @@ public class GCParser extends GCCompiler {
 
 	public GCParser(List<Token> input) {
 		this._input = input;
-		for (int i = 0; i < input.size(); i++){
-			input.get(i).setTokenIndex(i);
-		}
 	}
 
 	private List<Token> _input; // 从词法分析获得的token序列

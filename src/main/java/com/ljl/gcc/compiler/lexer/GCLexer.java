@@ -19,6 +19,9 @@ public class GCLexer extends GCCompiler {
     private ArrayList<Token> _output; // tokens list
 
     public ArrayList<Token> get_output() {
+        for (int i = 0; i < _output.size(); i++){
+            _output.get(i).setTokenIndex(i);
+        }
         return _output;
     }
 
@@ -60,7 +63,7 @@ public class GCLexer extends GCCompiler {
     public boolean content() {
         int e = _input.indexOf("<"); // 获取<的位置
         String sentence = _input.substring(0, e); // 获取内容
-        System.out.println("@CONTENT:" + sentence);
+//        System.out.println("@CONTENT:" + sentence);
         boolean result = true;
 
         /* -- 分割句子 --*/
@@ -97,7 +100,7 @@ public class GCLexer extends GCCompiler {
     }
     public boolean token(String word) { // 处理word
         if(!word.equals("")) { // 判断是否为空
-            System.out.println("@TOKEN:" + word);
+//            System.out.println("@TOKEN:" + word);
             int token_type;
             if(isBoolean(word)) {
                 token_type = TOKENTABLE.getTokenTypeBySymbolicName("BOOLEAN");
@@ -173,7 +176,7 @@ public class GCLexer extends GCCompiler {
         int s = _input.indexOf("<");
         int e = _input.indexOf(">");
         int token_type = TOKENTABLE.getTokenTypeByLiteralName(_input.substring(s, e + 1));
-        System.out.println("@STARTTAG:"+ _input.substring(s, e + 1));
+//        System.out.println("@STARTTAG:"+ _input.substring(s, e + 1));
         if(token_type == -1) {
             System.out.println("ERR: 不识别的标签 "+ _input.substring(s, e + 1));
             return false;
@@ -194,7 +197,7 @@ public class GCLexer extends GCCompiler {
             return false;
         }
         int token_type = TOKENTABLE.getTokenTypeByLiteralName(_input.substring(s, e + 1));
-        System.out.println("@ENDTAG:"+ _input.substring(s, e + 1));
+//        System.out.println("@ENDTAG:"+ _input.substring(s, e + 1));
         if(token_type == -1) {
             System.out.println("ERR: 不识别的标签 "+ _input.substring(s, e + 1));
             return false;

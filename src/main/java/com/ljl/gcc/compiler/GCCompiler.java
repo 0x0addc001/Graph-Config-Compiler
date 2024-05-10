@@ -114,6 +114,7 @@ public class GCCompiler {
             System.out.println("File could not Loaded!!");
             System.err.println("无法找到资源文件 example.gc");
         }
+        System.out.println(input);
         System.out.println("----------------------------------------------------------------------");
         return input.toString();
     }
@@ -131,6 +132,8 @@ public class GCCompiler {
             List<Token> tokens = lexer.get_output();
             // 打印Token流
             printTokens(tokens);
+            System.out.println("----------------------------------------------------------------------");
+
             System.out.println("----------------------------------------------------------------------");
             System.out.println("Parse Output: ");
             // 创建Parser并传入Token流
