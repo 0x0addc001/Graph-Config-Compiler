@@ -65,14 +65,14 @@ COMMENT_START = '<!--';
 COMMENT_END = '-->';
 $ONE_TO_NINE: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
 $ZERO_TO_NINE: '0' | $ONE_TO_NINE ;
-NUMBER = ['-'],('0' | [$ONE_TO_NINE] {$ZERO_TO_NINE}),['.' [$ZERO_TO_NINE]+];
+NUMBER = ['-'],('0' | ($ONE_TO_NINE),{$ZERO_TO_NINE}),['.',($ZERO_TO_NINE),{$ZERO_TO_NINE}];
 COMMA = ',';
 SEMICOLON  = ';';
 DIRECTION_TYPE = 'x' | 'y';
 COLOR_TYPE = 'red' | 'orange' | 'yellow' | 'green' | 'cyan' | 'blue' | 'indigo' | 'violet' | 'white' | 'gray' | 'black';
 SHAPE_TYPE = 'oval' | 'rect';
-FUNCTION_EXPR = '{' ~('<' | '}')+ '}';
-WS = [ \t\r\n]+;
+FUNCTION_EXPR = '{',{-('<' | '}')},'}';
+WS = (' '|'\t'|'\r'|'\n'){' '|'\t'|'\r'|'\n'};
 $COMENT_CONTENT: {(-'-') | ('-',-'-') | ('-','-',-'>')};
 COMMENT = COMMENT_START,COMENT_CONTENT,COMMENT_END;
 ```

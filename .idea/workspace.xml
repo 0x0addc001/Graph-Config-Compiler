@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/ebnf/GCLex.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/ebnf/GCSyntax.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -183,7 +181,7 @@
       <workItem from="1715127528866" duration="50842000" />
       <workItem from="1715232523273" duration="389000" />
       <workItem from="1715232919887" duration="25413000" />
-      <workItem from="1715299243713" duration="16731000" />
+      <workItem from="1715299243713" duration="17835000" />
     </task>
     <task id="LOCAL-00001" summary="GCCLexer.java COMPLETE">
       <created>1715160213832</created>
@@ -248,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715322830004</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="ebnf 100%-COMPLETE">
+      <created>1715328388761</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715328388761</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,6 +281,7 @@
     <MESSAGE value="GCCDrawer.java 100%-COMPLETE" />
     <MESSAGE value="flexbison 100%-COMPLETE" />
     <MESSAGE value="GClangCompiler V1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="GClangCompiler V1.0" />
+    <MESSAGE value="ebnf 100%-COMPLETE" />
+    <option name="LAST_COMMIT_MESSAGE" value="ebnf 100%-COMPLETE" />
   </component>
 </project>
