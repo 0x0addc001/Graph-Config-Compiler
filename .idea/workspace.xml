@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/parser.mermaid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/parser.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +184,7 @@
       <workItem from="1715299243713" duration="18501000" />
       <workItem from="1715345425101" duration="21000" />
       <workItem from="1715386505376" duration="13505000" />
-      <workItem from="1715415181434" duration="3191000" />
+      <workItem from="1715415181434" duration="3352000" />
     </task>
     <task id="LOCAL-00001" summary="GCCLexer.java COMPLETE">
       <created>1715160213832</created>
@@ -278,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715415487506</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="完成mermaid编程的词法分析和语法分析算法流程图">
+      <created>1715421152480</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715421152480</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,6 +316,7 @@
     <MESSAGE value="ebnf MODIFY" />
     <MESSAGE value="GClangCompiler V2.0" />
     <MESSAGE value="GClangCompiler V3.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="GClangCompiler V3.0" />
+    <MESSAGE value="完成mermaid编程的词法分析和语法分析算法流程图" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成mermaid编程的词法分析和语法分析算法流程图" />
   </component>
 </project>
