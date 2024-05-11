@@ -31,6 +31,6 @@ public class TokenNode implements TreeNode {
     }
 
     public String getText() {
-        return this.token.getType() == -1 ? "<EOF>" : this.token.getText();
+        return this.token.getText();
     }
 }

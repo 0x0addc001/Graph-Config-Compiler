@@ -19,6 +19,9 @@ public class GCLexer extends GCCompiler {
     private ArrayList<Token> _output; // tokens list
 
     public ArrayList<Token> get_output() {
+        int token_type = TOKENTABLE.getTokenTypeBySymbolicName("EOF");
+        Token token = new Token(token_type, null);
+        _output.add(token);
         for (int i = 0; i < _output.size(); i++){
             _output.get(i).setTokenIndex(i);
         }

@@ -13,9 +13,10 @@ public class GCParser extends GCCompiler {
 
 	private List<Token> _input; // 从词法分析获得的token序列
 	private TreeNode _output; // 语法分析树根节点
-	private int _currentIndex = 0; // 当前token索引
-	private RuleNode _rnd; // 当前规则节点
-	private boolean matchedEOF;
+
+	private int _currentIndex = -1; // 当前token索引
+	private RuleNode _currentRuleNode = null; // 当前规则节点
+	private boolean _matchedEOF = false; // 是否匹配到EOF
 
 	public boolean parse() {
 		try {
@@ -32,59 +33,50 @@ public class GCParser extends GCCompiler {
 		return _output;
 	}
 
-	public Token getCurrentToken() {
-		return this._input.get(_currentIndex);
+	public Token getNextToken() {
+		return this._input.get(_currentIndex + 1);
 	}
 
-	public int getCurrentTokenType() {return this._input.get(_currentIndex).getType();}
+	public int getNextTokenType() {return this._input.get(_currentIndex + 1).getType();}
 
 	public Token consume() {
-		Token o = this.getCurrentToken();
+		Token o = this.getNextToken();
 		if (o.getType() != -1) {
 			this._currentIndex++;
 		}
-		TokenNode node = this._rnd.addChild(new TokenNode(o));
-		return o;
-	}
-
-	public Token retreat() {
-		Token o = this.getCurrentToken();
-		if (o.getTokenIndex() > 0) {
-			this._currentIndex--;
-		}
+		TokenNode node = this._currentRuleNode.addChild(new TokenNode(o));
 		return o;
 	}
 
 	public Token match(int ttype) throws Exception {
-		Token t = this.getCurrentToken();
+		Token t = this.getNextToken();
 		if (t.getType() == ttype) {
 			if (ttype == -1) {
-				this.matchedEOF = true;
+				this._matchedEOF = true;
 				// stop parsing
 				return t;
 			}
 			this.consume();
 		} else {
-			this.retreat();
 			throw new Exception("Token type mismatch: " + t.getType());
 		}
 		return t;
 	}
 
 	protected void addRuleNodeToTree() {
-		RuleNode parent = this._rnd.parent;
+		RuleNode parent = this._currentRuleNode.parent;
 		if (parent != null) {
-			parent.addChild(this._rnd);
+			parent.addChild(this._currentRuleNode);
 		}
 	}
 
 	public void enterRule(RuleNode localrnd, int ruleIndex) {
-		this._rnd = localrnd;
+		this._currentRuleNode = localrnd;
 		this.addRuleNodeToTree();
 	}
 
 	public void exitRule() {
-		this._rnd = (RuleNode)this._rnd.parent;
+		this._currentRuleNode = (RuleNode)this._currentRuleNode.parent;
 	}
 
 	public static class ConfigNode extends RuleNode {
@@ -103,15 +95,15 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final ConfigNode config() throws Exception {
-		ConfigNode _localrnd = new ConfigNode(_rnd);
+		ConfigNode _localrnd = new ConfigNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_config);
 		int _la;
 		try {
 			match(CONFIG_START);
-			_la = this.getCurrentTokenType();
+			_la = this.getNextTokenType();
 			while (_la != CONFIG_END) {
 				element();
-				_la = this.getCurrentTokenType();
+				_la = this.getNextTokenType();
 			}
 			match(CONFIG_END);
 		}
@@ -153,10 +145,10 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final ElementNode element() throws Exception {
-		ElementNode _localrnd = new ElementNode(_rnd);
+		ElementNode _localrnd = new ElementNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_element);
 		try {
-			switch (this.getCurrentTokenType()) {
+			switch (this.getNextTokenType()) {
 			case BG_START:
 				bg();
 				break;
@@ -179,7 +171,7 @@ public class GCParser extends GCCompiler {
 				scale();
 				break;
 			default:
-				throw new Exception("No Viable Alternative in element: " + this.getCurrentTokenType());
+				throw new Exception("No Viable Alternative in element: " + this.getNextTokenType());
 			}
 		}
 		catch (Exception e) {
@@ -210,7 +202,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final BgNode bg() throws Exception {
-		BgNode _localrnd = new BgNode(_rnd);
+		BgNode _localrnd = new BgNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_bg);
 		try {
 			match(BG_START);
@@ -259,7 +251,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final ShapeNode shape() throws Exception {
-		ShapeNode _localrnd = new ShapeNode(_rnd);
+		ShapeNode _localrnd = new ShapeNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_shape);
 		try {
 			match(SHAPE_START);
@@ -306,7 +298,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final PointsNode points() throws Exception {
-		PointsNode _localrnd = new PointsNode(_rnd);
+		PointsNode _localrnd = new PointsNode(_currentRuleNode);
 		enterRule(_localrnd,  RULE_points);
 		try {
 			match(POINTS_START);
@@ -348,7 +340,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final LineNode line() throws Exception {
-		LineNode _localrnd = new LineNode(_rnd);
+		LineNode _localrnd = new LineNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_line);
 		try {
 			match(LINE_START);
@@ -386,7 +378,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final LinesNode lines() throws Exception {
-		LinesNode _localrnd = new LinesNode(_rnd);
+		LinesNode _localrnd = new LinesNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_lines);
 		try {
 			match(LINES_START);
@@ -429,7 +421,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final CurveNode curve() throws Exception {
-		CurveNode _localrnd = new CurveNode(_rnd);
+		CurveNode _localrnd = new CurveNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_curve);
 		try {
 			match(CURVE_START);
@@ -483,7 +475,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final ScaleNode scale() throws Exception {
-		ScaleNode _localrnd = new ScaleNode(_rnd);
+		ScaleNode _localrnd = new ScaleNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_scale);
 		try {
 			match(SCALE_START);
@@ -519,12 +511,12 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final ColNode col() throws Exception {
-		ColNode _localrnd = new ColNode(_rnd);
+		ColNode _localrnd = new ColNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_col);
 		int _la;
 		try {
 			match(COL_START);
-			_la = this.getCurrentTokenType();
+			_la = this.getNextTokenType();
 			if (_la==NUMBER || _la==COLOR_TYPE) {
 				color_val();
 			}
@@ -553,7 +545,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final X_rangeNode x_range() throws Exception {
-		X_rangeNode _localrnd = new X_rangeNode(_rnd);
+		X_rangeNode _localrnd = new X_rangeNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_x_range);
 		try {
 			match(X_RANGE_START);
@@ -582,7 +574,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final Y_rangeNode y_range() throws Exception {
-		Y_rangeNode _localrnd = new Y_rangeNode(_rnd);
+		Y_rangeNode _localrnd = new Y_rangeNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_y_range);
 		try {
 			match(Y_RANGE_START);
@@ -610,7 +602,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final WidNode wid() throws Exception {
-		WidNode _localrnd = new WidNode(_rnd);
+		WidNode _localrnd = new WidNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_wid);
 		try {
 			match(WID_START);
@@ -638,7 +630,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final WidthNode width() throws Exception {
-		WidthNode _localrnd = new WidthNode(_rnd);
+		WidthNode _localrnd = new WidthNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_width);
 		try {
 			match(WIDTH_START);
@@ -666,7 +658,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final HeightNode height() throws Exception {
-		HeightNode _localrnd = new HeightNode(_rnd);
+		HeightNode _localrnd = new HeightNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_height);
 		try {
 			match(HEIGHT_START);
@@ -694,7 +686,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final PadNode pad() throws Exception {
-		PadNode _localrnd = new PadNode(_rnd);
+		PadNode _localrnd = new PadNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_pad);
 		try {
 			match(PAD_START);
@@ -722,7 +714,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final RadiusNode radius() throws Exception {
-		RadiusNode _localrnd = new RadiusNode(_rnd);
+		RadiusNode _localrnd = new RadiusNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_radius);
 		try {
 			match(RADIUS_START);
@@ -752,7 +744,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final ListNode list() throws Exception {
-		ListNode _localrnd = new ListNode(_rnd);
+		ListNode _localrnd = new ListNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_list);
 		try {
 			match(LIST_START);
@@ -782,7 +774,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final PointNode point() throws Exception {
-		PointNode _localrnd = new PointNode(_rnd);
+		PointNode _localrnd = new PointNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_point);
 		try {
 			match(POINT_START);
@@ -811,17 +803,17 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final SlopeNode slope() throws Exception {
-		SlopeNode _localrnd = new SlopeNode(_rnd);
+		SlopeNode _localrnd = new SlopeNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_slope);
 		int _la;
 		try {
 			match(SLOPE_START);
-			_la = this.getCurrentTokenType();
+			_la = this.getNextTokenType();
 			if ( !(_la==INF || _la==NUMBER) ) {
-				throw new Exception("No Viable Alternative in slope: " + this.getCurrentTokenType());
+				throw new Exception("No Viable Alternative in slope: " + this.getNextTokenType());
 			}
 			else {
-				if ( this.getCurrentTokenType()==Token.EOF ) matchedEOF = true;
+				if ( this.getNextTokenType()==Token.EOF ) _matchedEOF = true;
 				consume();
 			}
 			match(SLOPE_END);
@@ -849,7 +841,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final RangeNode range() throws Exception {
-		RangeNode _localrnd = new RangeNode(_rnd);
+		RangeNode _localrnd = new RangeNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_range);
 		try {
 			match(RANGE_START);
@@ -877,7 +869,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final AmountNode amount() throws Exception {
-		AmountNode _localrnd = new AmountNode(_rnd);
+		AmountNode _localrnd = new AmountNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_amount);
 		try {
 			match(AMOUNT_START);
@@ -905,7 +897,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final DirectionNode direction() throws Exception {
-		DirectionNode _localrnd = new DirectionNode(_rnd);
+		DirectionNode _localrnd = new DirectionNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_direction);
 		try {
 			match(DIRECTION_START);
@@ -933,7 +925,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final PosNode pos() throws Exception {
-		PosNode _localrnd = new PosNode(_rnd);
+		PosNode _localrnd = new PosNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_pos);
 		try {
 			match(POS_START);
@@ -961,7 +953,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final FromNode from() throws Exception {
-		FromNode _localrnd = new FromNode(_rnd);
+		FromNode _localrnd = new FromNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_from);
 		try {
 			match(FROM_START);
@@ -989,7 +981,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final StepNode step() throws Exception {
-		StepNode _localrnd = new StepNode(_rnd);
+		StepNode _localrnd = new StepNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_step);
 		try {
 			match(STEP_START);
@@ -1017,7 +1009,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final PrecisionNode precision() throws Exception {
-		PrecisionNode _localrnd = new PrecisionNode(_rnd);
+		PrecisionNode _localrnd = new PrecisionNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_precision);
 		try {
 			match(PRECISION_START);
@@ -1045,7 +1037,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final TypeNode type() throws Exception {
-		TypeNode _localrnd = new TypeNode(_rnd);
+		TypeNode _localrnd = new TypeNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_type);
 		try {
 			match(TYPE_START);
@@ -1075,7 +1067,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final CenterNode center() throws Exception {
-		CenterNode _localrnd = new CenterNode(_rnd);
+		CenterNode _localrnd = new CenterNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_center);
 		try {
 			match(CENTER_START);
@@ -1103,7 +1095,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final FunctionNode function() throws Exception {
-		FunctionNode _localrnd = new FunctionNode(_rnd);
+		FunctionNode _localrnd = new FunctionNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_function);
 		try {
 			match(FUNCTION_START);
@@ -1134,14 +1126,14 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final Number_pairNode number_pair() throws Exception {
-		Number_pairNode _localrnd = new Number_pairNode(_rnd);
+		Number_pairNode _localrnd = new Number_pairNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_number_pair);
 		int _la;
 		try {
 			match(NUMBER);
 			match(COMMA);
 			match(NUMBER);
-			_la = this.getCurrentTokenType();
+			_la = this.getNextTokenType();
 			if (_la==SEMICOLON) {
 				match(SEMICOLON);
 			}
@@ -1170,14 +1162,14 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final Number_pair_listNode number_pair_list() throws Exception {
-		Number_pair_listNode _localrnd = new Number_pair_listNode(_rnd);
+		Number_pair_listNode _localrnd = new Number_pair_listNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_number_pair_list);
 		int _la;
 		try {
-			_la = this.getCurrentTokenType();
+			_la = this.getNextTokenType();
 			do {
 				number_pair();
-				_la = this.getCurrentTokenType();
+				_la = this.getNextTokenType();
 			} while ( _la==NUMBER );
 		}
 		catch (Exception e) {
@@ -1206,7 +1198,7 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final Number_tripletNode number_triplet() throws Exception {
-		Number_tripletNode _localrnd = new Number_tripletNode(_rnd);
+		Number_tripletNode _localrnd = new Number_tripletNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_number_triplet);
 		try {
 			match(NUMBER);
@@ -1237,10 +1229,10 @@ public class GCParser extends GCCompiler {
 	}
 
 	public final Color_valNode color_val() throws Exception {
-		Color_valNode _localrnd = new Color_valNode(_rnd);
+		Color_valNode _localrnd = new Color_valNode(_currentRuleNode);
 		enterRule(_localrnd, RULE_color_val);
 		try {
-			switch (this.getCurrentTokenType()) {
+			switch (this.getNextTokenType()) {
 			case COLOR_TYPE:
 				match(COLOR_TYPE);
 				break;
@@ -1248,7 +1240,7 @@ public class GCParser extends GCCompiler {
 				number_triplet();
 				break;
 			default:
-				throw new Exception("No viable alternative in color_val: " + this.getCurrentTokenType());
+				throw new Exception("No viable alternative in color_val: " + this.getNextTokenType());
 			}
 		}
 		catch (Exception e) {

@@ -4,9 +4,6 @@ import com.ljl.gcc.compiler.GCCompiler;
 
 public class Token extends GCCompiler {
 
-    public static final int INVALID_TYPE = 0;
-    public static final int EOF = -1;
-
     private int type;
     private String text;
     private int index = -1;

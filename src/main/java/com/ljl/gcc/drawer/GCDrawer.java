@@ -135,6 +135,9 @@ public class GCDrawer extends JFrame {
                                                         myBg.yRangeTop = Double.parseDouble(valueNode.getChild(2).getText());
                                                     }
                                                     break;
+                                                default:
+                                                    System.out.println("Error: unknown element attribute");
+                                                    // System.exit(1);
                                             }
                                         }
                                         MyElements.add(myBg);
