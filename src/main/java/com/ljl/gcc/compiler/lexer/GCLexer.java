@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GCLexer extends GCCompiler {
 
-    public GCLexer(String input) {
+    public GCLexer(String input) { // 初始化方法，加载输入流
         this._input = input;
         this.stripWhitespaceText();
         this.ignoreComments();
@@ -18,7 +18,7 @@ public class GCLexer extends GCCompiler {
     private String _input = ""; // CharStream 输入字符流
     private ArrayList<Token> _output; // TokenStream 输出Token流
 
-    public ArrayList<Token> get_output() {
+    public ArrayList<Token> get_output() { // 获取输出流
 //        int token_type = TOKENTABLE.getTokenTypeBySymbolicName("EOF");
 //        Token token = new Token(token_type, null);
 //        _output.add(token);
@@ -38,7 +38,7 @@ public class GCLexer extends GCCompiler {
         this._input = this._input.replaceAll("<!--.*?-->", ""); //?:非贪婪匹配（尽可能少的匹配字符）
     }
 
-    public boolean lex() {
+    public boolean lex() { // 词法分析核心方法
         if(_input.length() == 0) { // 判断是否为空
             return true;
         }

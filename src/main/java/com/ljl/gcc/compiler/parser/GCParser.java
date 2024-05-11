@@ -7,7 +7,7 @@ import java.util.List;
 
 public class GCParser extends GCCompiler {
 
-	public GCParser(List<Token> input) {
+	public GCParser(List<Token> input) { // 初始化方法，加载输入流
 		this._input = input;
 	}
 
@@ -18,7 +18,7 @@ public class GCParser extends GCCompiler {
 	private RuleNode _currentRuleNode = null; // 当前规则节点
 	private boolean _matchedEOF = false; // 是否匹配到EOF
 
-	public boolean parse() {
+	public boolean parse() { // 语法分析核心方法
 		try {
 			this._output = this.config();
 			return true;
@@ -29,7 +29,7 @@ public class GCParser extends GCCompiler {
 		}
 	}
 
-	public TreeNode get_output() {
+	public TreeNode get_output() {  // 获取输出流
 		return _output;
 	}
 

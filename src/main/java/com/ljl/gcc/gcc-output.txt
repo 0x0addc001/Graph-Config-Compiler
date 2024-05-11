@@ -408,7 +408,6 @@ Token{type=NUMBER, text='1', index=278}
 Token{type=PRECISION_END, text='</precision>', index=279}
 Token{type=SCALE_END, text='</scale>', index=280}
 Token{type=CONFIG_END, text='</config>', index=281}
-Token{type=EOF, text='null', index=282}
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Parse Output:

@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/img/parser.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/counter-example.gc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/GCLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/GCLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/GCParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/GCParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/gcc-output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/gcc-output.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +60,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/example.gc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="project.structure.last.edited" value="SDK" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -64,9 +69,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\resources" />
       <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\test" />
       <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\gcc" />
-      <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\resources" />
       <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\gcc\antlr\test" />
       <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\test\antlr\gcc" />
     </key>
@@ -80,7 +85,7 @@
       <recent name="com.ljl.test.xmlcompiler" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.GCCompiler">
+  <component name="RunManager" selected="应用程序.GCDrawer">
     <configuration name="GCCompiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ljl.gcc.compiler.GCCompiler" />
       <module name="Graph-Config-Compiler" />
@@ -184,7 +189,7 @@
       <workItem from="1715299243713" duration="18501000" />
       <workItem from="1715345425101" duration="21000" />
       <workItem from="1715386505376" duration="13505000" />
-      <workItem from="1715415181434" duration="3352000" />
+      <workItem from="1715415181434" duration="9276000" />
     </task>
     <task id="LOCAL-00001" summary="GCCLexer.java COMPLETE">
       <created>1715160213832</created>
@@ -284,7 +289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715421152480</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="完成mermaid编程的词法分析DFA、算法流程图和语法分析算法流程图">
+      <created>1715421243023</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715421243023</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,6 +329,7 @@
     <MESSAGE value="GClangCompiler V2.0" />
     <MESSAGE value="GClangCompiler V3.0" />
     <MESSAGE value="完成mermaid编程的词法分析和语法分析算法流程图" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成mermaid编程的词法分析和语法分析算法流程图" />
+    <MESSAGE value="完成mermaid编程的词法分析DFA、算法流程图和语法分析算法流程图" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成mermaid编程的词法分析DFA、算法流程图和语法分析算法流程图" />
   </component>
 </project>

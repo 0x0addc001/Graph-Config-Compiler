@@ -658,56 +658,56 @@ class myCanvas extends Canvas{
     }
 }
 class MyElement{//bg,points,lines,line,curve,shape,xScale,yScale
-    String elementName;
-    Color col = Color.BLACK;
+    String elementName; // 元素名
+    Color col = Color.BLACK; // 颜色
 }
 class Bg extends MyElement{
-    Double xRangeLeft;
-    Double xRangeRight;
-    Double yRangeTop;
-    Double yRangeBottom;
+    Double xRangeLeft; // 左界
+    Double xRangeRight; // 右界
+    Double yRangeTop; // 上界
+    Double yRangeBottom; // 下界
 }
 class Points extends MyElement{//wid,pad,radius,list
-    Double wid = 1.0d;
-    Boolean pad;
-    Double radius;
-    ArrayList<Double> x = new ArrayList<Double>();
-    ArrayList<Double> y = new ArrayList<Double>();
+    Double wid = 1.0d; // 线宽
+    Boolean pad; // 填充
+    Double radius; // 半径
+    ArrayList<Double> x = new ArrayList<Double>(); // x集
+    ArrayList<Double> y = new ArrayList<Double>(); // y集
 }
 class Lines extends MyElement{//wid,list
-    Double wid = 1.0d;
-    ArrayList<Double> x = new ArrayList<Double>();
-    ArrayList<Double> y = new ArrayList<Double>();
+    Double wid = 1.0d; // 线宽
+    ArrayList<Double> x = new ArrayList<Double>(); // x集
+    ArrayList<Double> y = new ArrayList<Double>(); // y集
 }
 class Line extends MyElement{//wid,point,slope
-    Double wid = 1.0d;
-    Double x;
-    Double y;
-    String slope;
+    Double wid = 1.0d; // 线宽
+    Double x; // x坐标
+    Double y; // y坐标
+    String slope; // 斜率
 }
 class Curve extends MyElement{//wid,range,amount,function
-    Double wid = 1.0d;
-    Double rangeLeft;
-    Double rangeRight;
-    Double amount;
-    String function;
+    Double wid = 1.0d; // 线宽
+    Double rangeLeft; // 左界
+    Double rangeRight; // 右界
+    Double amount; // 线元数
+    String function; // 函数方程
 }
-class Shape extends MyElement{//wid,type,pad,center,width,height
-    Double wid = 1.0d;
-    String type;
-    Boolean pad;
+class Shape extends MyElement{//wid,type,pad,center(x,y),width,height
+    Double wid = 1.0d; // 线宽
+    String type; // 形状
+    Boolean pad; // 填充
     //String center;//x,y
-    Double x;
-    Double y;
-    Double width;
-    Double height;
+    Double x; // 中心x坐标
+    Double y; // 中心y坐标
+    Double width; // 宽度
+    Double height; // 高度
 }
 class Scale extends MyElement{//wid,direction,pos,from,step,amount,precision
-    Double wid = 1.0d;
-    String direction;
-    Double pos;
-    Double from;
-    Double step;
-    Double amount;
-    Double precision;
+    Double wid = 1.0d; // 线宽
+    String direction; // 方向
+    Double pos; // 起始点相对坐标
+    Double from; // 起始点值
+    Double step; // 步长
+    Double amount; // 线段数
+    Double precision; // 精度
 }
