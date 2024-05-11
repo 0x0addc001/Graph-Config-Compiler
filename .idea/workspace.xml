@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/img/dfa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/lexer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/ebnf/dfa.mermaid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/lexer.mermaid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/GCCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/GCCompiler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/GCLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/GCLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/GCParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/GCParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/TokenNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/TokenNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/token/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/token/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/gcc-output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/gcc-output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/token/TokenTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/token/TokenTable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,11 +62,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/ljl/test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/example.gc" />
     <property name="project.structure.last.edited" value="SDK" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -190,7 +190,8 @@
       <workItem from="1715232919887" duration="25413000" />
       <workItem from="1715299243713" duration="18501000" />
       <workItem from="1715345425101" duration="21000" />
-      <workItem from="1715386505376" duration="6385000" />
+      <workItem from="1715386505376" duration="13505000" />
+      <workItem from="1715415181434" duration="88000" />
     </task>
     <task id="LOCAL-00001" summary="GCCLexer.java COMPLETE">
       <created>1715160213832</created>
@@ -269,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715332892576</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="GClangCompiler V2.0">
+      <created>1715396025210</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715396025210</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,6 +307,7 @@
     <MESSAGE value="GClangCompiler V1.0" />
     <MESSAGE value="ebnf 100%-COMPLETE" />
     <MESSAGE value="ebnf MODIFY" />
-    <option name="LAST_COMMIT_MESSAGE" value="ebnf MODIFY" />
+    <MESSAGE value="GClangCompiler V2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="GClangCompiler V2.0" />
   </component>
 </project>

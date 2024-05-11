@@ -1,0 +1,35 @@
+graph TD
+  Start((Start)) --> Input_string[输入字符流]
+  Input_string --> StripWhitespace[过滤空白字符]
+  StripWhitespace --> IgnoreComments[忽略注释]
+  IgnoreComments --> Lex[词法分析]
+  Lex --> CheckEmpty[判断是否为空]
+  CheckEmpty -->|为空|ReturnTrue[返回真]
+  CheckEmpty -->|不为空|CheckStartTag[判断是否为起始标签]
+  CheckStartTag --> |是起始标签|StartTag[识别起始标签]
+
+  CheckStartTag --> |不是起始标签| CheckContent[判断是否为内容]
+  CheckContent --> |是内容|Content[分解为tokens]
+  Content --> Token[处理tokens]
+  Token --> |有token|RecognizeToken[识别token]
+  Token --> |无token|ReturnTrue
+  RecognizeToken -->|识别为boolean| AddToken[添加token]
+  RecognizeToken -->|识别为number| AddToken
+  RecognizeToken -->|识别为inf| AddToken
+  RecognizeToken -->|识别为direction type| AddToken
+  RecognizeToken -->|识别为color type| AddToken
+  RecognizeToken -->|识别为shape type| AddToken
+  RecognizeToken -->|识别为function expression| AddToken
+  RecognizeToken -->|识别为comma| AddToken
+  RecognizeToken -->|识别为semicolon| AddToken
+  RecognizeToken -->|识别失败| Error[错误信息:不识别的标记]
+  AddToken --> Token
+
+  StartTag --> |识别成功|Lex2[向下递归词法分析]
+  StartTag -->|识别失败|Error
+  Lex2 --> |成功解析|EndTag[识别结束标签]
+  EndTag -->|识别成功|Lex3[后文向下递归词法分析]
+  EndTag -->|识别失败|Error
+  Lex3 -->|成功解析| ReturnTrue
+
+  Error --> ReturnFalse[返回假]

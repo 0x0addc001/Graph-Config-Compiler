@@ -2,8 +2,8 @@ package com.ljl.gcc.compiler.token;
 
 public class TokenTable {
     private static final String[] EMPTY_NAMES = new String[0];
-    private final String[] literalNames;
-    private final String[] symbolicNames;
+    private final String[] literalNames; // TokenType种别编码索引的字面符列表
+    private final String[] symbolicNames; // TokenType种别编码索引的助记符列表
 
     public TokenTable(String[] literalNames, String[] symbolicNames) {
         this.literalNames = literalNames != null ? literalNames : EMPTY_NAMES;

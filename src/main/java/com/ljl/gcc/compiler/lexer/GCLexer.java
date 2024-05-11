@@ -15,13 +15,13 @@ public class GCLexer extends GCCompiler {
         this._output = new ArrayList<>();
     }
 
-    private String _input = ""; // raw content
-    private ArrayList<Token> _output; // tokens list
+    private String _input = ""; // CharStream 输入字符流
+    private ArrayList<Token> _output; // TokenStream 输出Token流
 
     public ArrayList<Token> get_output() {
-        int token_type = TOKENTABLE.getTokenTypeBySymbolicName("EOF");
-        Token token = new Token(token_type, null);
-        _output.add(token);
+//        int token_type = TOKENTABLE.getTokenTypeBySymbolicName("EOF");
+//        Token token = new Token(token_type, null);
+//        _output.add(token);
         for (int i = 0; i < _output.size(); i++){
             _output.get(i).setTokenIndex(i);
         }
@@ -181,7 +181,7 @@ public class GCLexer extends GCCompiler {
         int token_type = TOKENTABLE.getTokenTypeByLiteralName(_input.substring(s, e + 1));
 //        System.out.println("@STARTTAG:"+ _input.substring(s, e + 1));
         if(token_type == -1) {
-            System.out.println("ERR: 不识别的标签 "+ _input.substring(s, e + 1));
+            System.out.println("ERR: 不识别的标记 "+ _input.substring(s, e + 1));
             return false;
         }
         else {
