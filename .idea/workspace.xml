@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/img/dfa.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/lexer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/ebnf/dfa.mermaid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/lexer.mermaid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/parser.mermaid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/GCLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/GCLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/token/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/token/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/token/TokenTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/token/TokenTable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +185,7 @@
       <workItem from="1715299243713" duration="18501000" />
       <workItem from="1715345425101" duration="21000" />
       <workItem from="1715386505376" duration="13505000" />
-      <workItem from="1715415181434" duration="88000" />
+      <workItem from="1715415181434" duration="3191000" />
     </task>
     <task id="LOCAL-00001" summary="GCCLexer.java COMPLETE">
       <created>1715160213832</created>
@@ -277,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715396025210</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="GClangCompiler V3.0">
+      <created>1715415487506</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715415487506</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,6 +309,7 @@
     <MESSAGE value="ebnf 100%-COMPLETE" />
     <MESSAGE value="ebnf MODIFY" />
     <MESSAGE value="GClangCompiler V2.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="GClangCompiler V2.0" />
+    <MESSAGE value="GClangCompiler V3.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="GClangCompiler V3.0" />
   </component>
 </project>

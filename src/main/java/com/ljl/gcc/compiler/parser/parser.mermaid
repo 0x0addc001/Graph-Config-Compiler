@@ -1,0 +1,18 @@
+flowchart TD
+  Start((Start)) --> Input[输入token流]
+  Input --> ConfigRule[处理Config规则]
+  subgraph Config规则
+  ConfigRule --> CreateConfig[创建Config节点]
+  CreateConfig --> setConfig[进入规则手续：将当前规则节点设为Config节点]
+  setConfig --> AddConfig[进入规则手续：添加Config节点为父节点（如有）的孩子节点]
+  AddConfig --> MatchStart[匹配CONFIG_START]
+  MatchStart -->|匹配成功| ElementRule[处理Element规则]
+  subgraph Element规则
+  ElementRule --> ElementRule
+  end
+  ElementRule-->|处理成功| MatchEnd[匹配CONFIG_END]
+  MatchEnd -->|匹配成功| unsetConfig[退出规则手续：将当前规则结点设为当前规则节点的父节点（如有）]
+  MatchStart -->|匹配失败| Error[错误信息:不匹配的token]
+  ElementRule -->|处理失败| Error2[错误信息:不适配的规则]
+  MatchEnd -->|匹配失败| Error
+  end
