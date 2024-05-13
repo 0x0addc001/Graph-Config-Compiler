@@ -87,471 +87,466 @@ public class GCDrawer extends JFrame {
                 try {
                     MyElements.clear();
                     TreeNode configNode = compiler.compile(fieldConfig.getText());
-                    if(configNode.getClass().getSimpleName().equals("ConfigNode")) {
-                        for (int i = 0; i < configNode.getChildCount(); i++) {//bg,points,lines,line,curve,shape,xScale,yScale
-                            TreeNode elementNode = configNode.getChild(i);
-                            if (elementNode.getClass().getSimpleName().equals("ElementNode")) {
-                                TreeNode myElementNode = elementNode.getChild(0);
-                                switch (myElementNode.getClass().getSimpleName()) {
-                                    case "BgNode":
-                                        Bg myBg = new Bg();
-                                        myBg.elementName = "bg";
-                                        for (int j = 0; j < myElementNode.getChildCount(); j++) {//col,xRange,yRange
-                                            TreeNode attributeNode = myElementNode.getChild(j);
-                                            switch (attributeNode.getClass().getSimpleName()) {
-                                                case "ColNode":
-                                                    TreeNode valueNode = attributeNode.getChild(1);
-                                                    if (valueNode.getClass().getSimpleName().equals("Color_valNode")) {
-                                                        TreeNode subValueNode = valueNode.getChild(0);
-                                                        if (subValueNode.getClass().getSimpleName().equals("Number_tripletNode")) {
-                                                            double R = Double.parseDouble(subValueNode.getChild(0).getText());
-                                                            double G = Double.parseDouble(subValueNode.getChild(2).getText());
-                                                            double B = Double.parseDouble(subValueNode.getChild(4).getText());
-                                                            int r = (int) R;
-                                                            int g = (int) G;
-                                                            int b = (int) B;
-                                                            if(r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255){
-                                                                myBg.col = new Color(r, g, b);
-                                                            }
-                                                            else{
+                    if(configNode != null) {
+                        if (configNode.getClass().getSimpleName().equals("ConfigNode")) {
+                            for (int i = 0; i < configNode.getChildCount(); i++) {//bg,points,lines,line,curve,shape,xScale,yScale
+                                TreeNode elementNode = configNode.getChild(i);
+                                if (elementNode.getClass().getSimpleName().equals("ElementNode")) {
+                                    TreeNode myElementNode = elementNode.getChild(0);
+                                    switch (myElementNode.getClass().getSimpleName()) {
+                                        case "BgNode":
+                                            Bg myBg = new Bg();
+                                            myBg.elementName = "bg";
+                                            for (int j = 0; j < myElementNode.getChildCount(); j++) {//col,xRange,yRange
+                                                TreeNode attributeNode = myElementNode.getChild(j);
+                                                switch (attributeNode.getClass().getSimpleName()) {
+                                                    case "ColNode":
+                                                        TreeNode valueNode = attributeNode.getChild(1);
+                                                        if (valueNode.getClass().getSimpleName().equals("Color_valNode")) {
+                                                            TreeNode subValueNode = valueNode.getChild(0);
+                                                            if (subValueNode.getClass().getSimpleName().equals("Number_tripletNode")) {
+                                                                double R = Double.parseDouble(subValueNode.getChild(0).getText());
+                                                                double G = Double.parseDouble(subValueNode.getChild(2).getText());
+                                                                double B = Double.parseDouble(subValueNode.getChild(4).getText());
+                                                                int r = (int) R;
+                                                                int g = (int) G;
+                                                                int b = (int) B;
+                                                                if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
+                                                                    myBg.col = new Color(r, g, b);
+                                                                } else {
+                                                                    myBg.col = Color.BLACK;
+                                                                    System.out.println("Semantic Error: invalid color value RGB =" + r + "," + g + "," + b);
+                                                                }
+                                                            } else if (subValueNode.getClass().getSimpleName().equals("TokenNode")) {
+                                                                myBg.col = parseColor(subValueNode.getText());
+                                                                //System.out.println(myBg.col);
+                                                            } else {
                                                                 myBg.col = Color.BLACK;
-                                                                System.out.println("Error: invalid color value RGB =" + r + "," + g + "," + b);
                                                             }
-                                                        }
-                                                        else if (subValueNode.getClass().getSimpleName().equals("TokenNode")){
-                                                            myBg.col = parseColor(subValueNode.getText());
-                                                            //System.out.println(myBg.col);
-                                                        }
-                                                        else {
+                                                        } else {
                                                             myBg.col = Color.BLACK;
                                                         }
-                                                    }
-                                                    else {
-                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
-                                                    }
-                                                    break;
-                                                case "X_rangeNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    if (valueNode.getClass().getSimpleName().equals("Number_pairNode")) {
-                                                        myBg.xRangeLeft = Double.parseDouble(valueNode.getChild(0).getText());
-                                                        myBg.xRangeRight = Double.parseDouble(valueNode.getChild(2).getText());
-                                                    }
-                                                    else {
-                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
-                                                    }
-                                                    break;
-                                                case "Y_rangeNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    if (valueNode.getClass().getSimpleName().equals("Number_pairNode")) {
-                                                        myBg.yRangeBottom = Double.parseDouble(valueNode.getChild(0).getText());
-                                                        myBg.yRangeTop = Double.parseDouble(valueNode.getChild(2).getText());
-                                                    }
-                                                    else {
-                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
-                                                    }
-                                                    break;
-                                                default:
-                                                    System.out.println("Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
-                                                    // System.exit(1);
+                                                        break;
+                                                    case "X_rangeNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        if (valueNode.getClass().getSimpleName().equals("Number_pairNode")) {
+                                                            myBg.xRangeLeft = Double.parseDouble(valueNode.getChild(0).getText());
+                                                            myBg.xRangeRight = Double.parseDouble(valueNode.getChild(2).getText());
+                                                        } else {
+                                                            System.out.println("Semantic Error: unmatched element value:" + valueNode.getClass().getSimpleName());
+                                                        }
+                                                        break;
+                                                    case "Y_rangeNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        if (valueNode.getClass().getSimpleName().equals("Number_pairNode")) {
+                                                            myBg.yRangeBottom = Double.parseDouble(valueNode.getChild(0).getText());
+                                                            myBg.yRangeTop = Double.parseDouble(valueNode.getChild(2).getText());
+                                                        } else {
+                                                            System.out.println("Semantic Error: unmatched element value:" + valueNode.getClass().getSimpleName());
+                                                        }
+                                                        break;
+                                                    case "TokenNode":
+                                                        // 起始或结束标签
+                                                        break;
+                                                    default:
+                                                        System.out.println("Semantic Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
+                                                        // System.exit(1);
+                                                }
                                             }
-                                        }
-                                        MyElements.add(myBg);
-                                        break;
-                                    case "PointsNode":
-                                        Points myPoints = new Points();
-                                        myPoints.elementName = "points";
-                                        for (int j = 0; j < myElementNode.getChildCount(); j++) {//col,wid,pad,radius,list
-                                            TreeNode attributeNode = myElementNode.getChild(j);
-                                            switch (attributeNode.getClass().getSimpleName()) {
-                                                case "ColNode":
-                                                    TreeNode valueNode = attributeNode.getChild(1);
-                                                    if (valueNode.getClass().getSimpleName().equals("Color_valNode")) {
-                                                        TreeNode subValueNode = valueNode.getChild(0);
-                                                        if (subValueNode.getClass().getSimpleName().equals("Number_tripletNode")) {
-                                                            double R = Double.parseDouble(subValueNode.getChild(0).getText());
-                                                            double G = Double.parseDouble(subValueNode.getChild(2).getText());
-                                                            double B = Double.parseDouble(subValueNode.getChild(4).getText());
-                                                            int r = (int) R;
-                                                            int g = (int) G;
-                                                            int b = (int) B;
-                                                            if(r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255){
-                                                                myPoints.col = new Color(r, g, b);
-                                                            }
-                                                            else{
+                                            MyElements.add(myBg);
+                                            break;
+                                        case "PointsNode":
+                                            Points myPoints = new Points();
+                                            myPoints.elementName = "points";
+                                            for (int j = 0; j < myElementNode.getChildCount(); j++) {//col,wid,pad,radius,list
+                                                TreeNode attributeNode = myElementNode.getChild(j);
+                                                switch (attributeNode.getClass().getSimpleName()) {
+                                                    case "ColNode":
+                                                        TreeNode valueNode = attributeNode.getChild(1);
+                                                        if (valueNode.getClass().getSimpleName().equals("Color_valNode")) {
+                                                            TreeNode subValueNode = valueNode.getChild(0);
+                                                            if (subValueNode.getClass().getSimpleName().equals("Number_tripletNode")) {
+                                                                double R = Double.parseDouble(subValueNode.getChild(0).getText());
+                                                                double G = Double.parseDouble(subValueNode.getChild(2).getText());
+                                                                double B = Double.parseDouble(subValueNode.getChild(4).getText());
+                                                                int r = (int) R;
+                                                                int g = (int) G;
+                                                                int b = (int) B;
+                                                                if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
+                                                                    myPoints.col = new Color(r, g, b);
+                                                                } else {
+                                                                    myPoints.col = Color.BLACK;
+                                                                    System.out.println("Semantic Error: invalid color value RGB =" + r + "," + g + "," + b);
+                                                                }
+                                                            } else if (subValueNode.getClass().getSimpleName().equals("TokenNode")) {
+                                                                myPoints.col = parseColor(subValueNode.getText());
+                                                                //System.out.println(myBg.col);
+                                                            } else {
                                                                 myPoints.col = Color.BLACK;
-                                                                System.out.println("Error: invalid color value RGB =" + r + "," + g + "," + b);
                                                             }
-                                                        }
-                                                        else if (subValueNode.getClass().getSimpleName().equals("TokenNode")){
-                                                            myPoints.col = parseColor(subValueNode.getText());
-                                                            //System.out.println(myBg.col);
-                                                        }
-                                                        else {
+                                                        } else {
                                                             myPoints.col = Color.BLACK;
                                                         }
-                                                    }
-                                                    else {
-                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
-                                                    }
-                                                    break;
-                                                case "WidNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myPoints.wid = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                case "PadNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myPoints.pad = Boolean.parseBoolean(valueNode.getText());
-                                                    break;
-                                                case "RadiusNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myPoints.radius = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                case "ListNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    for (int k = 0; k < valueNode.getChildCount(); k++) {//col,wid,pad,radius,list
-                                                        TreeNode subValueNode = valueNode.getChild(k);
-                                                        myPoints.x.add(Double.parseDouble(subValueNode.getChild(0).getText()));
-                                                        myPoints.y.add(Double.parseDouble(subValueNode.getChild(2).getText()));
-                                                    }
-                                                    break;
-                                                default:
-                                                    System.out.println("Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
-                                                    // System.exit(1);
+                                                        break;
+                                                    case "WidNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myPoints.wid = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "PadNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myPoints.pad = Boolean.parseBoolean(valueNode.getText());
+                                                        break;
+                                                    case "RadiusNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myPoints.radius = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "ListNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        for (int k = 0; k < valueNode.getChildCount(); k++) {//col,wid,pad,radius,list
+                                                            TreeNode subValueNode = valueNode.getChild(k);
+                                                            myPoints.x.add(Double.parseDouble(subValueNode.getChild(0).getText()));
+                                                            myPoints.y.add(Double.parseDouble(subValueNode.getChild(2).getText()));
+                                                        }
+                                                        break;
+                                                    case "TokenNode":
+                                                        // 起始或结束标签
+                                                        break;
+                                                    default:
+                                                        System.out.println("Semantic Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
+                                                        // System.exit(1);
+                                                }
                                             }
-                                        }
-                                        MyElements.add(myPoints);
-                                        break;
-                                    case "LinesNode":
-                                        Lines myLines = new Lines();
-                                        myLines.elementName = "lines";
-                                        for (int j = 0; j < myElementNode.getChildCount(); j++) {//col,wid,pad,radius,list
-                                            TreeNode attributeNode = myElementNode.getChild(j);
-                                            switch (attributeNode.getClass().getSimpleName()) {
-                                                case "ColNode":
-                                                    TreeNode valueNode = attributeNode.getChild(1);
-                                                    if (valueNode.getClass().getSimpleName().equals("Color_valNode")) {
-                                                        TreeNode subValueNode = valueNode.getChild(0);
-                                                        if (subValueNode.getClass().getSimpleName().equals("Number_tripletNode")) {
-                                                            double R = Double.parseDouble(subValueNode.getChild(0).getText());
-                                                            double G = Double.parseDouble(subValueNode.getChild(2).getText());
-                                                            double B = Double.parseDouble(subValueNode.getChild(4).getText());
-                                                            int r = (int) R;
-                                                            int g = (int) G;
-                                                            int b = (int) B;
-                                                            if(r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255){
-                                                                myLines.col = new Color(r, g, b);
-                                                            }
-                                                            else{
+                                            MyElements.add(myPoints);
+                                            break;
+                                        case "LinesNode":
+                                            Lines myLines = new Lines();
+                                            myLines.elementName = "lines";
+                                            for (int j = 0; j < myElementNode.getChildCount(); j++) {//col,wid,pad,radius,list
+                                                TreeNode attributeNode = myElementNode.getChild(j);
+                                                switch (attributeNode.getClass().getSimpleName()) {
+                                                    case "ColNode":
+                                                        TreeNode valueNode = attributeNode.getChild(1);
+                                                        if (valueNode.getClass().getSimpleName().equals("Color_valNode")) {
+                                                            TreeNode subValueNode = valueNode.getChild(0);
+                                                            if (subValueNode.getClass().getSimpleName().equals("Number_tripletNode")) {
+                                                                double R = Double.parseDouble(subValueNode.getChild(0).getText());
+                                                                double G = Double.parseDouble(subValueNode.getChild(2).getText());
+                                                                double B = Double.parseDouble(subValueNode.getChild(4).getText());
+                                                                int r = (int) R;
+                                                                int g = (int) G;
+                                                                int b = (int) B;
+                                                                if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
+                                                                    myLines.col = new Color(r, g, b);
+                                                                } else {
+                                                                    myLines.col = Color.BLACK;
+                                                                    System.out.println("Semantic Error: invalid color value RGB =" + r + "," + g + "," + b);
+                                                                }
+                                                            } else if (subValueNode.getClass().getSimpleName().equals("TokenNode")) {
+                                                                myLines.col = parseColor(subValueNode.getText());
+                                                                //System.out.println(myBg.col);
+                                                            } else {
                                                                 myLines.col = Color.BLACK;
-                                                                System.out.println("Error: invalid color value RGB =" + r + "," + g + "," + b);
                                                             }
-                                                        }
-                                                        else if (subValueNode.getClass().getSimpleName().equals("TokenNode")){
-                                                            myLines.col = parseColor(subValueNode.getText());
-                                                            //System.out.println(myBg.col);
-                                                        }
-                                                        else {
+                                                        } else {
                                                             myLines.col = Color.BLACK;
                                                         }
-                                                    }
-                                                    else {
-                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
-                                                    }
-                                                    break;
-                                                case "WidNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myLines.wid = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                case "ListNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    for (int k = 0; k < valueNode.getChildCount(); k++) {//col,wid,pad,radius,list
-                                                        TreeNode subValueNode = valueNode.getChild(k);
-                                                        myLines.x.add(Double.parseDouble(subValueNode.getChild(0).getText()));
-                                                        myLines.y.add(Double.parseDouble(subValueNode.getChild(2).getText()));
-                                                    }
-                                                    break;
-                                                default:
-                                                    System.out.println("Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
-                                                    // System.exit(1);
+                                                        break;
+                                                    case "WidNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myLines.wid = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "ListNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        for (int k = 0; k < valueNode.getChildCount(); k++) {//col,wid,pad,radius,list
+                                                            TreeNode subValueNode = valueNode.getChild(k);
+                                                            myLines.x.add(Double.parseDouble(subValueNode.getChild(0).getText()));
+                                                            myLines.y.add(Double.parseDouble(subValueNode.getChild(2).getText()));
+                                                        }
+                                                        break;
+                                                    case "TokenNode":
+                                                        // 起始或结束标签
+                                                        break;
+                                                    default:
+                                                        System.out.println("Semantic Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
+                                                        // System.exit(1);
+                                                }
                                             }
-                                        }
-                                        MyElements.add(myLines);
-                                        break;
-                                    case "LineNode":
-                                        Line myLine = new Line();
-                                        myLine.elementName = "line";
-                                        for (int j = 0; j < myElementNode.getChildCount(); j++) {//col,wid,point,slope
-                                            TreeNode attributeNode = myElementNode.getChild(j);
-                                            switch (attributeNode.getClass().getSimpleName()) {
-                                                case "ColNode":
-                                                    TreeNode valueNode = attributeNode.getChild(1);
-                                                    if (valueNode.getClass().getSimpleName().equals("Color_valNode")) {
-                                                        TreeNode subValueNode = valueNode.getChild(0);
-                                                        if (subValueNode.getClass().getSimpleName().equals("Number_tripletNode")) {
-                                                            double R = Double.parseDouble(subValueNode.getChild(0).getText());
-                                                            double G = Double.parseDouble(subValueNode.getChild(2).getText());
-                                                            double B = Double.parseDouble(subValueNode.getChild(4).getText());
-                                                            int r = (int) R;
-                                                            int g = (int) G;
-                                                            int b = (int) B;
-                                                            if(r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255){
-                                                                myLine.col = new Color(r, g, b);
-                                                            }
-                                                            else{
+                                            MyElements.add(myLines);
+                                            break;
+                                        case "LineNode":
+                                            Line myLine = new Line();
+                                            myLine.elementName = "line";
+                                            for (int j = 0; j < myElementNode.getChildCount(); j++) {//col,wid,point,slope
+                                                TreeNode attributeNode = myElementNode.getChild(j);
+                                                switch (attributeNode.getClass().getSimpleName()) {
+                                                    case "ColNode":
+                                                        TreeNode valueNode = attributeNode.getChild(1);
+                                                        if (valueNode.getClass().getSimpleName().equals("Color_valNode")) {
+                                                            TreeNode subValueNode = valueNode.getChild(0);
+                                                            if (subValueNode.getClass().getSimpleName().equals("Number_tripletNode")) {
+                                                                double R = Double.parseDouble(subValueNode.getChild(0).getText());
+                                                                double G = Double.parseDouble(subValueNode.getChild(2).getText());
+                                                                double B = Double.parseDouble(subValueNode.getChild(4).getText());
+                                                                int r = (int) R;
+                                                                int g = (int) G;
+                                                                int b = (int) B;
+                                                                if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
+                                                                    myLine.col = new Color(r, g, b);
+                                                                } else {
+                                                                    myLine.col = Color.BLACK;
+                                                                    System.out.println("Semantic Error: invalid color value RGB =" + r + "," + g + "," + b);
+                                                                }
+                                                            } else if (subValueNode.getClass().getSimpleName().equals("TokenNode")) {
+                                                                myLine.col = parseColor(subValueNode.getText());
+                                                                //System.out.println(myBg.col);
+                                                            } else {
                                                                 myLine.col = Color.BLACK;
-                                                                System.out.println("Error: invalid color value RGB =" + r + "," + g + "," + b);
                                                             }
-                                                        }
-                                                        else if (subValueNode.getClass().getSimpleName().equals("TokenNode")){
-                                                            myLine.col = parseColor(subValueNode.getText());
-                                                            //System.out.println(myBg.col);
-                                                        }
-                                                        else {
+                                                        } else {
                                                             myLine.col = Color.BLACK;
                                                         }
-                                                    }
-                                                    else {
-                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
-                                                    }
-                                                    break;
-                                                case "WidNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myLine.wid = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                case "PointNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    if (valueNode.getClass().getSimpleName().equals("Number_pairNode")) {
-                                                        myLine.x = Double.parseDouble(valueNode.getChild(0).getText());
-                                                        myLine.y = Double.parseDouble(valueNode.getChild(2).getText());
-                                                    }
-                                                    break;
-                                                case "SlopeNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myLine.slope = valueNode.getText();
-                                                    break;
-                                                default:
-                                                    System.out.println("Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
-                                                    // System.exit(1);
+                                                        break;
+                                                    case "WidNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myLine.wid = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "PointNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        if (valueNode.getClass().getSimpleName().equals("Number_pairNode")) {
+                                                            myLine.x = Double.parseDouble(valueNode.getChild(0).getText());
+                                                            myLine.y = Double.parseDouble(valueNode.getChild(2).getText());
+                                                        }
+                                                        break;
+                                                    case "SlopeNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myLine.slope = valueNode.getText();
+                                                        break;
+                                                    case "TokenNode":
+                                                        // 起始或结束标签
+                                                        break;
+                                                    default:
+                                                        System.out.println("Semantic Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
+                                                        // System.exit(1);
+                                                }
                                             }
-                                        }
-                                        MyElements.add(myLine);
-                                        break;
-                                    case "CurveNode":
-                                        Curve myCurve = new Curve();
-                                        myCurve.elementName = "curve";
-                                        for (int j = 0; j < myElementNode.getChildCount(); j++) {//col,wid,point,slope
-                                            TreeNode attributeNode = myElementNode.getChild(j);
-                                            switch (attributeNode.getClass().getSimpleName()) {
-                                                case "ColNode":
-                                                    TreeNode valueNode = attributeNode.getChild(1);
-                                                    if (valueNode.getClass().getSimpleName().equals("Color_valNode")) {
-                                                        TreeNode subValueNode = valueNode.getChild(0);
-                                                        if (subValueNode.getClass().getSimpleName().equals("Number_tripletNode")) {
-                                                            double R = Double.parseDouble(subValueNode.getChild(0).getText());
-                                                            double G = Double.parseDouble(subValueNode.getChild(2).getText());
-                                                            double B = Double.parseDouble(subValueNode.getChild(4).getText());
-                                                            int r = (int) R;
-                                                            int g = (int) G;
-                                                            int b = (int) B;
-                                                            if(r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255){
-                                                                myCurve.col = new Color(r, g, b);
-                                                            }
-                                                            else{
+                                            MyElements.add(myLine);
+                                            break;
+                                        case "CurveNode":
+                                            Curve myCurve = new Curve();
+                                            myCurve.elementName = "curve";
+                                            for (int j = 0; j < myElementNode.getChildCount(); j++) {//col,wid,point,slope
+                                                TreeNode attributeNode = myElementNode.getChild(j);
+                                                switch (attributeNode.getClass().getSimpleName()) {
+                                                    case "ColNode":
+                                                        TreeNode valueNode = attributeNode.getChild(1);
+                                                        if (valueNode.getClass().getSimpleName().equals("Color_valNode")) {
+                                                            TreeNode subValueNode = valueNode.getChild(0);
+                                                            if (subValueNode.getClass().getSimpleName().equals("Number_tripletNode")) {
+                                                                double R = Double.parseDouble(subValueNode.getChild(0).getText());
+                                                                double G = Double.parseDouble(subValueNode.getChild(2).getText());
+                                                                double B = Double.parseDouble(subValueNode.getChild(4).getText());
+                                                                int r = (int) R;
+                                                                int g = (int) G;
+                                                                int b = (int) B;
+                                                                if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
+                                                                    myCurve.col = new Color(r, g, b);
+                                                                } else {
+                                                                    myCurve.col = Color.BLACK;
+                                                                    System.out.println("Semantic Error: invalid color value RGB =" + r + "," + g + "," + b);
+                                                                }
+                                                            } else if (subValueNode.getClass().getSimpleName().equals("TokenNode")) {
+                                                                myCurve.col = parseColor(subValueNode.getText());
+                                                                //System.out.println(myBg.col);
+                                                            } else {
                                                                 myCurve.col = Color.BLACK;
-                                                                System.out.println("Error: invalid color value RGB =" + r + "," + g + "," + b);
                                                             }
-                                                        }
-                                                        else if (subValueNode.getClass().getSimpleName().equals("TokenNode")){
-                                                            myCurve.col = parseColor(subValueNode.getText());
-                                                            //System.out.println(myBg.col);
-                                                        }
-                                                        else {
+                                                        } else {
                                                             myCurve.col = Color.BLACK;
                                                         }
-                                                    }
-                                                    else {
-                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
-                                                    }
-                                                    break;
-                                                case "WidNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myCurve.wid = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                case "RangeNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    if (valueNode.getClass().getSimpleName().equals("Number_pairNode")) {
-                                                        myCurve.rangeLeft = Double.parseDouble(valueNode.getChild(0).getText());
-                                                        myCurve.rangeRight = Double.parseDouble(valueNode.getChild(2).getText());
-                                                    }
-                                                    break;
-                                                case "FunctionNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    String str = valueNode.getText();
-                                                    if (str.startsWith("{") && str.endsWith("}")) {
-                                                        str = str.substring(1, str.length() - 1);
-                                                        myCurve.function = str;
-                                                    }
-                                                    break;
-                                                case "AmountNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myCurve.amount = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                default:
-                                                    System.out.println("Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
-                                                    // System.exit(1);
+                                                        break;
+                                                    case "WidNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myCurve.wid = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "RangeNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        if (valueNode.getClass().getSimpleName().equals("Number_pairNode")) {
+                                                            myCurve.rangeLeft = Double.parseDouble(valueNode.getChild(0).getText());
+                                                            myCurve.rangeRight = Double.parseDouble(valueNode.getChild(2).getText());
+                                                        }
+                                                        break;
+                                                    case "FunctionNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        String str = valueNode.getText();
+                                                        if (str.startsWith("{") && str.endsWith("}")) {
+                                                            str = str.substring(1, str.length() - 1);
+                                                            myCurve.function = str;
+                                                        }
+                                                        break;
+                                                    case "AmountNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myCurve.amount = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "TokenNode":
+                                                        // 起始或结束标签
+                                                        break;
+                                                    default:
+                                                        System.out.println("Semantic Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
+                                                        // System.exit(1);
+                                                }
                                             }
-                                        }
-                                        MyElements.add(myCurve);
-                                        break;
-                                    case "ShapeNode":
-                                        Shape myShape = new Shape();
-                                        myShape.elementName = "shape";
-                                        for (int j = 0; j < myElementNode.getChildCount(); j++) {//col,wid,type,pad,center,width,height
-                                            TreeNode attributeNode = myElementNode.getChild(j);
-                                            switch (attributeNode.getClass().getSimpleName()) {
-                                                case "ColNode":
-                                                    TreeNode valueNode = attributeNode.getChild(1);
-                                                    if (valueNode.getClass().getSimpleName().equals("Color_valNode")) {
-                                                        TreeNode subValueNode = valueNode.getChild(0);
-                                                        if (subValueNode.getClass().getSimpleName().equals("Number_tripletNode")) {
-                                                            double R = Double.parseDouble(subValueNode.getChild(0).getText());
-                                                            double G = Double.parseDouble(subValueNode.getChild(2).getText());
-                                                            double B = Double.parseDouble(subValueNode.getChild(4).getText());
-                                                            int r = (int) R;
-                                                            int g = (int) G;
-                                                            int b = (int) B;
-                                                            if(r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255){
-                                                                myShape.col = new Color(r, g, b);
-                                                            }
-                                                            else{
+                                            MyElements.add(myCurve);
+                                            break;
+                                        case "ShapeNode":
+                                            Shape myShape = new Shape();
+                                            myShape.elementName = "shape";
+                                            for (int j = 0; j < myElementNode.getChildCount(); j++) {//col,wid,type,pad,center,width,height
+                                                TreeNode attributeNode = myElementNode.getChild(j);
+                                                switch (attributeNode.getClass().getSimpleName()) {
+                                                    case "ColNode":
+                                                        TreeNode valueNode = attributeNode.getChild(1);
+                                                        if (valueNode.getClass().getSimpleName().equals("Color_valNode")) {
+                                                            TreeNode subValueNode = valueNode.getChild(0);
+                                                            if (subValueNode.getClass().getSimpleName().equals("Number_tripletNode")) {
+                                                                double R = Double.parseDouble(subValueNode.getChild(0).getText());
+                                                                double G = Double.parseDouble(subValueNode.getChild(2).getText());
+                                                                double B = Double.parseDouble(subValueNode.getChild(4).getText());
+                                                                int r = (int) R;
+                                                                int g = (int) G;
+                                                                int b = (int) B;
+                                                                if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
+                                                                    myShape.col = new Color(r, g, b);
+                                                                } else {
+                                                                    myShape.col = Color.BLACK;
+                                                                    System.out.println("Semantic Error: invalid color value RGB =" + r + "," + g + "," + b);
+                                                                }
+                                                            } else if (subValueNode.getClass().getSimpleName().equals("TokenNode")) {
+                                                                myShape.col = parseColor(subValueNode.getText());
+                                                                //System.out.println(myBg.col);
+                                                            } else {
                                                                 myShape.col = Color.BLACK;
-                                                                System.out.println("Error: invalid color value RGB =" + r + "," + g + "," + b);
                                                             }
-                                                        }
-                                                        else if (subValueNode.getClass().getSimpleName().equals("TokenNode")){
-                                                            myShape.col = parseColor(subValueNode.getText());
-                                                            //System.out.println(myBg.col);
-                                                        }
-                                                        else {
+                                                        } else {
                                                             myShape.col = Color.BLACK;
                                                         }
-                                                    }
-                                                    else {
-                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
-                                                    }
-                                                    break;
-                                                case "WidNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myShape.wid = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                case "TypeNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myShape.type = valueNode.getText();
-                                                    break;
-                                                case "PadNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myShape.pad = Boolean.parseBoolean(valueNode.getText());
-                                                    break;
-                                                case "CenterNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    if (valueNode.getClass().getSimpleName().equals("Number_pairNode")) {
-                                                        myShape.x = Double.parseDouble(valueNode.getChild(0).getText());
-                                                        myShape.y = Double.parseDouble(valueNode.getChild(2).getText());
-                                                    }
-                                                    else {
-                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
-                                                    }
-                                                    break;
-                                                case "WidthNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myShape.width = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                case "HeightNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myShape.height = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                default:
-                                                    System.out.println("Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
-                                                    // System.exit(1);
+                                                        break;
+                                                    case "WidNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myShape.wid = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "TypeNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myShape.type = valueNode.getText();
+                                                        break;
+                                                    case "PadNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myShape.pad = Boolean.parseBoolean(valueNode.getText());
+                                                        break;
+                                                    case "CenterNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        if (valueNode.getClass().getSimpleName().equals("Number_pairNode")) {
+                                                            myShape.x = Double.parseDouble(valueNode.getChild(0).getText());
+                                                            myShape.y = Double.parseDouble(valueNode.getChild(2).getText());
+                                                        } else {
+                                                            System.out.println("Semantic Error: unmatched element value:" + valueNode.getClass().getSimpleName());
+                                                        }
+                                                        break;
+                                                    case "WidthNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myShape.width = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "HeightNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myShape.height = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "TokenNode":
+                                                        // 起始或结束标签
+                                                        break;
+                                                    default:
+                                                        System.out.println("Semantic Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
+                                                        // System.exit(1);
+                                                }
                                             }
-                                        }
-                                        MyElements.add(myShape);
-                                        break;
-                                    case "ScaleNode":
-                                        Scale myScale = new Scale();
-                                        myScale.elementName = "scale";
-                                        for (int j = 0; j < myElementNode.getChildCount(); j++) {//col,wid,direction,pos,from,step,amount,precision
-                                            TreeNode attributeNode = myElementNode.getChild(j);
-                                            switch (attributeNode.getClass().getSimpleName()) {
-                                                case "ColNode":
-                                                    TreeNode valueNode = attributeNode.getChild(1);
-                                                    if (valueNode.getClass().getSimpleName().equals("Color_valNode")) {
-                                                        TreeNode subValueNode = valueNode.getChild(0);
-                                                        if (subValueNode.getClass().getSimpleName().equals("Number_tripletNode")) {
-                                                            double R = Double.parseDouble(subValueNode.getChild(0).getText());
-                                                            double G = Double.parseDouble(subValueNode.getChild(2).getText());
-                                                            double B = Double.parseDouble(subValueNode.getChild(4).getText());
-                                                            int r = (int) R;
-                                                            int g = (int) G;
-                                                            int b = (int) B;
-                                                            if(r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255){
-                                                                myScale.col = new Color(r, g, b);
-                                                            }
-                                                            else{
+                                            MyElements.add(myShape);
+                                            break;
+                                        case "ScaleNode":
+                                            Scale myScale = new Scale();
+                                            myScale.elementName = "scale";
+                                            for (int j = 0; j < myElementNode.getChildCount(); j++) {//col,wid,direction,pos,from,step,amount,precision
+                                                TreeNode attributeNode = myElementNode.getChild(j);
+                                                switch (attributeNode.getClass().getSimpleName()) {
+                                                    case "ColNode":
+                                                        TreeNode valueNode = attributeNode.getChild(1);
+                                                        if (valueNode.getClass().getSimpleName().equals("Color_valNode")) {
+                                                            TreeNode subValueNode = valueNode.getChild(0);
+                                                            if (subValueNode.getClass().getSimpleName().equals("Number_tripletNode")) {
+                                                                double R = Double.parseDouble(subValueNode.getChild(0).getText());
+                                                                double G = Double.parseDouble(subValueNode.getChild(2).getText());
+                                                                double B = Double.parseDouble(subValueNode.getChild(4).getText());
+                                                                int r = (int) R;
+                                                                int g = (int) G;
+                                                                int b = (int) B;
+                                                                if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
+                                                                    myScale.col = new Color(r, g, b);
+                                                                } else {
+                                                                    myScale.col = Color.BLACK;
+                                                                    System.out.println("Semantic Error: invalid color value RGB =" + r + "," + g + "," + b);
+                                                                }
+                                                            } else if (subValueNode.getClass().getSimpleName().equals("TokenNode")) {
+                                                                myScale.col = parseColor(subValueNode.getText());
+                                                                //System.out.println(myBg.col);
+                                                            } else {
                                                                 myScale.col = Color.BLACK;
-                                                                System.out.println("Error: invalid color value RGB =" + r + "," + g + "," + b);
                                                             }
-                                                        }
-                                                        else if (subValueNode.getClass().getSimpleName().equals("TokenNode")){
-                                                            myScale.col = parseColor(subValueNode.getText());
-                                                            //System.out.println(myBg.col);
-                                                        }
-                                                        else {
+                                                        } else {
                                                             myScale.col = Color.BLACK;
                                                         }
-                                                    }
-                                                    else {
-                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
-                                                    }
-                                                    break;
-                                                case "WidNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myScale.wid = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                case "DirectionNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myScale.direction = valueNode.getText();
-                                                    break;
-                                                case "PosNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myScale.pos = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                case "FromNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myScale.from = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                case "StepNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myScale.step = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                case "AmountNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myScale.amount = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                case "PrecisionNode":
-                                                    valueNode = attributeNode.getChild(1);
-                                                    myScale.precision = Double.parseDouble(valueNode.getText());
-                                                    break;
-                                                default:
-                                                    System.out.println("Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
-                                                    // System.exit(1);
+                                                        break;
+                                                    case "WidNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myScale.wid = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "DirectionNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myScale.direction = valueNode.getText();
+                                                        break;
+                                                    case "PosNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myScale.pos = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "FromNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myScale.from = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "StepNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myScale.step = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "AmountNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myScale.amount = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "PrecisionNode":
+                                                        valueNode = attributeNode.getChild(1);
+                                                        myScale.precision = Double.parseDouble(valueNode.getText());
+                                                        break;
+                                                    case "TokenNode":
+                                                        // 起始或结束标签
+                                                        break;
+                                                    default:
+                                                        System.out.println("Semantic Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
+                                                        // System.exit(1);
+                                                }
                                             }
-                                        }
-                                        MyElements.add(myScale);
-                                        break;
-                                    default:
-                                        System.out.println("Error: unknown element:" + elementNode.getClass().getSimpleName());
-                                        // System.exit(1);
+                                            MyElements.add(myScale);
+                                            break;
+                                        case "TokenNode":
+                                            // 起始或结束标签
+                                            break;
+                                        default:
+                                            System.out.println("Semantic Error: unknown element:" + elementNode.getClass().getSimpleName());
+                                            // System.exit(1);
+                                    }
                                 }
                             }
                         }

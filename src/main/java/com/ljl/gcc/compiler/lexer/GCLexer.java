@@ -133,7 +133,7 @@ public class GCLexer extends GCCompiler {
                 token_type = TOKENTABLE.getTokenTypeBySymbolicName("SEMICOLON");
             }
             else {
-                System.out.println("ERR: 不识别的标记 "+ word);
+                System.out.println("Lexical Error: 不识别的标记 "+ word);
                 return false;
             }
             Token token = new Token(token_type, word);
@@ -181,7 +181,7 @@ public class GCLexer extends GCCompiler {
         int token_type = TOKENTABLE.getTokenTypeByLiteralName(_input.substring(s, e + 1));
 //        System.out.println("@STARTTAG:"+ _input.substring(s, e + 1));
         if(token_type == -1) {
-            System.out.println("ERR: 不识别的标记 "+ _input.substring(s, e + 1));
+            System.out.println("Lexical Error: 不识别的标记 "+ _input.substring(s, e + 1));
             return false;
         }
         else {
@@ -202,7 +202,7 @@ public class GCLexer extends GCCompiler {
         int token_type = TOKENTABLE.getTokenTypeByLiteralName(_input.substring(s, e + 1));
 //        System.out.println("@ENDTAG:"+ _input.substring(s, e + 1));
         if(token_type == -1) {
-            System.out.println("ERR: 不识别的标签 "+ _input.substring(s, e + 1));
+            System.out.println("Lexical Error: 不识别的标记 "+ _input.substring(s, e + 1));
             return false;
         }
         else {

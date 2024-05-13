@@ -24,7 +24,6 @@ public class GCParser extends GCCompiler {
 			return true;
 		}
 		catch (Exception e) {
-			e.printStackTrace();
 			return false;
 		}
 	}
@@ -58,7 +57,7 @@ public class GCParser extends GCCompiler {
 			}
 			this.consume();
 		} else {
-			throw new Exception("Token type mismatch: " + t.getType());
+			throw new Exception("Syntax Error: Token type mismatch: " + t.getType());
 		}
 		return t;
 	}
@@ -107,8 +106,9 @@ public class GCParser extends GCCompiler {
 			}
 			match(CONFIG_END);
 		}
-		catch(Exception re){
-			System.out.println("Recognition exception in config");
+		catch(Exception e){
+			System.out.println("Syntax Error: Recognition exception in config");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -171,11 +171,12 @@ public class GCParser extends GCCompiler {
 				scale();
 				break;
 			default:
-				throw new Exception("No Viable Alternative in element: " + this.getNextTokenType());
+				throw new Exception("Syntax Error: No Viable Alternative in element: " + this.getNextTokenType());
 			}
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in element");
+			System.out.println("Syntax Error: Recognition exception in element");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -212,7 +213,8 @@ public class GCParser extends GCCompiler {
 			match(BG_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in bg");
+			System.out.println("Syntax Error: Recognition exception in bg");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -265,7 +267,8 @@ public class GCParser extends GCCompiler {
 			match(SHAPE_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in shape");
+			System.out.println("Syntax Error: Recognition exception in shape");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -310,7 +313,8 @@ public class GCParser extends GCCompiler {
 			match(POINTS_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in points");
+			System.out.println("Syntax Error: Recognition exception in points");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -351,7 +355,8 @@ public class GCParser extends GCCompiler {
 			match(LINE_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in line");
+			System.out.println("Syntax Error: Recognition exception in line");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -388,7 +393,8 @@ public class GCParser extends GCCompiler {
 			match(LINES_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in lines");
+			System.out.println("Syntax Error: Recognition exception in lines");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -433,7 +439,8 @@ public class GCParser extends GCCompiler {
 			match(CURVE_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in curve");
+			System.out.println("Syntax Error: Recognition exception in curve");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -490,7 +497,8 @@ public class GCParser extends GCCompiler {
 			match(SCALE_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in scale");
+			System.out.println("Syntax Error: Recognition exception in scale");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -523,7 +531,8 @@ public class GCParser extends GCCompiler {
 			match(COL_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in col");
+			System.out.println("Syntax Error: Recognition exception in col");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -553,7 +562,8 @@ public class GCParser extends GCCompiler {
 			match(X_RANGE_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in x_range");
+			System.out.println("Syntax Error: Recognition exception in x_range");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -582,7 +592,8 @@ public class GCParser extends GCCompiler {
 			match(Y_RANGE_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in y_range");
+			System.out.println("Syntax Error: Recognition exception in y_range");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -610,7 +621,8 @@ public class GCParser extends GCCompiler {
 			match(WID_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in wid");
+			System.out.println("Syntax Error: Recognition exception in wid");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -638,7 +650,8 @@ public class GCParser extends GCCompiler {
 			match(WIDTH_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in width");
+			System.out.println("Syntax Error: Recognition exception in width");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -666,7 +679,8 @@ public class GCParser extends GCCompiler {
 			match(HEIGHT_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in height");
+			System.out.println("Syntax Error: Recognition exception in height");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -694,7 +708,8 @@ public class GCParser extends GCCompiler {
 			match(PAD_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in pad");
+			System.out.println("Syntax Error: Recognition exception in pad");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -722,7 +737,8 @@ public class GCParser extends GCCompiler {
 			match(RADIUS_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in radius");
+			System.out.println("Syntax Error: Recognition exception in radius");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -752,7 +768,8 @@ public class GCParser extends GCCompiler {
 			match(LIST_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in list");
+			System.out.println("Syntax Error: Recognition exception in list");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -782,7 +799,8 @@ public class GCParser extends GCCompiler {
 			match(POINT_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in point");
+			System.out.println("Syntax Error: Recognition exception in point");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -810,7 +828,7 @@ public class GCParser extends GCCompiler {
 			match(SLOPE_START);
 			_la = this.getNextTokenType();
 			if ( !(_la==INF || _la==NUMBER) ) {
-				throw new Exception("No Viable Alternative in slope: " + this.getNextTokenType());
+				throw new Exception("Syntax Error: No Viable Alternative in slope: " + this.getNextTokenType());
 			}
 			else {
 				if ( this.getNextTokenType()==Token.EOF ) _matchedEOF = true;
@@ -819,7 +837,8 @@ public class GCParser extends GCCompiler {
 			match(SLOPE_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in slope");
+			System.out.println("Syntax Error: Recognition exception in slope");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -849,7 +868,8 @@ public class GCParser extends GCCompiler {
 			match(RANGE_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in range");
+			System.out.println("Syntax Error: Recognition exception in range");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -877,7 +897,8 @@ public class GCParser extends GCCompiler {
 			match(AMOUNT_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in amount");
+			System.out.println("Syntax Error: Recognition exception in amount");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -905,7 +926,8 @@ public class GCParser extends GCCompiler {
 			match(DIRECTION_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in direction");
+			System.out.println("Syntax Error: Recognition exception in direction");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -933,7 +955,8 @@ public class GCParser extends GCCompiler {
 			match(POS_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in pos");
+			System.out.println("Syntax Error: Recognition exception in pos");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -961,7 +984,8 @@ public class GCParser extends GCCompiler {
 			match(FROM_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in from");
+			System.out.println("Syntax Error: Recognition exception in from");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -989,7 +1013,8 @@ public class GCParser extends GCCompiler {
 			match(STEP_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in step");
+			System.out.println("Syntax Error: Recognition exception in step");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -1017,7 +1042,8 @@ public class GCParser extends GCCompiler {
 			match(PRECISION_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in precision");
+			System.out.println("Syntax Error: Recognition exception in precision");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -1045,7 +1071,8 @@ public class GCParser extends GCCompiler {
 			match(TYPE_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in type");
+			System.out.println("Syntax Error: Recognition exception in type");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -1075,7 +1102,8 @@ public class GCParser extends GCCompiler {
 			match(CENTER_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in center");
+			System.out.println("Syntax Error: Recognition exception in center");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -1103,7 +1131,8 @@ public class GCParser extends GCCompiler {
 			match(FUNCTION_END);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in function");
+			System.out.println("Syntax Error: Recognition exception in function");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -1139,7 +1168,8 @@ public class GCParser extends GCCompiler {
 			}
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in number_pair");
+			System.out.println("Syntax Error: Recognition exception in number_pair");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -1173,7 +1203,8 @@ public class GCParser extends GCCompiler {
 			} while ( _la==NUMBER );
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in number_pair_list");
+			System.out.println("Syntax Error: Recognition exception in number_pair_list");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -1208,7 +1239,8 @@ public class GCParser extends GCCompiler {
 			match(NUMBER);
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in number_triplet");;
+			System.out.println("Syntax Error: Recognition exception in number_triplet");
+			throw e;
 		}
 		finally {
 			exitRule();
@@ -1240,11 +1272,12 @@ public class GCParser extends GCCompiler {
 				number_triplet();
 				break;
 			default:
-				throw new Exception("No viable alternative in color_val: " + this.getNextTokenType());
+				throw new Exception("Syntax Error: No viable alternative in color_val: " + this.getNextTokenType());
 			}
 		}
 		catch (Exception e) {
-			System.out.println("Recognition exception in color_val");;
+			System.out.println("Syntax Error: Recognition exception in color_val");
+			throw e;
 		}
 		finally {
 			exitRule();
