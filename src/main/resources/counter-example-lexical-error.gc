@@ -26,6 +26,7 @@
     【5】以下为各种设置示例：
     -->
 
+    <!-- lexical error -->
     <bg>
         <co> 255,255,255 </col>
         <!-- unrecognized tag name -->

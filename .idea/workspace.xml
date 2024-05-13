@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/counter-example-semantic-error.gc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/counter-example-syntax-error.gc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/GCLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/GCLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/GCParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/GCParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/counter-example-semantic.gc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/counter-example-lexical-error.gc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/counter-example-lexical-error.gc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/counter-example-lexical-error.gc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/counter-example-semantic-error.gc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/counter-example-semantic-error.gc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/counter-example-syntax-error.gc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/counter-example-syntax-error.gc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/example.gc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/example.gc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +191,7 @@
       <workItem from="1715386505376" duration="13505000" />
       <workItem from="1715415181434" duration="9460000" />
       <workItem from="1715476680728" duration="11000" />
-      <workItem from="1715558770083" duration="11385000" />
+      <workItem from="1715558770083" duration="13978000" />
     </task>
     <task id="LOCAL-00001" summary="GCCLexer.java COMPLETE">
       <created>1715160213832</created>
@@ -314,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715567964788</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="完成词法、语法、语义报错和错误样例">
+      <created>1715573786644</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1715573786644</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,6 +355,7 @@
     <MESSAGE value="完成mermaid编程的词法分析DFA、算法流程图和语法分析算法流程图" />
     <MESSAGE value="完善注释" />
     <MESSAGE value="完成语义分析算法流程图" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成语义分析算法流程图" />
+    <MESSAGE value="完成词法、语法、语义报错和错误样例" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成词法、语法、语义报错和错误样例" />
   </component>
 </project>

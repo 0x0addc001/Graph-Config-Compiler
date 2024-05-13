@@ -26,6 +26,7 @@
     【5】以下为各种设置示例：
     -->
 
+    <!-- syntax error -->
     <bg>
         <col> 255,255 </col>
         <!-- only have 2 values in RGB color -->

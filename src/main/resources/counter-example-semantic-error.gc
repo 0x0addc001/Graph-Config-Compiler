@@ -26,6 +26,7 @@
     【5】以下为各种设置示例：
     -->
 
+    <!-- semantic error -->
     <bg>
         <col> -1,255,255 </col>
         <!-- R is out of range [0, 255] -->
