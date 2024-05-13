@@ -1,0 +1,75 @@
+flowchart TD
+    Start((Start)) --> Input[输入语法树根节点]
+    Input --> Config[根节点类型是否为ConfigNode]
+    Config --> |是| GetChild[获取子节点]
+    GetChild --> Element[子节点类型是否为ElementNode]
+    Element -->|是| E[获取子节点]
+    E --> F{子节点类型}
+    F -->|是BgNode| G[处理背景元素]
+    F -->|是PointsNode| H[处理点集元素]
+    F -->|是LinesNode| I[处理折线元素]
+    F -->|是LineNode| J[处理直线元素]
+    F -->|是CurveNode| K[处理曲线元素]
+    F -->|是ShapeNode| L[处理图形元素]
+    F -->|是ScaleNode| M[处理坐标轴元素]
+    F -->|都不是| Error[错误信息:无效元素]
+    G --> Col1[解析颜色属性]
+    Col1 -->|成功| Xrange1[解析X范围属性]
+    Xrange1 -->|成功| Yrange1[解析Y范围属性]
+    Yrange1 -->|成功| End[解析结束]
+    End --> O[添加元素至列表]
+    O --> E
+
+    Col1 -->|失败| Error1[错误信息:无效颜色属性值]
+
+    H --> Col2[解析颜色属性]
+    Col2 -->|成功| Wid2[解析宽度属性]
+    Wid2 -->|成功| Pad2[解析是否填充属性]
+    Pad2 -->|成功| Radius2[解析半径属性]
+    Radius2 -->|成功| List2[解析坐标列表属性]
+    List2 -->|成功| End
+
+    Col2 -->|失败| Error1[错误信息:无效颜色属性值]
+    I --> Col3[解析颜色属性]
+    Col3 -->|成功| Wid3[解析宽度属性]
+    Wid3 -->|成功| Pad3[解析是否填充属性]
+    Pad3 -->|成功| Radius3[解析半径属性]
+    Radius3 -->|成功| List3[解析点集属性]
+    List3 -->|成功| End
+
+    Col3 -->|失败| Error1[错误信息:无效颜色属性值]
+    J --> Col4[解析颜色属性]
+    Col4 -->|成功| Wid4[解析宽度属性]
+    Wid4 -->|成功| Point4[解析点属性]
+    Point4 -->|成功| Slope4[解析斜率属性]
+    Slope4 -->|成功| End
+
+    Col4 -->|失败| Error1[错误信息:无效颜色属性值]
+    K --> Col5[解析颜色属性]
+    Col5 -->|成功| Wid5[解析宽度属性]
+    Wid5 -->|成功| Range5[解析范围属性]
+    Range5 -->|成功| Function5[解析函数属性]
+    Function5 -->|成功| End
+
+    Col5 -->|失败| Error1[错误信息:无效颜色属性值]
+    L --> Col6[解析颜色属性]
+    Col6 -->|成功| Wid6[解析宽度属性]
+    Wid6 -->|成功| Type6[解析形状类型属性]
+    Type6 -->|成功| Pad6[解析是否填充属性]
+    Pad6 -->|成功| Center6[解析中心属性]
+    Center6 -->|成功| Width6[解析宽度属性]
+    Width6 -->|成功| Height6[解析高度属性]
+    Height6 -->|成功| End
+
+    Col6 -->|失败| Error1[错误信息:无效颜色属性值]
+    M --> Col7[解析颜色属性]
+    Col7 -->|成功| Wid7[解析宽度属性]
+    Wid7 -->|成功| Direction7[解析方向属性]
+    Direction7 -->|成功| Pos7[解析位置属性]
+    Pos7 -->|成功| From7[解析起始值属性]
+    From7 -->|成功| Step7[解析步长属性]
+    Step7 -->|成功| Amount7[解析数量属性]
+    Amount7 -->|成功| Precision7[解析精度属性]
+    Precision7 -->|成功| End
+
+    Col7 -->|失败| Error1[错误信息:无效颜色属性值]

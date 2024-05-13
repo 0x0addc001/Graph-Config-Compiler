@@ -48,8 +48,8 @@ public class GCDrawer extends JFrame {
         colorMap.put("green", Color.GREEN);
         colorMap.put("cyan", Color.CYAN);
         colorMap.put("blue", Color.BLUE);
-        colorMap.put("indigo", new Color(75, 0, 130)); // Indigo不是java.awt.Color提供的标准颜色，这里手动定义一个
-        colorMap.put("violet", new Color(238, 130, 238)); // Violet也是手动定义的颜色
+        colorMap.put("indigo", new Color(75, 0, 130));
+        colorMap.put("violet", new Color(238, 130, 238));
         colorMap.put("white", Color.WHITE);
         colorMap.put("gray", Color.GRAY);
         colorMap.put("black", Color.BLACK);
@@ -110,7 +110,13 @@ public class GCDrawer extends JFrame {
                                                             int r = (int) R;
                                                             int g = (int) G;
                                                             int b = (int) B;
-                                                            myBg.col = new Color(r, g, b);
+                                                            if(r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255){
+                                                                myBg.col = new Color(r, g, b);
+                                                            }
+                                                            else{
+                                                                myBg.col = Color.BLACK;
+                                                                System.out.println("Error: invalid color value RGB =" + r + "," + g + "," + b);
+                                                            }
                                                         }
                                                         else if (subValueNode.getClass().getSimpleName().equals("TokenNode")){
                                                             myBg.col = parseColor(subValueNode.getText());
@@ -120,12 +126,18 @@ public class GCDrawer extends JFrame {
                                                             myBg.col = Color.BLACK;
                                                         }
                                                     }
+                                                    else {
+                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
+                                                    }
                                                     break;
                                                 case "X_rangeNode":
                                                     valueNode = attributeNode.getChild(1);
                                                     if (valueNode.getClass().getSimpleName().equals("Number_pairNode")) {
                                                         myBg.xRangeLeft = Double.parseDouble(valueNode.getChild(0).getText());
                                                         myBg.xRangeRight = Double.parseDouble(valueNode.getChild(2).getText());
+                                                    }
+                                                    else {
+                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
                                                     }
                                                     break;
                                                 case "Y_rangeNode":
@@ -134,9 +146,12 @@ public class GCDrawer extends JFrame {
                                                         myBg.yRangeBottom = Double.parseDouble(valueNode.getChild(0).getText());
                                                         myBg.yRangeTop = Double.parseDouble(valueNode.getChild(2).getText());
                                                     }
+                                                    else {
+                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
+                                                    }
                                                     break;
                                                 default:
-                                                    System.out.println("Error: unknown element attribute");
+                                                    System.out.println("Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
                                                     // System.exit(1);
                                             }
                                         }
@@ -159,7 +174,13 @@ public class GCDrawer extends JFrame {
                                                             int r = (int) R;
                                                             int g = (int) G;
                                                             int b = (int) B;
-                                                            myPoints.col = new Color(r, g, b);
+                                                            if(r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255){
+                                                                myPoints.col = new Color(r, g, b);
+                                                            }
+                                                            else{
+                                                                myPoints.col = Color.BLACK;
+                                                                System.out.println("Error: invalid color value RGB =" + r + "," + g + "," + b);
+                                                            }
                                                         }
                                                         else if (subValueNode.getClass().getSimpleName().equals("TokenNode")){
                                                             myPoints.col = parseColor(subValueNode.getText());
@@ -168,6 +189,9 @@ public class GCDrawer extends JFrame {
                                                         else {
                                                             myPoints.col = Color.BLACK;
                                                         }
+                                                    }
+                                                    else {
+                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
                                                     }
                                                     break;
                                                 case "WidNode":
@@ -190,6 +214,9 @@ public class GCDrawer extends JFrame {
                                                         myPoints.y.add(Double.parseDouble(subValueNode.getChild(2).getText()));
                                                     }
                                                     break;
+                                                default:
+                                                    System.out.println("Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
+                                                    // System.exit(1);
                                             }
                                         }
                                         MyElements.add(myPoints);
@@ -211,7 +238,13 @@ public class GCDrawer extends JFrame {
                                                             int r = (int) R;
                                                             int g = (int) G;
                                                             int b = (int) B;
-                                                            myLines.col = new Color(r, g, b);
+                                                            if(r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255){
+                                                                myLines.col = new Color(r, g, b);
+                                                            }
+                                                            else{
+                                                                myLines.col = Color.BLACK;
+                                                                System.out.println("Error: invalid color value RGB =" + r + "," + g + "," + b);
+                                                            }
                                                         }
                                                         else if (subValueNode.getClass().getSimpleName().equals("TokenNode")){
                                                             myLines.col = parseColor(subValueNode.getText());
@@ -220,6 +253,9 @@ public class GCDrawer extends JFrame {
                                                         else {
                                                             myLines.col = Color.BLACK;
                                                         }
+                                                    }
+                                                    else {
+                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
                                                     }
                                                     break;
                                                 case "WidNode":
@@ -234,6 +270,9 @@ public class GCDrawer extends JFrame {
                                                         myLines.y.add(Double.parseDouble(subValueNode.getChild(2).getText()));
                                                     }
                                                     break;
+                                                default:
+                                                    System.out.println("Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
+                                                    // System.exit(1);
                                             }
                                         }
                                         MyElements.add(myLines);
@@ -255,7 +294,13 @@ public class GCDrawer extends JFrame {
                                                             int r = (int) R;
                                                             int g = (int) G;
                                                             int b = (int) B;
-                                                            myLine.col = new Color(r, g, b);
+                                                            if(r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255){
+                                                                myLine.col = new Color(r, g, b);
+                                                            }
+                                                            else{
+                                                                myLine.col = Color.BLACK;
+                                                                System.out.println("Error: invalid color value RGB =" + r + "," + g + "," + b);
+                                                            }
                                                         }
                                                         else if (subValueNode.getClass().getSimpleName().equals("TokenNode")){
                                                             myLine.col = parseColor(subValueNode.getText());
@@ -264,6 +309,9 @@ public class GCDrawer extends JFrame {
                                                         else {
                                                             myLine.col = Color.BLACK;
                                                         }
+                                                    }
+                                                    else {
+                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
                                                     }
                                                     break;
                                                 case "WidNode":
@@ -281,6 +329,9 @@ public class GCDrawer extends JFrame {
                                                     valueNode = attributeNode.getChild(1);
                                                     myLine.slope = valueNode.getText();
                                                     break;
+                                                default:
+                                                    System.out.println("Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
+                                                    // System.exit(1);
                                             }
                                         }
                                         MyElements.add(myLine);
@@ -302,7 +353,13 @@ public class GCDrawer extends JFrame {
                                                             int r = (int) R;
                                                             int g = (int) G;
                                                             int b = (int) B;
-                                                            myCurve.col = new Color(r, g, b);
+                                                            if(r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255){
+                                                                myCurve.col = new Color(r, g, b);
+                                                            }
+                                                            else{
+                                                                myCurve.col = Color.BLACK;
+                                                                System.out.println("Error: invalid color value RGB =" + r + "," + g + "," + b);
+                                                            }
                                                         }
                                                         else if (subValueNode.getClass().getSimpleName().equals("TokenNode")){
                                                             myCurve.col = parseColor(subValueNode.getText());
@@ -311,6 +368,9 @@ public class GCDrawer extends JFrame {
                                                         else {
                                                             myCurve.col = Color.BLACK;
                                                         }
+                                                    }
+                                                    else {
+                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
                                                     }
                                                     break;
                                                 case "WidNode":
@@ -336,6 +396,9 @@ public class GCDrawer extends JFrame {
                                                     valueNode = attributeNode.getChild(1);
                                                     myCurve.amount = Double.parseDouble(valueNode.getText());
                                                     break;
+                                                default:
+                                                    System.out.println("Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
+                                                    // System.exit(1);
                                             }
                                         }
                                         MyElements.add(myCurve);
@@ -357,7 +420,13 @@ public class GCDrawer extends JFrame {
                                                             int r = (int) R;
                                                             int g = (int) G;
                                                             int b = (int) B;
-                                                            myShape.col = new Color(r, g, b);
+                                                            if(r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255){
+                                                                myShape.col = new Color(r, g, b);
+                                                            }
+                                                            else{
+                                                                myShape.col = Color.BLACK;
+                                                                System.out.println("Error: invalid color value RGB =" + r + "," + g + "," + b);
+                                                            }
                                                         }
                                                         else if (subValueNode.getClass().getSimpleName().equals("TokenNode")){
                                                             myShape.col = parseColor(subValueNode.getText());
@@ -366,6 +435,9 @@ public class GCDrawer extends JFrame {
                                                         else {
                                                             myShape.col = Color.BLACK;
                                                         }
+                                                    }
+                                                    else {
+                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
                                                     }
                                                     break;
                                                 case "WidNode":
@@ -386,6 +458,9 @@ public class GCDrawer extends JFrame {
                                                         myShape.x = Double.parseDouble(valueNode.getChild(0).getText());
                                                         myShape.y = Double.parseDouble(valueNode.getChild(2).getText());
                                                     }
+                                                    else {
+                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
+                                                    }
                                                     break;
                                                 case "WidthNode":
                                                     valueNode = attributeNode.getChild(1);
@@ -395,11 +470,13 @@ public class GCDrawer extends JFrame {
                                                     valueNode = attributeNode.getChild(1);
                                                     myShape.height = Double.parseDouble(valueNode.getText());
                                                     break;
+                                                default:
+                                                    System.out.println("Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
+                                                    // System.exit(1);
                                             }
                                         }
                                         MyElements.add(myShape);
                                         break;
-                                    // ----------------------------------------------------------------------------- //
                                     case "ScaleNode":
                                         Scale myScale = new Scale();
                                         myScale.elementName = "scale";
@@ -417,7 +494,13 @@ public class GCDrawer extends JFrame {
                                                             int r = (int) R;
                                                             int g = (int) G;
                                                             int b = (int) B;
-                                                            myScale.col = new Color(r, g, b);
+                                                            if(r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255){
+                                                                myScale.col = new Color(r, g, b);
+                                                            }
+                                                            else{
+                                                                myScale.col = Color.BLACK;
+                                                                System.out.println("Error: invalid color value RGB =" + r + "," + g + "," + b);
+                                                            }
                                                         }
                                                         else if (subValueNode.getClass().getSimpleName().equals("TokenNode")){
                                                             myScale.col = parseColor(subValueNode.getText());
@@ -426,6 +509,9 @@ public class GCDrawer extends JFrame {
                                                         else {
                                                             myScale.col = Color.BLACK;
                                                         }
+                                                    }
+                                                    else {
+                                                        System.out.println("Error: unmatched element value:" + valueNode.getClass().getSimpleName());
                                                     }
                                                     break;
                                                 case "WidNode":
@@ -456,10 +542,16 @@ public class GCDrawer extends JFrame {
                                                     valueNode = attributeNode.getChild(1);
                                                     myScale.precision = Double.parseDouble(valueNode.getText());
                                                     break;
+                                                default:
+                                                    System.out.println("Error: unknown element attribute:" + attributeNode.getClass().getSimpleName());
+                                                    // System.exit(1);
                                             }
                                         }
                                         MyElements.add(myScale);
                                         break;
+                                    default:
+                                        System.out.println("Error: unknown element:" + elementNode.getClass().getSimpleName());
+                                        // System.exit(1);
                                 }
                             }
                         }

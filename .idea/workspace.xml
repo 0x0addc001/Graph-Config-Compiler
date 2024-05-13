@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/counter-example.gc" afterDir="false" />
+    <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="完善注释">
+      <change afterPath="$PROJECT_DIR$/img/interpreter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/interpreter.mermaid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/GCLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/lexer/GCLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/GCParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/parser/GCParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/GCCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/GCCompiler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/gcc-output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/gcc-output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/counter-example.gc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/counter-example-semantic.gc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +76,7 @@
       <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\test\antlr\gcc" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\img" />
       <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\test" />
       <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\java\com\ljl\test\antlr\gcc" />
       <recent name="D:\CompilerPrincipleProjects\Graph-Config-Compiler-Project\Graph-Config-Compiler\src\main\resources" />
@@ -189,7 +190,9 @@
       <workItem from="1715299243713" duration="18501000" />
       <workItem from="1715345425101" duration="21000" />
       <workItem from="1715386505376" duration="13505000" />
-      <workItem from="1715415181434" duration="9276000" />
+      <workItem from="1715415181434" duration="9460000" />
+      <workItem from="1715476680728" duration="11000" />
+      <workItem from="1715558770083" duration="6381000" />
     </task>
     <task id="LOCAL-00001" summary="GCCLexer.java COMPLETE">
       <created>1715160213832</created>
@@ -296,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715421243023</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="完善注释">
+      <created>1715432943728</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715432943728</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,6 +340,7 @@
     <MESSAGE value="GClangCompiler V3.0" />
     <MESSAGE value="完成mermaid编程的词法分析和语法分析算法流程图" />
     <MESSAGE value="完成mermaid编程的词法分析DFA、算法流程图和语法分析算法流程图" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成mermaid编程的词法分析DFA、算法流程图和语法分析算法流程图" />
+    <MESSAGE value="完善注释" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善注释" />
   </component>
 </project>

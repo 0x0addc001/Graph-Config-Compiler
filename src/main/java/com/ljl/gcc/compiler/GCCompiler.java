@@ -166,7 +166,7 @@ public class GCCompiler {
         }
     }
 
-    private void printTree(TreeNode treeNode, int level) {
+    private void printTree(TreeNode treeNode, int level) { // DFS前序遍历
         for (int i = 0; i < level; i++) {
             System.out.print("  "); // 每一级缩进两个空格
         }

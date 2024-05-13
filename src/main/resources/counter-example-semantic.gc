@@ -27,7 +27,8 @@
     -->
 
     <bg>
-        <col> 255,255,255 </col>
+        <col> -1,255,255 </col>
+        <!-- R is out of range [0, 255] -->
         <xRange> -0.1, 1.1 </xRange>
         <yRange> -0.1, 1.1 </yRange>
     </bg>
