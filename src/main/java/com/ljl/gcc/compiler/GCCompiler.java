@@ -18,7 +18,7 @@ public class GCCompiler {
     private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
     protected static final TokenTable TOKENTABLE = new TokenTable(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
-    protected static final int // 种别编码
+    protected static final int // 词法Token种别编码
             EOF = -1, INVALID_TYPE = 0,
             WS=1, COMMENT=2, CONFIG_START=3, CONFIG_END=4, BG_START=5, BG_END=6, COL_START=7,
             COL_END=8, X_RANGE_START=9, X_RANGE_END=10, Y_RANGE_START=11, Y_RANGE_END=12,
@@ -34,7 +34,7 @@ public class GCCompiler {
             PRECISION_END=58, TYPE_START=59, TYPE_END=60, BOOLEAN=61, INF=62, COMMENT_START=63,
             COMMENT_END=64, NUMBER=65, COMMA=66, SEMICOLON=67, DIRECTION_TYPE=68,
             COLOR_TYPE=69, SHAPE_TYPE=70, FUNCTION_EXPR=71;
-    protected static final int
+    protected static final int // 语法规则编码
             RULE_config = 0, RULE_element = 1, RULE_bg = 2, RULE_shape = 3, RULE_points = 4,
             RULE_line = 5, RULE_lines = 6, RULE_curve = 7, RULE_scale = 8, RULE_col = 9,
             RULE_x_range = 10, RULE_y_range = 11, RULE_wid = 12, RULE_width = 13,

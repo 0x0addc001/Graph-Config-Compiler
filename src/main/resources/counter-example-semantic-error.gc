@@ -14,7 +14,8 @@
     （1）用名称颜色，名称颜色共11种：
     red, orange, yellow, green,
     cyan, blue, indigo, violet,
-    white, gray, black    （2）用RGB颜色，例如：
+    white, gray, black
+    （2）用RGB颜色，例如：
     255,0,155
 
     【4】其它设定包括：

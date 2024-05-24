@@ -1,33 +1,22 @@
 package com.ljl.gcc.drawer;
 
-import java.awt.*;
-import java.awt.event.ActionListener;
-import javax.swing.*;
-import java.awt.event.*;
-
 import com.ljl.gcc.compiler.GCCompiler;
 import com.ljl.gcc.compiler.parser.TreeNode;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.reflect.Field;
-import java.nio.charset.Charset;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import org.dom4j.DocumentHelper;
-import java.awt.Graphics2D;
-import java.awt.geom.*;
-import java.util.Map;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
+import java.awt.geom.Rectangle2D;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GCDrawer extends JFrame {
     GCCompiler compiler = new GCCompiler();

@@ -6,6 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="cec872f8-7b58-45e0-9843-5c55d6cbe3ba" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/dom4j-2.1.4-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCLexer.g4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCLexer.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCLexer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCLexer.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCParser.g4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCParser.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCParser.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCParserBaseListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCParserBaseVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCParserListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/GCParserVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/antlr/antlr-output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/GCCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/compiler/GCCompiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ljl/gcc/drawer/GCDrawer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/counter-example-lexical-error.gc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/counter-example-lexical-error.gc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/counter-example-semantic-error.gc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/counter-example-semantic-error.gc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/counter-example-syntax-error.gc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/counter-example-syntax-error.gc" afterDir="false" />
@@ -191,7 +208,12 @@
       <workItem from="1715386505376" duration="13505000" />
       <workItem from="1715415181434" duration="9460000" />
       <workItem from="1715476680728" duration="11000" />
-      <workItem from="1715558770083" duration="13978000" />
+      <workItem from="1715558770083" duration="14841000" />
+      <workItem from="1716106810351" duration="518000" />
+      <workItem from="1716165497141" duration="133000" />
+      <workItem from="1716442569975" duration="21000" />
+      <workItem from="1716513018568" duration="122000" />
+      <workItem from="1716513174284" duration="10124000" />
     </task>
     <task id="LOCAL-00001" summary="GCCLexer.java COMPLETE">
       <created>1715160213832</created>
@@ -319,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715573786644</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="GClang Compiler V3.0-Release">
+      <created>1715580064756</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1715580064756</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,6 +385,7 @@
     <MESSAGE value="完善注释" />
     <MESSAGE value="完成语义分析算法流程图" />
     <MESSAGE value="完成词法、语法、语义报错和错误样例" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成词法、语法、语义报错和错误样例" />
+    <MESSAGE value="GClang Compiler V3.0-Release" />
+    <option name="LAST_COMMIT_MESSAGE" value="GClang Compiler V3.0-Release" />
   </component>
 </project>
